@@ -1,2 +1,2 @@
 # MVVC
-Concise and practical javascript framework
+Practical and concise js framework
