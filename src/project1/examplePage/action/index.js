@@ -27,5 +27,4 @@ const actions = {
 }
 
 
-const action = createActions(actions)
-export default action
+export default createActions(actions)
