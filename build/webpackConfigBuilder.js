@@ -87,8 +87,8 @@ function updateCachedWebpackConfig(pagePathInfos) {
       module: {
         rules: [
           {
-            test: `/\.js.*/`,
-            exclude: `/node_modules/`,
+            "test": "/\.js.*/",
+            "exclude": "/node_modules/",
             use: [
               {
                 loader: 'babel-loader',
@@ -104,5 +104,8 @@ function updateCachedWebpackConfig(pagePathInfos) {
     })
   })
 
-  FS.writeFileSync(webpackConfigCachePath, `module.exports=${JSON.stringify(settings, null, 4)}`)
+  const toWriteStr = `module.exports=${JSON.stringify(settings, null, 4)}`
+    .replace('"/\.js.*/"', '/\.js.*/')
+    .replace('"/node_modules/"', '/node_modules/')
+  FS.writeFileSync(webpackConfigCachePath, toWriteStr)
 }
