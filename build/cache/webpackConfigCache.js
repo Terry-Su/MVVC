@@ -1,8 +1,8 @@
 module.exports=[
     {
-        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/project1/examplePage1/controller/index.web.js",
+        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/project1/examplePage/controller/index.web.js",
         "output": {
-            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/project1/examplePage1",
+            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/project1/examplePage",
             "filename": "bundle.js"
         },
         "devtool": "source-map",
@@ -30,9 +30,9 @@ module.exports=[
         }
     },
     {
-        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/project1/examplePage2/controller/index.web.js",
+        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/project1/page2/controller/index.web.js",
         "output": {
-            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/project1/examplePage2",
+            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/project1/page2",
             "filename": "bundle.js"
         },
         "devtool": "source-map",
@@ -40,7 +40,7 @@ module.exports=[
             "rules": [
                 {
                     "test": /.js.*/,
-                    "exclude": "/node_modules/",
+                    "exclude": /node_modules/,
                     "use": [
                         {
                             "loader": "babel-loader",
@@ -60,9 +60,9 @@ module.exports=[
         }
     },
     {
-        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/project2/examplePage3/controller/index.web.js",
+        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/project2/page3/controller/index.web.js",
         "output": {
-            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/project2/examplePage3",
+            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/project2/page3",
             "filename": "bundle.js"
         },
         "devtool": "source-map",
@@ -70,7 +70,7 @@ module.exports=[
             "rules": [
                 {
                     "test": /.js.*/,
-                    "exclude": "/node_modules/",
+                    "exclude": /node_modules/,
                     "use": [
                         {
                             "loader": "babel-loader",

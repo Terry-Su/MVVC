@@ -3,6 +3,7 @@
  */
 const path = require('path')
 const BUILD = process.env.BUILD
+const { exec } = require('child_process')
 
 const {
   rootPath,
@@ -22,7 +23,9 @@ const {
 const {
   watchAndBuild: watchAndBuildHtml
 } = require('./htmlBuilder')
-const { exec } = require('child_process')
+const {
+  init: initWebServer
+} = require('./webServer')
 
 
 
@@ -40,6 +43,7 @@ function resolveProjectInput(input, projectsNames) {
     buildWebpackConfig(pagePathInfos)
     watchAndBuildHtml(pagePathInfos)
     execWebpack()
+    initWebServer()
   }
   if (input > 0) {
     const projectName = projectsNames[input]
@@ -69,6 +73,7 @@ function resolvePageInput({
   buildWebpackConfig(pagePathInfos)
   watchAndBuildHtml(pagePathInfos)
   execWebpack()
+  initWebServer()
 }
 
 function getPagePathInfosByProjectInputInfo(input) {

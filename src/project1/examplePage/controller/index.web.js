@@ -2,14 +2,15 @@ import Controller from '../../share/controller/index.web.js'
 import Inferno from 'inferno'
 import { render } from 'inferno'
 
+// redux
+import {
+  createStore
+} from 'redux'
+
+
+import Foo from '../component/Foo'
+
 render(
-  <div>123</div>,
+  <Foo />,
   document.getElementById('app')
-)
-
-
-module.exports = Object.assign(
-  Controller, {
-    
-  }
 )

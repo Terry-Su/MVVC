@@ -85,8 +85,6 @@ var createVNode = _inferno2.default.createVNode;
 
 (0, _inferno.render)(createVNode(2, 'div', null, '123'), document.getElementById('app'));
 
-module.exports = Object.assign(_indexWeb2.default, {});
-
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
