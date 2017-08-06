@@ -13,11 +13,14 @@ const projectsPrompt = require('./projectsPrompt')
 const pagesPrompt = require('./pagesPrompt')
 const { getNames, getPageNameRootPath } = require('./names')
 const {
-  build,
+  build: buildWebpackConfig,
   getAllProjectsPagePathInfos,
   getPagePathInfosByProjectName,
   getPagePathInfosByPageAndProjectName
 } = require('./webpackConfigBuilder')
+const {
+  watchAndBuild: watchAndBuildHtml
+} = require('./htmlBuilder')
 const { exec } = require('child_process')
 
 
@@ -33,7 +36,8 @@ function resolveProjectInput(input, projectsNames) {
   input = parseInt(input)
   if (input === 0) {
     const pagePathInfos = getPagePathInfosByProjectInputInfo(input)
-    build(pagePathInfos)
+    buildWebpackConfig(pagePathInfos)
+    watchAndBuildHtml(pagePathInfos)
     execWebpack()
   }
   if (input > 0) {
@@ -61,7 +65,8 @@ function resolvePageInput({
     input,
     pageNames
   })
-  build(pagePathInfos)
+  buildWebpackConfig(pagePathInfos)
+  watchAndBuildHtml(pagePathInfos)
   execWebpack()
 }
 

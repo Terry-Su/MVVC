@@ -9,7 +9,7 @@ const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
   webpackConfigCachePath,
-  webpackConfigOutputRootPath
+  outputRootPath
 } = require('../config/server.config.js')
 
 
@@ -24,9 +24,6 @@ module.exports = {
 function build(pagePathInfos) {
   updateCachedWebpackConfig(pagePathInfos)
 }
-
-
-
 
 function getAllProjectsPagePathInfos() {
   let pagePathInfos = []
@@ -63,9 +60,14 @@ function getPagePathInfosByPageAndProjectName(pageName, projectName) {
 }
 
 
-function getEntryPath(pagePath) {
-  return PATH.resolve(pagePath, './controller/index.js')
+function getWebEntryPath(pagePath) {
+  return PATH.resolve(pagePath, './controller/index.web.js')
 }
+
+function getOutputPath(project, page) {
+  return PATH.resolve(outputRootPath, `./${project}/${page}`)
+}
+
 
 function updateCachedWebpackConfig(pagePathInfos) {
   let settings = []
@@ -75,9 +77,9 @@ function updateCachedWebpackConfig(pagePathInfos) {
       page,
       project
     } = pagePathInfo
-    const entry = getEntryPath(pagePath)
+    const entry = getWebEntryPath(pagePath)
     const output = {
-      path: PATH.resolve(webpackConfigOutputRootPath, `./${project}/${page}`),
+      path: getOutputPath(project, page),
       filename: 'bundle.js'
     }
     settings.push({
