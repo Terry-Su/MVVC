@@ -107,7 +107,7 @@ function updateCachedWebpackConfig(pagePathInfos) {
   })
 
   const toWriteStr = `module.exports=${JSON.stringify(settings, null, 4)}`
-    .replace('"/\.js.*/"', '/\.js.*/')
-    .replace('"/node_modules/"', '/node_modules/')
+    .replace(new RegExp('"/\.js.*/"', 'g'), '/\.js.*/')
+    .replace(new RegExp('"/node_modules/"', 'g'), '/node_modules/')
   FS.writeFileSync(webpackConfigCachePath, toWriteStr)
 }

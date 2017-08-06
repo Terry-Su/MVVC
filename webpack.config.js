@@ -39,37 +39,7 @@ module.exports=[
         "module": {
             "rules": [
                 {
-                    "test": /.js.*/,
-                    "exclude": "/node_modules/",
-                    "use": [
-                        {
-                            "loader": "babel-loader",
-                            "options": {
-                                "presets": [
-                                    "es2015",
-                                    "stage-0"
-                                ],
-                                "plugins": [
-                                    "inferno"
-                                ]
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-    },
-    {
-        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/project2/examplePage3/controller/index.web.js",
-        "output": {
-            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/project2/examplePage3",
-            "filename": "bundle.js"
-        },
-        "devtool": "source-map",
-        "module": {
-            "rules": [
-                {
-                    "test": /.js.*/,
+                    "test": "/.js.*/",
                     "exclude": "/node_modules/",
                     "use": [
                         {

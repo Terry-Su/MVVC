@@ -2,6 +2,7 @@
  * Resolve build command
  */
 const path = require('path')
+const BUILD = process.env.BUILD
 
 const {
   rootPath,
@@ -100,5 +101,8 @@ function getPagePathInfosByPageInputInfo({
 
 
 function execWebpack() {
+  if (BUILD) {
+    return exec(`webpack -p --colors --config ${webpackConfigCachePath}`).stdout.pipe(process.stdout)
+  }
   exec(`webpack --watch --colors --config ${webpackConfigCachePath}`).stdout.pipe(process.stdout)
 }

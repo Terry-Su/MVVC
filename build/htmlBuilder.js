@@ -4,6 +4,7 @@ const gulp = require('gulp')
 const webpack = require('webpack-stream')
 const WebpackOnBuildPlugin = require('on-build-webpack');
 const decache = require('decache')
+const BUILD = process.env.BUILD
 
 const {
   outputRootPath
@@ -21,9 +22,9 @@ function watchAndBuild(pagePathInfos) {
       pagePath
     } = pagePathInfo
     const entryPath = getServerEntryPath(pagePath)
-    build(pagePathInfo)
+
     gulp.src(entryPath).pipe(webpack({
-      watch: true,
+      watch: BUILD ? false : true,
       plugins: [
         new WebpackOnBuildPlugin(function (stats) {
           build(pagePathInfo)
@@ -65,9 +66,9 @@ function getServerEntryPath(pagePath) {
 function writeHtml(path, text) {
   try {
     FS.writeFileSync(path, text)
-    console.log(`Build ${path} successfully!`)
+    console.log(`\x1b[32m`, `${path} was built successfully!`)
   } catch (e) {
-    console.log(`Building ${path} failed!`)
+    console.log(`\x1b[31m`, `Building ${path} failed!`)
     console.log(e)
   }
 }
