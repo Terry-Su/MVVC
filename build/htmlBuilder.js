@@ -4,6 +4,9 @@ const gulp = require('gulp')
 const webpack = require('webpack-stream')
 const WebpackOnBuildPlugin = require('on-build-webpack');
 const decache = require('decache')
+const {
+  outputFile
+} = require('fs-extra')
 const BUILD = process.env.BUILD
 
 const {
@@ -65,7 +68,7 @@ function getServerEntryPath(pagePath) {
 
 function writeHtml(path, text) {
   try {
-    FS.writeFileSync(path, text)
+    outputFile(path, text)
     console.log(`\x1b[32m`, `${path} was built successfully!`)
   } catch (e) {
     console.log(`\x1b[31m`, `Building ${path} failed!`)

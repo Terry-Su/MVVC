@@ -26,6 +26,10 @@ const {
 const {
   init: initWebServer
 } = require('./webServer')
+const {
+  removeDeprecatedProjects,
+  removeConfilctPagesInProjects
+} = require('./removeDeprecated')
 
 
 
@@ -35,15 +39,23 @@ projectsPrompt.show((input, projectsNames) => {
 })
 
 
+function resolvePagePathInfos(pagePathInfos) {
+  removeDeprecatedProjects()
+    .then(v => removeConfilctPagesInProjects())
+    .then(v => {
+      buildWebpackConfig(pagePathInfos)
+      watchAndBuildHtml(pagePathInfos)
+      execWebpack()
+      initWebServer()
+    })
+}
+
 
 function resolveProjectInput(input, projectsNames) {
   input = parseInt(input)
   if (input === 0) {
     const pagePathInfos = getPagePathInfosByProjectInputInfo(input)
-    buildWebpackConfig(pagePathInfos)
-    watchAndBuildHtml(pagePathInfos)
-    execWebpack()
-    initWebServer()
+    resolvePagePathInfos(pagePathInfos)
   }
   if (input > 0) {
     const projectName = projectsNames[input]
@@ -70,10 +82,7 @@ function resolvePageInput({
     input,
     pageNames
   })
-  buildWebpackConfig(pagePathInfos)
-  watchAndBuildHtml(pagePathInfos)
-  execWebpack()
-  initWebServer()
+  resolvePagePathInfos(pagePathInfos)
 }
 
 function getPagePathInfosByProjectInputInfo(input) {

@@ -1,7 +1,15 @@
-module.exports = {
+const Controller = {
+  htmlConfig: {
+    title: getPageName(),
+    script: `<script src='./bundle.js'></script>`
+  },
   getHtmlByFrame,
-  getHtml
+  getHtml,
+  getPageName
 }
+
+module.exports = Controller
+
 function getHtmlByFrame({
   title,
   link,
@@ -25,9 +33,10 @@ function getHtmlByFrame({
 }
 
 function getHtml() {
-    return getHtmlByFrame({
-      script: `
-        <script src='./bundle.js'>123</script>
-      `
-    })
+  return getHtmlByFrame(Controller.htmlConfig)
+}
+
+function getPageName() {
+  const paths = __dirname.split('/')
+  return paths[paths.length - 3]
 }
