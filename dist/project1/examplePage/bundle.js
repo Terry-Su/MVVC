@@ -745,6 +745,11 @@ function compose() {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getStore = getStore;
+
 var _indexWeb = __webpack_require__(10);
 
 var _indexWeb2 = _interopRequireDefault(_indexWeb);
@@ -755,6 +760,12 @@ var _inferno2 = _interopRequireDefault(_inferno);
 
 var _redux = __webpack_require__(3);
 
+var _infernoRedux = __webpack_require__(29);
+
+var _index = __webpack_require__(36);
+
+var _index2 = _interopRequireDefault(_index);
+
 var _Foo = __webpack_require__(28);
 
 var _Foo2 = _interopRequireDefault(_Foo);
@@ -762,10 +773,33 @@ var _Foo2 = _interopRequireDefault(_Foo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // redux
+var logger = function logger(store) {
+  return function (next) {
+    return function (action) {
+      console.group(action.type);
+      console.info('dispatching', action);
+      var result = next(action);
+      console.log('next state', store.getState());
+      console.groupEnd(action.type);
+      return result;
+    };
+  };
+};
+
+// component
+
+
+window.reduxStore = (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(logger));
+
 var createVNode = _inferno2.default.createVNode;
+(0, _inferno.render)(createVNode(16, _infernoRedux.Provider, null, null, {
+  'store': reduxStore,
+  children: createVNode(16, _Foo2.default)
+}), document.getElementById('app'));
 
-
-(0, _inferno.render)(createVNode(16, _Foo2.default), document.getElementById('app'));
+function getStore() {
+  return reduxStore;
+}
 
 /***/ }),
 /* 10 */
@@ -4260,7 +4294,17 @@ var _inferno = __webpack_require__(1);
 
 var _inferno2 = _interopRequireDefault(_inferno);
 
+var _infernoComponent = __webpack_require__(32);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
 var _infernoRedux = __webpack_require__(29);
+
+var _index = __webpack_require__(37);
+
+var _index2 = __webpack_require__(38);
+
+var _index3 = _interopRequireDefault(_index2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4272,30 +4316,85 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var createVNode = _inferno2.default.createVNode;
 
-var Foo = function (_Inferno) {
-  _inherits(Foo, _Inferno);
+var Foo = function (_Component) {
+  _inherits(Foo, _Component);
 
   function Foo() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Foo);
 
-    return _possibleConstructorReturn(this, (Foo.__proto__ || Object.getPrototypeOf(Foo)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Foo.__proto__ || Object.getPrototypeOf(Foo)).call.apply(_ref, [this].concat(args))), _this), _this.onAddClick = function (e) {
+      _this.props.addNumber();
+      _this.props.addFontSize();
+      console.log('Button " ' + e.target.innerHTML + ' "  clicked!');
+    }, _this.onReduceClick = function (e) {
+      _this.props.reduceNumber();
+      _this.props.reduceFontSize();
+      console.log('Button " ' + e.target.innerHTML + ' "   clicked!');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Foo, [{
     key: 'render',
     value: function render() {
-      return createVNode(2, 'div', null, 'foo');
+      var _props = this.props,
+          number = _props.number,
+          fontSize = _props.fontSize;
+
+
+      return createVNode(2, 'div', null, [createVNode(2, 'button', null, '-', {
+        'onClick': this.onReduceClick
+      }), '\xA0\xA0', createVNode(2, 'button', null, '+', {
+        'onClick': this.onAddClick
+      }), createVNode(2, 'h1', null, createVNode(2, 'span', null, number, {
+        'style': {
+          fontSize: (fontSize > 0 ? fontSize : -1 * fontSize) + 'px'
+        }
+      }))], {
+        'style': {
+          padding: '10px',
+          textAlign: 'center',
+          color: '#0ea9c7'
+        }
+      });
     }
   }]);
 
   return Foo;
-}(_inferno2.default);
+}(_infernoComponent2.default);
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    number: (0, _index.getNumber)(),
+    fontSize: (0, _index.getFontSize)()
+  };
 }
 
-exports.default = (0, _infernoRedux.connect)(mapStateToProps)(Foo);
+function mapDispatchToProps(dispatch) {
+  return {
+    addNumber: function addNumber() {
+      _index3.default.ADD_NUMBER(1);
+    },
+    addFontSize: function addFontSize() {
+      _index3.default.ADD_FONT_SIZE(5);
+    },
+    reduceFontSize: function reduceFontSize() {
+      _index3.default.REDUCE_FONT_SIZE(5);
+    },
+    reduceNumber: function reduceNumber() {
+      _index3.default.REDUCE_NUMBER(1);
+    }
+  };
+}
+
+exports.default = (0, _infernoRedux.connect)(mapStateToProps, mapDispatchToProps)(Foo);
 
 /***/ }),
 /* 29 */
@@ -5843,6 +5942,154 @@ function createElement(type, props) {
 
 exports['default'] = createElement;
 
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
+
+  return {
+    foo: foo(state.foo, action)
+  };
+};
+
+var defaultState = {
+  foo: {
+    number: 0,
+    fontSize: 20
+  }
+};
+
+function foo(state, action) {
+  switch (action.type) {
+    case 'ADD_FONT_SIZE':
+      return _extends({}, state, {
+        fontSize: state.fontSize + action.value
+      });
+    case 'ADD_NUMBER':
+      return _extends({}, state, {
+        number: state.number + action.number
+      });
+    case 'REDUCE_FONT_SIZE':
+      return _extends({}, state, {
+        fontSize: state.fontSize - action.value
+      });
+    case 'REDUCE_NUMBER':
+      return _extends({}, state, {
+        number: state.number - action.number
+      });
+    default:
+      return state;
+  }
+}
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getNumber = getNumber;
+exports.getFontSize = getFontSize;
+function getNumber() {
+  var store = getState();
+  return store.foo.number;
+}
+
+function getFontSize() {
+  var store = getState();
+  return store.foo.fontSize;
+}
+
+function getState() {
+  return window.reduxStore.getState();
+}
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _actionCreator = __webpack_require__(39);
+
+var actions = {
+  ADD_FONT_SIZE: function ADD_FONT_SIZE(value) {
+    return {
+      value: value
+    };
+  },
+  ADD_NUMBER: function ADD_NUMBER(number) {
+    return {
+      number: number
+    };
+  },
+  REDUCE_FONT_SIZE: function REDUCE_FONT_SIZE(value) {
+    return {
+      value: value
+    };
+  },
+  REDUCE_NUMBER: function REDUCE_NUMBER(number) {
+    return {
+      number: number
+    };
+  }
+};
+
+var action = (0, _actionCreator.createActions)(actions);
+exports.default = action;
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.createActions = createActions;
+exports.createAction = createAction;
+function createActions(actions) {
+  Object.keys(actions).map(function (key) {
+    var defaultAction = actions[key];
+    actions[key] = createAction(key, defaultAction);
+  });
+  return actions;
+}
+
+function createAction(name, defaultAction) {
+  return function () {
+    window.reduxStore.dispatch(_extends({
+      type: name
+    }, defaultAction.apply(undefined, arguments)));
+  };
+}
 
 /***/ })
 /******/ ]);

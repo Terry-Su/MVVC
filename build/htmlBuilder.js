@@ -63,7 +63,7 @@ function getOutputPath(project, page) {
 }
 
 function getServerEntryPath(pagePath) {
-  return PATH.resolve(pagePath, './controller/index.server.js')
+  return PATH.resolve(pagePath, './controller/index.node.js')
 }
 
 function writeHtml(path, text) {
