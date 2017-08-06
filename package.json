@@ -1,0 +1,25 @@
+{
+  "name": "MVVC",
+  "version": "1.0.0",
+  "description": "Concise and practical javascript framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terry-Su/MVVC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Terry-Su/MVVC/issues"
+  },
+  "homepage": "https://github.com/Terry-Su/MVVC#readme",
+  "devDependencies": {
+    "cross-env": "^5.0.3",
+    "directory-tree": "^2.0.0",
+    "webpack": "^3.4.1"
+  }
+}
