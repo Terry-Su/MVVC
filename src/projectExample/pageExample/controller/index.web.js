@@ -10,10 +10,10 @@ import {
 import {
   Provider
 } from 'inferno-redux'
-import reducer from '../reducer/index'
+import foo from '../reducer/index'
 
 // component
-import Foo from '../component/Foo'
+import FooContianer from '../component/FooContianer'
 
 
 const logger = store => next => action => {
@@ -25,11 +25,11 @@ const logger = store => next => action => {
   return result
 }
 
-window.reduxStore = createStore(reducer, applyMiddleware(logger))
+window.reduxStore = createStore(foo, applyMiddleware(logger))
 
 render(
   <Provider store={reduxStore}>
-    <Foo />
+    <FooContianer />
   </Provider>,
   document.getElementById('app')
 )

@@ -1,4 +1,4 @@
-import { createActions } from './actionCreator'
+import { createActions } from '../../../share/action/actionCreator'
 
 const actions = {
   ADD_FONT_SIZE(value) {
@@ -27,5 +27,4 @@ const actions = {
 }
 
 
-const action = createActions(actions)
-export default action
+export default createActions(actions)
