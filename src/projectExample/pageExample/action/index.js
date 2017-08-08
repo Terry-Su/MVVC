@@ -1,4 +1,4 @@
-import { createActions } from './actionCreator'
+import { createActions } from '../../../share/action/actionCreator'
 
 const actions = {
   ADD_FONT_SIZE(value) {

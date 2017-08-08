@@ -102,6 +102,11 @@ function updateCachedWebpackConfig(pagePathInfos) {
             ]
           }
         ]
+      },
+      resolve: {
+        alias: {
+          fetch: PATH.resolve(__dirname, './../src/share/util/fetch.js')
+        }
       }
     })
   })

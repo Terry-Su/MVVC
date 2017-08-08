@@ -10,7 +10,7 @@ import {
 import {
   Provider
 } from 'inferno-redux'
-import foo from '../reducer/index'
+import reducer from '../reducer/index'
 
 // component
 import Foo from '../component/Foo'
@@ -25,7 +25,7 @@ const logger = store => next => action => {
   return result
 }
 
-window.reduxStore = createStore(foo, applyMiddleware(logger))
+window.reduxStore = createStore(reducer, applyMiddleware(logger))
 
 render(
   <Provider store={reduxStore}>
