@@ -1,7 +1,7 @@
 
-import Foo from '../component/Foo'
+import App from '../component/App'
 import controller from './index'
 
 
 // initialize
-controller.init(Foo)
+controller.init(App)
