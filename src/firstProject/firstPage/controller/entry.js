@@ -1,4 +1,3 @@
-
 import App from '../component/App'
 import controller from './index'
 

@@ -40,10 +40,8 @@
     "on-build-webpack": "^0.1.0",
     "opn": "^5.1.0",
     "redux": "^3.7.2",
-    "reload": "^2.2.1",
     "rmdir": "^1.2.0",
     "serve-index": "^1.9.0",
-    "touch": "^3.1.0",
     "webpack": "^3.4.1",
     "webpack-stream": "^3.2.0"
   }

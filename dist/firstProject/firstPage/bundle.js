@@ -852,9 +852,9 @@ exports.default = new Controller();
 "use strict";
 
 
-var _Foo = __webpack_require__(13);
+var _App = __webpack_require__(13);
 
-var _Foo2 = _interopRequireDefault(_Foo);
+var _App2 = _interopRequireDefault(_App);
 
 var _index = __webpack_require__(11);
 
@@ -863,7 +863,7 @@ var _index2 = _interopRequireDefault(_index);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialize
-_index2.default.init(_Foo2.default);
+_index2.default.init(_App2.default);
 
 /***/ }),
 /* 13 */
