@@ -8,6 +8,9 @@ module.exports = {
   projectsRootPath: path.resolve(__dirname, './../src'),
   webpackConfigCachePath: path.resolve(__dirname, './build/cache/webpackConfigCache.js'),
 
+  defaultPagePath: '', // example: "firstProject/firstPage"
+  // defaultPagePath: 'firstProject/firstPage', 
+
   webpackTemplate(entry, output) {
     return {
       entry,
@@ -29,11 +32,6 @@ module.exports = {
             ]
           }
         ]
-      },
-      resolve: {
-        alias: {
-
-        }
       }
     }
   }

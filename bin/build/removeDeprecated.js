@@ -31,6 +31,11 @@ function removeDeprecatedPages(srcPagesRootPath, distPagesRootPath) {
 function removeConfilctPagesInProjects() {
   const srcProjectsTree = dirTree(projectsRootPath)
   const distProjectsTree = dirTree(outputRootPath)
+
+  if (!srcProjectsTree || !distProjectsTree) {
+    return new Promise(resolve => resolve())
+  }
+
   let promises = []
   srcProjectsTree.children
     .filter(srcProject => srcProject.name !== 'share' && srcProject.type === 'directory')
@@ -58,6 +63,10 @@ function removeConfilctPagesInProjects() {
 function removeDeprecatedFolders(srcRootPath, distRootPath) {
   const srcTree = dirTree(srcRootPath)
   const distTree = dirTree(distRootPath)
+
+  if (!srcTree || !distTree) {
+    return new Promise(resolve => resolve())
+  }
 
   let promises = []
   distTree.children

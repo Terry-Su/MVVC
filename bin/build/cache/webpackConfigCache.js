@@ -27,9 +27,6 @@ module.exports=[
                     ]
                 }
             ]
-        },
-        "resolve": {
-            "alias": {}
         }
     }
 ]

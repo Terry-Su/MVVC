@@ -4,8 +4,8 @@
   "description": "Concise and practical javascript framework",
   "main": "index.js",
   "scripts": {
-    "start": "node mvvc/build/index.js",
-    "build": "cross-env BUILD=1 node mvvc/build/index.js"
+    "start": "node bin/build/index.js",
+    "build": "cross-env BUILD=1 node bin/build/index.js"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,8 @@ const serveIndex = require('serve-index')
 const app = express()
 const {
   outputRootPath,
-  localPort  
+  localPort,
+  defaultPagePath 
 } = require('../config.js')
 const PORT = process.env.PORT
 
@@ -20,7 +21,7 @@ module.exports = {
     console.log('\x1b[32m', `Server: http://localhost:${localPort}`)
 
     // open server
-    opn(`http://localhost:${localPort}`)
+    opn(`http://localhost:${localPort}/${defaultPagePath}` || `http://localhost:${localPort}`)
   }
 }
 
