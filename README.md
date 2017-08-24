@@ -30,5 +30,5 @@ Start and view the demo on [http://localhost:3000/projectExample/pageExample](ht
 `npm start`
 
 
-# Contributing
+# Contributing 
 If you found somewhere in codes to be improved or fixed, or just make a suggestion, don't hesitate to send a pull request!
