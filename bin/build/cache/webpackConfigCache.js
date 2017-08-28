@@ -1,8 +1,8 @@
 module.exports=[
     {
-        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/firstProject/firstPage/controller/entry.js",
+        "entry": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/src/firstProject2/firstPage/controller/entry.js",
         "output": {
-            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/dist/firstProject/firstPage",
+            "path": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/public/firstProject2/firstPage",
             "filename": "bundle.js"
         },
         "devtool": "source-map",

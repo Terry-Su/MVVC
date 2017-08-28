@@ -3,13 +3,15 @@ const path = require('path')
 module.exports = {
   localPort: 3000,
 
+  openServerAutomatically: false,
+
+  // should or not remove the extra files or custom files in public folder
+  shouldRemoveExtraFilesInPublic: false,
+
   rootPath: path.resolve(__dirname, './../'),
-  outputRootPath: path.resolve(__dirname, './../dist'),
+  outputRootPath: path.resolve(__dirname, './../public'),
   projectsRootPath: path.resolve(__dirname, './../src'),
   webpackConfigCachePath: path.resolve(__dirname, './build/cache/webpackConfigCache.js'),
-
-  defaultPagePath: '', // example: "firstProject/firstPage"
-  // defaultPagePath: 'firstProject/firstPage', 
 
   webpackTemplate(entry, output) {
     return {

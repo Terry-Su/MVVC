@@ -8,7 +8,8 @@ const { exec } = require('child_process')
 const {
   rootPath,
   projectsRootPath,
-  webpackConfigCachePath
+  webpackConfigCachePath,
+  shouldRemoveExtraFilesInPublic
 } = require('../config.js')
 const prompt = require('./prompt')
 const projectsPrompt = require('./projectsPrompt')
@@ -40,8 +41,13 @@ projectsPrompt.show((input, projectsNames) => {
 
 
 function resolvePagePathInfos(pagePathInfos) {
-  removeDeprecatedProjects()
-    .then(v => removeConfilctPagesInProjects())
+  // remove extra projects folders if needed
+  const removeProjectsFn = shouldRemoveExtraFilesInPublic ? removeDeprecatedProjects : () => Promise.resolve(true)
+  // remove extra projects' files if needed
+  const removeFilesFn = shouldRemoveExtraFilesInPublic ? removeConfilctPagesInProjects : () => Promise.resolve(true)
+removeConfilctPagesInProjects
+  removeProjectsFn()
+    .then(v => removeFilesFn())
     .then(v => {
       buildWebpackConfig(pagePathInfos)
       watchAndBuildHtml(pagePathInfos)
