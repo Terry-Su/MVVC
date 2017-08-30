@@ -17,7 +17,6 @@ import {
   FETCH_JQUERY
 } from '../model/index'
 
-
 export class Controller extends SuperController{
   fetchJquery = () => {
 
