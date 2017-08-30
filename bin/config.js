@@ -11,30 +11,4 @@ module.exports = {
   rootPath: path.resolve(__dirname, './../'),
   outputRootPath: path.resolve(__dirname, './../public'),
   projectsRootPath: path.resolve(__dirname, './../src'),
-  webpackConfigCachePath: path.resolve(__dirname, './build/cache/webpackConfigCache.js'),
-
-  webpackTemplate(entry, output) {
-    return {
-      entry,
-      output,
-      devtool: 'source-map',
-      module: {
-        rules: [
-          {
-            "test": /\.js.*/,
-            "exclude": /node_modules/,
-            use: [
-              {
-                loader: 'babel-loader',
-                options: {
-                  presets: ['es2015', 'stage-2'],
-                  plugins: ['inferno']
-                }
-              }
-            ]
-          }
-        ]
-      }
-    }
-  }
 }

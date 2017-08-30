@@ -3,9 +3,7 @@ const dirTree = require('directory-tree')
 const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
-  webpackConfigCachePath,
   outputRootPath,
-  webpackTemplate,
 } = require('../config.js')
 
 

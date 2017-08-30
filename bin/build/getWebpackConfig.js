@@ -7,31 +7,26 @@ const dirTree = require('directory-tree');
 const gulp = require('gulp')
 const webpack = require('webpack')
 
-const getAllProjectsPagePathInfos = require('./getAllProjectsPagePathInfos')
-const getPagePathInfosByProjectName = require('./getPagePathInfosByProjectName')
-const getPagePathInfosByPageAndProjectName = require('./getPagePathInfosByPageAndProjectName')
-
 const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
-  webpackConfigCachePath,
   outputRootPath,
-  webpackTemplate,
 } = require('../config.js')
 
 function getWebEntryPath(pagePath) {
   return PATH.resolve(pagePath, './controller/entry.js')
 }
 
-function getNodeConfig() {
+function getNodeConfig(pagePath) {
   const nodePath = PATH.resolve(pagePath, './controller/index.node.js')
-  return require(nodePath)
+  return require(nodePath)['default']
 }
 
-function getNodeWebpackConfig() {
-  const nodeConfig = getNodeConfig()
-  const { webpackConfig } = nodeConfig
-  return webpackConfig
+function getNodeWebpackBaseConfig(pagePath) {
+  const nodeConfig = getNodeConfig(pagePath)
+  const { webpackBaseConfig } = nodeConfig
+  
+  return webpackBaseConfig
 }
 
 function getOutputPath(project, page) {
@@ -52,9 +47,14 @@ module.exports = function getWebpackConfig(pagePathInfos) {
       path: getOutputPath(project, page),
       filename: 'bundle.js'
     }
-    settings.push(
-      webpackTemplate(entry, output)
-    )
+
+    const webpackBaseConfig = getNodeWebpackBaseConfig(pagePath) || {}    
+
+    settings.push({
+      ...webpackBaseConfig,
+      entry,
+      output,
+    })
   })
 
   return settings
