@@ -1,7 +1,10 @@
+import webpackWatchESEntry from './webpackWatchESEntry'
+import chalk from 'chalk'
+
 const PATH = require('path')
 const FS = require('fs')
 const gulp = require('gulp')
-const webpack = require('webpack-stream')
+const webpack = require('webpack')
 const WebpackOnBuildPlugin = require('on-build-webpack');
 const decache = require('decache')
 const {
@@ -25,18 +28,15 @@ function watchAndBuild(pagePathInfos) {
     const {
       pagePath
     } = pagePathInfo
-    const entryPath = getServerEntryPath(pagePath)
 
-    gulp.src(entryPath).pipe(webpack({
-      watch: BUILD ? false : true,
-      plugins: [
-        new WebpackOnBuildPlugin(function (stats) {
-          build(pagePathInfo)
-        })
-      ]
-    }))
+    const entry = getServerEntryPath(pagePath)
+
+    webpackWatchESEntry(entry, () => {
+      build(pagePathInfo)
+    })
   })
 
+  
 }
 
 function build(pagePathInfo) {
@@ -71,7 +71,8 @@ function getServerEntryPath(pagePath) {
 function writeHtml(path, text) {
   try {
     outputFile(path, text)
-    console.log(`\x1b[32m`, `${path} was built successfully!`)
+    // console.log(`\x1b[32m`, `${path} was built successfully!`)
+    console.log(`${path}`, chalk.green.bold(`[built]`))
   } catch (e) {
     console.log(`\x1b[31m`, `Building ${path} failed!`)
     console.log(e)

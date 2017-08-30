@@ -2,7 +2,7 @@ import { Controller as SuperController } from '../../share/controller/index.node
 
 
 export class Controller extends SuperController {
-  
+  title = 'test'
 }
 
 export default new Controller()
