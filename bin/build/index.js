@@ -8,19 +8,20 @@ const { exec } = require('child_process')
 const {
   rootPath,
   projectsRootPath,
-  webpackConfigCachePath,
   shouldRemoveExtraFilesInPublic
 } = require('../config.js')
 const prompt = require('./prompt')
 const projectsPrompt = require('./projectsPrompt')
 const pagesPrompt = require('./pagesPrompt')
 const { getNames, getPageNameRootPath } = require('./names')
-const {
-  build: buildWebpackConfig,
-  getAllProjectsPagePathInfos,
-  getPagePathInfosByProjectName,
-  getPagePathInfosByPageAndProjectName
-} = require('./webpackConfigBuilder')
+const getWebpackConfig = require('./getWebpackConfig')
+
+const getAllProjectsPagePathInfos = require('./getAllProjectsPagePathInfos')
+const getPagePathInfosByProjectName = require('./getPagePathInfosByProjectName')
+const getPagePathInfosByPageAndProjectName = require('./getPagePathInfosByPageAndProjectName')
+
+const execWebpack = require('./execWebpack')
+
 const {
   watchAndBuild: watchAndBuildHtml
 } = require('./htmlBuilder')
@@ -45,13 +46,14 @@ function resolvePagePathInfos(pagePathInfos) {
   const removeProjectsFn = shouldRemoveExtraFilesInPublic ? removeDeprecatedProjects : () => Promise.resolve(true)
   // remove extra projects' files if needed
   const removeFilesFn = shouldRemoveExtraFilesInPublic ? removeConfilctPagesInProjects : () => Promise.resolve(true)
-removeConfilctPagesInProjects
+  removeConfilctPagesInProjects
   removeProjectsFn()
     .then(v => removeFilesFn())
     .then(v => {
-      buildWebpackConfig(pagePathInfos)
+      const webpackConfig = getWebpackConfig(pagePathInfos)
+      execWebpack(webpackConfig)
+      
       watchAndBuildHtml(pagePathInfos)
-      execWebpack()
       initWebServer()
     })
 }
@@ -118,11 +120,3 @@ function getPagePathInfosByPageInputInfo({
   }
 }
 
-
-
-function execWebpack() {
-  if (BUILD) {
-    return exec(`webpack -p --colors --config ${webpackConfigCachePath}`).stdout.pipe(process.stdout)
-  }
-  exec(`webpack --watch --colors --config ${webpackConfigCachePath}`).stdout.pipe(process.stdout)
-}

@@ -7,6 +7,7 @@ const decache = require('decache')
 const {
   outputFile
 } = require('fs-extra')
+
 const BUILD = process.env.BUILD
 
 const {
@@ -46,15 +47,16 @@ function build(pagePathInfo) {
   } = pagePathInfo
   const entryPath = getServerEntryPath(pagePath)
 
+  const nodeController = require(entryPath)['default']
   const {
-      getHtml
-  } = require(entryPath)
+    getHtml
+  } = nodeController
 
   // delete require cache
   decache(entryPath)
 
   const outputPath = getOutputPath(project, page)
-  const html = getHtml()
+  const html = nodeController.getHtml()
   writeHtml(outputPath, html)
 }
 

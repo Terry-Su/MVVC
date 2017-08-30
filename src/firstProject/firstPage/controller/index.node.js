@@ -1,8 +1,8 @@
-const Controller = require('../../share/controller/index.node.js')
+import { Controller as SuperController } from '../../share/controller/index.node.js'
 
 
-module.exports = Object.assign(
-  Controller, {
-    title: Controller.getPageName(__dirname)
-  }
-)
+export class Controller extends SuperController {
+  
+}
+
+export default new Controller()

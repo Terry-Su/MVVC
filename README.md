@@ -26,7 +26,7 @@ A robust coing mode in web development
 First, just `git clone` the MVVC to local  
 Then, install dev dependencies:   
 `npm install`  
-Start and view the demo on [http://localhost:3000/projectExample/pageExample](http://localhost:3000/projectExample/pageExample):  
+Start and view the demo on http://localhost:3000/firstProject/firstPage:  
 `npm start`
 
 

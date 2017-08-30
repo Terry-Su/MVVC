@@ -13,7 +13,7 @@ const {
 } = controller
 
 
-class Foo extends Component {
+class App extends Component {
   onAddClick = (e) => {
     this.props.addNumber()
     this.props.addFontSize()
@@ -88,4 +88,4 @@ export default connect(
       fetchJquery
     }
   },
-)(Foo)
+)(App)
