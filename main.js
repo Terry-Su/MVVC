@@ -129,9 +129,31 @@ var Controller = exports.Controller = function (_SuperController) {
   _inherits(Controller, _SuperController);
 
   function Controller() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Controller);
 
-    return _possibleConstructorReturn(this, (Controller.__proto__ || Object.getPrototypeOf(Controller)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Controller.__proto__ || Object.getPrototypeOf(Controller)).call.apply(_ref, [this].concat(args))), _this), _this.webpackBaseConfig = {
+      devtool: 'source-map',
+      module: {
+        rules: [{
+          "test": /\.js.*/,
+          "exclude": /node_modules/,
+          use: [{
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'stage-2', 'react']
+            }
+          }]
+        }]
+      }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   return Controller;
@@ -168,6 +190,8 @@ var Controller = exports.Controller = function () {
     this.getHtml = function () {
       return '<!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="ie=edge">\n      ' + (_this.link || '') + '\n      <title>' + (_this.title || '') + '</title>\n    </head>\n    <body>\n      ' + (_this.body || '') + '\n      ' + (_this.script || '') + '\n    </body>\n    </html>';
     };
+
+    this.webpackBaseConfig = {};
   }
 
   _createClass(Controller, [{

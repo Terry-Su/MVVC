@@ -25,6 +25,9 @@ export class Controller {
     const paths = pageDirname.split('/')
     return paths[paths.length - 2]
   }
+
+  webpackBaseConfig = {
+  }
 }
 
 export default new Controller()
