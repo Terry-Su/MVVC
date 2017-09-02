@@ -6,7 +6,7 @@ const {
   outputRootPath,
   localPort,
   openServerAutomatically
-} = require('../config.js')
+} = require('../mvvc.config.js')
 const PORT = process.env.PORT
 
 

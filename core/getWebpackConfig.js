@@ -11,7 +11,7 @@ const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
   outputRootPath,
-} = require('../config.js')
+} = require('../mvvc.config.js')
 
 function getWebEntryPath(pagePath) {
   return PATH.resolve(pagePath, './controller/entry.js')

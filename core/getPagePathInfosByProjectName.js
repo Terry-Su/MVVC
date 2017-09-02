@@ -4,17 +4,18 @@ const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
   outputRootPath,
-} = require('../config.js')
+} = require('../mvvc.config.js')
 
 
-module.exports = function getPagePathInfosByPageAndProjectName(pageName, projectName) {
+module.exports = function getPagePathInfosByProjectName(projectName) {
   let pagePathInfos = []
   const project = dirTree(projectsRootPath).children.filter(project => project.type === 'directory' && project.name !== 'share' && project.name === projectName)[0]
-  const page = project.children.filter(page => page.type === 'directory' && page.name !== 'share' && page.name === pageName)[0]
-  pagePathInfos.push({
-    pagePath: page.path,
-    page: page.name,
-    project: projectName
+  project.children.filter(page => page.type === 'directory' && page.name !== 'share').map(page => {
+    pagePathInfos.push({
+      pagePath: page.path,
+      page: page.name,
+      project: projectName
+    })
   })
   return pagePathInfos
 }

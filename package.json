@@ -4,8 +4,9 @@
   "description": "Concise and practical javascript framework",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node bin/build/index.js",
-    "build": "cross-env BUILD=1 babel-node bin/build/index.js"
+    "start": "babel-node core/index.js",
+    "build": "cross-env BUILD=1 babel-node core/index.js",
+    "test": "node test/mvvcUseCase/index.js"
   },
   "repository": {
     "type": "git",

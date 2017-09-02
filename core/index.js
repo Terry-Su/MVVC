@@ -9,7 +9,7 @@ const {
   rootPath,
   projectsRootPath,
   shouldRemoveExtraFilesInPublic
-} = require('../config.js')
+} = require('../mvvc.config.js')
 const prompt = require('./prompt')
 const projectsPrompt = require('./projectsPrompt')
 const pagesPrompt = require('./pagesPrompt')

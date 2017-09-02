@@ -4,7 +4,7 @@ const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
   outputRootPath,
-} = require('../config.js')
+} = require('../mvvc.config.js')
 
 const getPagePathInfosByProjectName = require('./getPagePathInfosByProjectName')
 
