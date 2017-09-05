@@ -1,0 +1,12 @@
+{
+  "name": "mvvc-plugin-anotation-do-not-change-the-dependencies-above-unless-replaced-with-boilerplate",
+  "version": "0.0.1",
+  "description": "Do not change the basic dependencies of mvvc above unless updating it by the dependencies in mvvc boilerplate: https://www.npmjs.com/package/mvvc-boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

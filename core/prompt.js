@@ -1,7 +1,8 @@
 /**
  * prompt module
  */
-const readline = require('readline')
+const readlineSync = require('readline-sync')
+
 
 module.exports = {
   ask,
@@ -10,15 +11,8 @@ module.exports = {
 }
 
 function ask(question, callback) {
-  const readInput = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-
-  readInput.question(question, (answer) => {
-    readInput.close();    
-    callback(answer)
-  });
+  const input = readlineSync.question(question)
+  callback(input)
 }
 
 function checkType(value, type) {

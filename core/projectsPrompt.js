@@ -3,7 +3,7 @@ const { getNames } = require('./names')
 const {
   rootPath,
   projectsRootPath
-} = require('../mvvc.config.js')
+} = require('./mvvcConfig')
 
 
 
@@ -11,8 +11,9 @@ module.exports = {
   show(successCallback, failCallback) {
     const projectsNames = getNames(projectsRootPath)
     if (projectsNames.length > 0) {
-      projectsNames.map((name, index) => console.log(`${index}. ${name}`))
-      prompt.ask(`Choose the project to develop: `, input => {
+      const question = projectsNames.map((name, index) => `${index}. ${name}`).join('\n').concat('\n')
+      
+      prompt.ask(`${question}Choose the project to develop: `, input => {
         // check input' type is number or not
         const check = prompt.checkType(input, 'number')
         if (check) {

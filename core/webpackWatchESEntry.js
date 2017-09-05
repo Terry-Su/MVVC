@@ -15,13 +15,13 @@ export default function webpackWatchESEntry(entry, watchCallback) {
               loader: 'babel-loader',
               options: {
                 presets: ['es2015', 'stage-2'],
-                plugins: ['inferno']
               }
             }
           ]
         }
       ]
-    }
+    },
+    target: 'node'
   }
 
   const config = !Array.isArray(entry) ? {

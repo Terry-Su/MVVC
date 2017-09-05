@@ -1,4 +1,10 @@
-#! /usr/bin/env node
-var shell = require("shelljs");
+const program = require('commander')
 
-shell.exec("echo shell.exec works");
+
+program
+.version('0.1.0')
+.command('', 'default')
+.command('init [name]', 'initialize')
+.command('dev [name]', 'dev')
+.command('build [name]', 'build')
+.parse(process.argv)

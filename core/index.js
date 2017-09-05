@@ -1,15 +1,17 @@
 /**
  * Resolve build command
  */
-const path = require('path')
+const PATH = require('path')
 const BUILD = process.env.BUILD
 const { exec } = require('child_process')
+
 
 const {
   rootPath,
   projectsRootPath,
   shouldRemoveExtraFilesInPublic
-} = require('../mvvc.config.js')
+} = require('./mvvcConfig')
+
 const prompt = require('./prompt')
 const projectsPrompt = require('./projectsPrompt')
 const pagesPrompt = require('./pagesPrompt')
@@ -53,8 +55,10 @@ function resolvePagePathInfos(pagePathInfos) {
       const webpackConfig = getWebpackConfig(pagePathInfos)
       execWebpack(webpackConfig)
       
-      watchAndBuildHtml(pagePathInfos)
-      initWebServer()
+      if (!process.env.production) {
+        watchAndBuildHtml(pagePathInfos)
+        initWebServer()
+      }
     })
 }
 

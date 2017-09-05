@@ -11,7 +11,7 @@ const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
   outputRootPath,
-} = require('../mvvc.config.js')
+} = require('./mvvcConfig')
 
 function getWebEntryPath(pagePath) {
   return PATH.resolve(pagePath, './controller/entry.js')
@@ -22,11 +22,11 @@ function getNodeConfig(pagePath) {
   return require(nodePath)['default']
 }
 
-function getNodeWebpackBaseConfig(pagePath) {
+function getNodeWebpackBasicConfig(pagePath) {
   const nodeConfig = getNodeConfig(pagePath)
-  const { webpackBaseConfig } = nodeConfig
+  const { webpackBasicConfig } = nodeConfig
   
-  return webpackBaseConfig
+  return webpackBasicConfig
 }
 
 function getOutputPath(project, page) {
@@ -48,10 +48,10 @@ module.exports = function getWebpackConfig(pagePathInfos) {
       filename: 'bundle.js'
     }
 
-    const webpackBaseConfig = getNodeWebpackBaseConfig(pagePath) || {}    
+    const webpackBasicConfig = getNodeWebpackBasicConfig(pagePath) || {}    
 
     settings.push({
-      ...webpackBaseConfig,
+      ...webpackBasicConfig,
       entry,
       output,
     })

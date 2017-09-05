@@ -1,0 +1,1 @@
+console.log('Do not change the basic dependencies of mvvc above unless updating it by the dependencies in mvvc boilerplate: https://www.npmjs.com/package/mvvc-boilerplate')

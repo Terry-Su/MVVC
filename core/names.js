@@ -1,7 +1,7 @@
 const dirTree = require('directory-tree');
 const {
   projectsRootPath
-} = require('../mvvc.config.js')
+} = require('./mvvcConfig')
 
 module.exports = {
   getNames,

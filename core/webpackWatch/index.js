@@ -23,7 +23,6 @@ export default function webpackWatch(webpackConfig, watchCallback) {
     output,
   }))
 
-
   const compiler = webpack(config)
 
   const watching = compiler.watch({}, (err, stats) => {

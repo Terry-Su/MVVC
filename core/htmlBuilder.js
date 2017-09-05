@@ -15,7 +15,7 @@ const BUILD = process.env.BUILD
 
 const {
   outputRootPath
-} = require('../mvvc.config.js')
+} = require('./mvvcConfig')
 
 
 module.exports = {
