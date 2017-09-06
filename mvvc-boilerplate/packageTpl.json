@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node node_modules/mvvc/core/index.js",
-    "build": "cross-env BUILD=1 babel-node node_modules/mvvc/core/index.js"
+    "start": "mvvc dev",
+    "build": "mvvc build"
   },
   "keywords": [],
   "author": "",

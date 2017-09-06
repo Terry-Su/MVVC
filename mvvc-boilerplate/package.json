@@ -4,7 +4,8 @@
   "description": "mvvc-boilerplate",
   "main": "index.js",
   "scripts": {
-    "test": "babel-node node_modules/mvvc/core/index.js"
+    "start": "mvvc dev",
+    "build": "mvvc build"
   },
   "keywords": [],
   "author": "",

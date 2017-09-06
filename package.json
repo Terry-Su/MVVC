@@ -1,6 +1,6 @@
 {
   "name": "mvvc",
-  "version": "1.0.6",
+  "version": "1.0.0",
   "description": "Concise and practical javascript framework",
   "main": "index.js",
   "scripts": {
