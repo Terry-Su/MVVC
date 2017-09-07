@@ -9,6 +9,7 @@ const {
   boilerplateSrcPath,
   boilerplatePackageJsonPath,
   boilerplateMvvcConfigPath,
+  boilerplateMvvcDotMvvcPath,
   boilerplateMvvcBabelrcPath,
   boilerplateMvvcSharePath,
 } = require('./config')
@@ -49,6 +50,7 @@ module.exports = function init(folderName) {
         path,
         boilerplatePackageJsonPath,
         boilerplateMvvcConfigPath,
+        boilerplateMvvcDotMvvcPath,
         boilerplateMvvcBabelrcPath,
       })
     })

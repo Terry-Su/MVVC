@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  localPort: 3000,
+  localPort: 3300,
 
   openServerAutomatically: true,
 

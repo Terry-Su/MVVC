@@ -20,7 +20,7 @@ Using `inferno` instead of react can reduce a large amount of  size of `bundle.j
 ### Supports multiple projects and pages
 We can choose one page or all pages in one project, or even all pages of all projects to develop
 ### Inferno + Redux
-A robust coing mode in web development
+A robust coding mode in web development
 
 # Getting started
 First, just `git clone` the MVVC to local  

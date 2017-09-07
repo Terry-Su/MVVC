@@ -1,6 +1,6 @@
 {
   "name": "mvvc",
-  "version": "1.0.0",
+  "version": "2.0.3-patch.12",
   "description": "Concise and practical javascript framework",
   "main": "index.js",
   "scripts": {
@@ -19,9 +19,10 @@
   },
   "homepage": "https://github.com/Terry-Su/MVVC#readme",
   "bin": {
-    "mvvc": "bin/index.js"
+    "mvvc": "bin/mvvc.js"
   },
   "devDependencies": {
+    
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -49,8 +50,6 @@
     "inferno": "^3.7.1",
     "inferno-redux": "^3.7.1",
     "liftoff": "^2.3.0",
-    "mvvc": "^1.0.5",
-    "node-es-module-loader": "^0.3.8",
     "opn": "^5.1.0",
     "react": "^15.6.1",
     "react-redux": "^5.0.6",
