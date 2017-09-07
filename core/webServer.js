@@ -21,7 +21,9 @@ module.exports = {
     console.log('\x1b[32m', `Server: http://localhost:${localPort}`)
 
     // open server
-    openServerAutomatically && opn(`http://localhost:${localPort}`)
+    setTimeout(() => {
+      openServerAutomatically && opn(`http://localhost:${localPort}`)
+    }, 1000)
   }
 }
 
