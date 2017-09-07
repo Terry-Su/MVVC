@@ -1,34 +1,66 @@
 # Introduction
-MVVC is a light multi-page web developing framework
+MVVC is a light **multi-page**  and **popular front frameworks supported** web developing framework
 
-# Background
-1. In practical developing environment, react is too heavy to create an simple web page
-2. An project always contains mutiple web pages, instead of an single page which react's good at
-3. React and redux are the one of most popular and welcoming web developing mode
 
 # Concept
-## **M**: Model  
-Use fetch
-## **VV**: View and view model  
-Use [inferno](https://infernojs.org/)(a light react framwork) and redux
-## **C**: Controller
+1. **M**: Model  
+2. **VV**: View and view model    
+3. **C**: Controller  
+
+
+# Background
+1. In real developing environment, co-workers may use different front frameworks, like react, angular, vue, mirror, etc. 
+2. A web project always contains mutiple web pages, instead of an single application page
+3. It's better not to repeat developing configuration
+
+
+# Feature
+## Specific
+1. Choose specific react, inferno, and other solutions 
+2. Choose specific pages in specific projects to develop or build
+
+## Reusability
 Multiple pages can share or inherit props and methods by contollers
 
-## Features
-### Light react
-Using `inferno` instead of react can reduce a large amount of  size of `bundle.js`
-### Supports multiple projects and pages
-We can choose one page or all pages in one project, or even all pages of all projects to develop
-### Inferno + Redux
-A robust coding mode in web development
+## MVVC 
+Decouple models, view and view models and controllers
+
 
 # Getting started
-First, just `git clone` the MVVC to local  
-Then, install dev dependencies:   
-`npm install`  
-Start and view the demo on http://localhost:3100
-`npm start`
+There're two simple ways to start(Step by step)
+## Local
+```
+# Step1 Create root 
+mkdir MvvcProject & cd MvvcProject
 
+# Step2 Install
+npm install mvvc
+
+# Step3 Initilize
+node_modules/.bin/mvvc init
+```
+
+## Global
+```
+# Step1 Install globally
+npm install mvvc -g
+
+# Step2 Initilize root project
+mvvc init -p MvvcProject
+```
+> Tip: choose project(s) to generate when mvvc was initialized partly
+
+You've gotten a complete project which can be removed to anywhere to develop, then let's start to develop
+```
+# Step1 (Ingore this step if "MvvcProject" was created locally) Switch to "MvvcProject"
+cd MvvcProject
+
+# Step2 Install dependencies
+npm install 
+
+# Step3 Start
+npm start
+```
 
 # Contributing 
 If you found somewhere in codes to be improved or fixed, or just make a suggestion, don't hesitate to send a pull request!
