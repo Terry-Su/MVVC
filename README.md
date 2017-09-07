@@ -11,19 +11,21 @@ MVVC is a light **multi-page** and **popular front frameworks supported** web de
 # Background
 1. In real developing environment, coworkers may use different front frameworks, like react, angular, vue, mirror, etc. 
 2. A web project always contains mutiple web pages, instead of a single application page
-3. It's better not to repeat developing configuration
+3. It's better not to repeat same development and production's configuration
 
 
 # Feature
 ## Specific
-1. Choose specific react, inferno, and other solutions 
+1. Choose specific react, inferno, and other projects to generate
 2. Choose specific pages in specific projects to develop or build
+
+## MVVC 
+Decouple models, view and view models and controllers
 
 ## Reusability
 Multiple pages can share or inherit props and methods by contollers
 
-## MVVC 
-Decouple models, view and view models and controllers
+
 
 
 # Getting started
