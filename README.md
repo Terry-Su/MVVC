@@ -1,5 +1,5 @@
 # Introduction
-MVVC is a light **multi-page**  and **popular front frameworks supported** web developing framework
+MVVC is a light **multi-page** and **popular front frameworks supported** web developing framework
 
 
 # Concept
@@ -9,8 +9,8 @@ MVVC is a light **multi-page**  and **popular front frameworks supported** web d
 
 
 # Background
-1. In real developing environment, co-workers may use different front frameworks, like react, angular, vue, mirror, etc. 
-2. A web project always contains mutiple web pages, instead of an single application page
+1. In real developing environment, coworkers may use different front frameworks, like react, angular, vue, mirror, etc. 
+2. A web project always contains mutiple web pages, instead of a single application page
 3. It's better not to repeat developing configuration
 
 
@@ -30,7 +30,7 @@ Decouple models, view and view models and controllers
 There're two simple ways to start(Step by step)
 ## Local
 ```
-# Step1 Create root 
+# Step1 Create root
 mkdir MvvcProject & cd MvvcProject
 
 # Step2 Install
@@ -52,7 +52,7 @@ mvvc init -p MvvcProject
 
 You've gotten a complete project which can be removed to anywhere to develop, then let's start to develop
 ```
-# Step1 (Ingore this step if "MvvcProject" was created locally) Switch to "MvvcProject"
+# Step1 (Ingore this step if MvvcProject was created locally) Switch to MvvcProject
 cd MvvcProject
 
 # Step2 Install dependencies
