@@ -52,7 +52,7 @@ mvvc init -p MvvcProject
 ```
 > Tip: choose project(s) to generate when mvvc was initialized partly
 
-You've gotten a complete project which can be removed to anywhere to develop, then let's start to develop
+You've gotten a complete project which can be moved to anywhere to develop, then let's start to develop
 ```
 # Step1 (Ingore this step if MvvcProject was created locally) Switch to MvvcProject
 cd MvvcProject
