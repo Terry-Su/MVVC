@@ -9,4 +9,4 @@ const mvvcRootBin = PATH.resolve(__dirname, './../node_modules/.bin')
 program
   .parse(process.argv)
 
-shell.exec(`cd ${mvvcRoot} & ${mvvcRootBin}/cross-env production=true ${mvvcRootBin}/babel-node ${mvvcRoot}/core/index.js`)
+shell.exec(`cd ${mvvcRoot} & ${mvvcRootBin}/cross-env production=true ${mvvcRootBin}/node ${mvvcRoot}/core/index.js`)

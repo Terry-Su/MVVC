@@ -3,7 +3,7 @@ const { getNames } = require('./names')
 const {
   rootPath,
   projectsRootPath
-} = require('./mvvcConfig')
+} = require('./config/mvvcConfig')
 
 
 

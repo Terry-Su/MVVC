@@ -6,7 +6,7 @@ const {
   outputRootPath,
   localPort,
   openServerAutomatically
-} = require('./mvvcConfig')
+} = require('./config/mvvcConfig')
 const PORT = process.env.PORT
 
 
@@ -23,7 +23,7 @@ module.exports = {
     // open server
     setTimeout(() => {
       openServerAutomatically && opn(`http://localhost:${localPort}`)
-    }, 1000)
+    }, 2000)
   }
 }
 

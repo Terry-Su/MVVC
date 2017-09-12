@@ -14,4 +14,4 @@ mvvcRootBin =  dirtree(mvvcRootBin) ? mvvcRootBin : PATH.resolve(__dirname, './.
 program
   .parse(process.argv)
 
-shell.exec(`cd ${mvvcRoot} & ${mvvcRootBin}/babel-node ${mvvcRoot}/core/index.js`)
+shell.exec(`cd ${mvvcRoot} & ${mvvcRootBin}/node ${mvvcRoot}/core/index.js`)

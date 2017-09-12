@@ -4,7 +4,7 @@ const {
   projectsRootPath,
   getPagePathInfosByProjectInputInfo,
   outputRootPath,
-} = require('./mvvcConfig')
+} = require('./config/mvvcConfig')
 
 
 module.exports = function getPagePathInfosByPageAndProjectName(pageName, projectName) {

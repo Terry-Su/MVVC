@@ -5,7 +5,7 @@ const del = require('del')
 const {
   outputRootPath,
   projectsRootPath
-} = require('./mvvcConfig')
+} = require('./config/mvvcConfig')
 
 
 module.exports = {

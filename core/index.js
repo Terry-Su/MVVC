@@ -5,18 +5,17 @@ const PATH = require('path')
 const BUILD = process.env.BUILD
 const { exec } = require('child_process')
 
-
 const {
   rootPath,
   projectsRootPath,
   shouldRemoveExtraFilesInPublic
-} = require('./mvvcConfig')
+} = require('./config/mvvcConfig')
 
 const prompt = require('./prompt')
 const projectsPrompt = require('./projectsPrompt')
 const pagesPrompt = require('./pagesPrompt')
 const { getNames, getPageNameRootPath } = require('./names')
-const getWebpackConfig = require('./getWebpackConfig')
+const getWebWebpackConfig = require('./getWebWebpackConfig')
 
 const getAllProjectsPagePathInfos = require('./getAllProjectsPagePathInfos')
 const getPagePathInfosByProjectName = require('./getPagePathInfosByProjectName')
@@ -25,9 +24,6 @@ const getPagePathInfosByPageAndProjectName = require('./getPagePathInfosByPageAn
 const execWebpack = require('./execWebpack')
 
 const {
-  watchAndBuild: watchAndBuildHtml
-} = require('./htmlBuilder')
-const {
   init: initWebServer
 } = require('./webServer')
 const {
@@ -35,7 +31,12 @@ const {
   removeConfilctPagesInProjects
 } = require('./removeDeprecated')
 
+const resolvePagePathInfo = require('./resolvePagePathInfo/index')
+const cleanAllCache = require('./cleanAllCache')
 
+
+// test
+// resolveProjectInput(0, [ 'All', 'InfernoReduxProject', 'ReactReduxProject' ])
 
 // initialize
 projectsPrompt.show((input, projectsNames) => {
@@ -48,15 +49,16 @@ function resolvePagePathInfos(pagePathInfos) {
   const removeProjectsFn = shouldRemoveExtraFilesInPublic ? removeDeprecatedProjects : () => Promise.resolve(true)
   // remove extra projects' files if needed
   const removeFilesFn = shouldRemoveExtraFilesInPublic ? removeConfilctPagesInProjects : () => Promise.resolve(true)
-  removeConfilctPagesInProjects
   removeProjectsFn()
     .then(v => removeFilesFn())
     .then(v => {
-      const webpackConfig = getWebpackConfig(pagePathInfos)
-      execWebpack(webpackConfig)
-      
+      cleanAllCache()
+
+      pagePathInfos.map(pagePathInfo => {
+        resolvePagePathInfo(pagePathInfo)
+      })
+
       if (!process.env.production) {
-        watchAndBuildHtml(pagePathInfos)
         initWebServer()
       }
     })
