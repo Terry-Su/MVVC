@@ -1,4 +1,4 @@
-import { Controller as SuperController } from '../../share/controller/index'
+import { Controller as SuperController } from '../../__share/controller/index'
 import React from 'react'
 import {
   render

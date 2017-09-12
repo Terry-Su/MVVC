@@ -25,7 +25,7 @@ module.exports = function readCurrentLines(boilerplatesPath) {
         value: boilerplatesPath,
       }].concat(projectLines)
 
-      const getQuestion = data => `\n\n${chalk.bold(`Choose project(s) to generate`)}(eg. 1 or 1 2):\n`.concat(
+      const getQuestion = data => `\n\n${chalk.bold(`Choose project(s) to generate`)}(eg. single: '1' or multiple: '1 2'):\n`.concat(
         lines.map(data => `${data.pressKey} ${data.display}`).join('\n').concat('\n')
       )
 

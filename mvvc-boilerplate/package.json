@@ -4,8 +4,8 @@
   "description": "mvvc-boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node .mvvc/index.js",
-    "build": "cross-env production=true babel-node .mvvc/index.js"
+    "start": "node .mvvc/index.js",
+    "build": "cross-env production=true node .mvvc/index.js"
   },
   "keywords": [],
   "author": "",

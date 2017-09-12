@@ -4,8 +4,9 @@ const del = require('del')
 
 const {
   outputRootPath,
-  projectsRootPath
-} = require('./mvvcConfig')
+  projectsRootPath,
+  shareFolderName,
+} = require('./config/mvvcConfig')
 
 
 module.exports = {
@@ -38,7 +39,7 @@ function removeConfilctPagesInProjects() {
 
   let promises = []
   srcProjectsTree.children
-    .filter(srcProject => srcProject.name !== 'share' && srcProject.type === 'directory')
+    .filter(srcProject => srcProject.name !== shareFolderName && srcProject.type === 'directory')
     .map(srcProject => {
       try {
         const srcPagesRootPath = srcProject.path
@@ -73,7 +74,7 @@ function removeDeprecatedFolders(srcRootPath, distRootPath) {
     .filter(dist => dist.type === 'directory')
     .map(dist => {
       let exsit = srcTree.children
-        .filter(src => src.name !== 'share' && src.type === 'directory')
+        .filter(src => src.name !== shareFolderName && src.type === 'directory')
         .some(src => src.name === dist.name)
 
       if (!exsit) {
