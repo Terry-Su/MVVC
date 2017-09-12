@@ -33,22 +33,28 @@ const {
 
 const resolvePagePathInfo = require('./resolvePagePathInfo/index')
 const cleanAllCache = require('./cleanAllCache')
-
+const readProjectsLines = require('./readProjectsLines')
 
 // test
 // resolveProjectInput(0, [ 'All', 'InfernoReduxProject', 'ReactReduxProject' ])
 
-// initialize
-projectsPrompt.show((input, projectsNames) => {
-  resolveProjectInput(input, projectsNames)
-})
+init()
+
+function init() {
+  readProjectsLines()
+    .then((pagePathInfos) => {
+      resolvePagePathInfos(pagePathInfos)
+    })
+}
 
 
 function resolvePagePathInfos(pagePathInfos) {
   // remove extra projects folders if needed
   const removeProjectsFn = shouldRemoveExtraFilesInPublic ? removeDeprecatedProjects : () => Promise.resolve(true)
+
   // remove extra projects' files if needed
   const removeFilesFn = shouldRemoveExtraFilesInPublic ? removeConfilctPagesInProjects : () => Promise.resolve(true)
+
   removeProjectsFn()
     .then(v => removeFilesFn())
     .then(v => {
@@ -63,66 +69,3 @@ function resolvePagePathInfos(pagePathInfos) {
       }
     })
 }
-
-
-function resolveProjectInput(input, projectsNames) {
-  input = parseInt(input)
-  if (input === 0) {
-    const pagePathInfos = getPagePathInfosByProjectInputInfo(input)
-    resolvePagePathInfos(pagePathInfos)
-  }
-  if (input > 0) {
-    const projectName = projectsNames[input]
-    const pageRootPath = getPageNameRootPath(projectName)
-    const pageNames = getNames(pageRootPath)
-    pagesPrompt.show({
-      projectName,
-      pageNames,
-      successCallback: (input, pageNames) => {
-        resolvePageInput(input, pageNames)
-      }
-    })
-  }
-}
-
-function resolvePageInput({
-  input,
-  pageNames,
-  projectName
-}) {
-  input = parseInt(input)
-  const pagePathInfos = getPagePathInfosByPageInputInfo({
-    projectName,
-    input,
-    pageNames
-  })
-  resolvePagePathInfos(pagePathInfos)
-}
-
-function getPagePathInfosByProjectInputInfo(input) {
-  const projectsNames = getNames(projectsRootPath)
-  input = parseInt(input)
-  if (input === 0) {
-    return getAllProjectsPagePathInfos()
-  }
-  if (input > 0) {
-    const projectName = projectsNames[input]
-    return getPagePathInfosByProjectName(projectName)
-  }
-}
-
-function getPagePathInfosByPageInputInfo({
-  input,
-  pageNames,
-  projectName
-}) {
-  input = parseInt(input)
-  if (input === 0) {
-    return getPagePathInfosByProjectName(projectName)
-  }
-  if (input > 0) {
-    const pageName = pageNames[input]
-    return getPagePathInfosByPageAndProjectName(pageName, projectName)
-  }
-}
-
