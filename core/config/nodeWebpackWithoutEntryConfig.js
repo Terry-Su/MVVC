@@ -27,8 +27,8 @@ const nodeWebpackWithoutEntryConfig = {
   target: 'node',
   externals: [
     function (context, request, callback) {
-      if (/^\.?\//.test(request)) return callback()
-      if (/^\.\.?\//.test(request)) return callback() // fixed √
+      if (/^\.?[\/\\]/.test(request)) return callback()
+      if (/^\.\.?[\/\\]/.test(request)) return callback() // fixed √
       callback(null, `commonjs ${request}`)
     }
   ],

@@ -16,7 +16,7 @@ module.exports = function getPageEntryJs({
   const relativeControllerPath = PATH.relative(
     cacheFilePath,
     originNodeControllerPath
-  )
+  ).replace(/\\/g, "/")
 
   const entryPath = getWebEntryPath(pagePath)
   const outputPath = getOutputPath(project, page)
@@ -24,12 +24,12 @@ module.exports = function getPageEntryJs({
     process.cwd(),
     entryPath
   )
-  const relativeOutputPath = PATH.relative(
+  let relativeOutputPath = PATH.relative(
     process.cwd(),
     outputPath
   )
 
-  return `
+  return !`
   import PATH from 'path'
   import execWebpack from '../../execWebpack'
   
@@ -37,10 +37,10 @@ module.exports = function getPageEntryJs({
   export class Controller  {
     watchWebByWebpack = () => {
      console.log('execWebpack', execWebpack)
-    )
+    }
   }
   
-  export default new Controller()
+  export default 123
     ` || `
 import PATH from 'path'
 import execWebpack from '../../execWebpack'

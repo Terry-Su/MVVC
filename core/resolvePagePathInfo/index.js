@@ -5,7 +5,7 @@ const webpackWatch = require('../webpackWatch/index')
 const nodeWebpackWithoutEntryConfig = require('../config/nodeWebpackWithoutEntryConfig')
 const getPageEntryJs = require('./getPageEntryJs')
 const {
-  webpackWatchCachePath,
+  webpackWatchCachePath, 
   resolvePagePathInfoCachePath,
 } = require('../config/mvvcConfig')
 const buildHtml = require('../buildHtml')

@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "cross-env": "^5.0.5",
+    "html-loader": "^0.5.1",
     "readline-multiple": "^0.0.5"
   },
   "dependencies": {

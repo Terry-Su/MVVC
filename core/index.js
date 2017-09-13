@@ -36,9 +36,12 @@ const cleanAllCache = require('./cleanAllCache')
 const readProjectsLines = require('./readProjectsLines')
 
 // test
-resolvePagePathInfos([ { project: 'InfernoReduxProject',
+// resolvePagePathInfos([ { project: 'InfernoReduxProject',
+// page: 'examplePage',
+// pagePath: 'D:\\Project\\MVVC\\src\\InfernoReduxProject\\examplePage' } ])
+resolvePagePathInfos( [ { project: 'InfernoReduxProject',
 page: 'examplePage',
-pagePath: 'D:\\Project\\MVVC\\src\\InfernoReduxProject\\examplePage' } ])
+pagePath: 'C:\\WorkingDocuments\\Project\\MVVC\\src\\InfernoReduxProject\\examplePage' } ])
 
 // init()
 
