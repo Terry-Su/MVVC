@@ -21,8 +21,8 @@ module.exports = function resolvePagePathInfo(pagePathInfo) {
     page,
   } = pagePathInfo
 
-  const entryFileName = PATH.relative(__dirname, pagePath).replace(/\.\.\//g, '').replace(/\//g, '_').concat('_entry.js')
-  const outputFilename = PATH.relative(__dirname, pagePath).replace(/\.\.\//g, '').replace(/\//g, '_').concat('_node_controller.js')
+  const entryFileName = PATH.relative(__dirname, pagePath).replace(/\.\.[\/\\]/g, '').replace(/[\/\\]/g, '_').concat('_entry.js')
+  const outputFilename = PATH.relative(__dirname, pagePath).replace(/\.\.[\/\\]/g, '').replace(/[\/\\]/g, '_').concat('_node_controller.js')
 
   const originNodeControllerPath = PATH.resolve(pagePath, './controller/index.node.js')
 
@@ -34,6 +34,8 @@ module.exports = function resolvePagePathInfo(pagePathInfo) {
     project,
     page,
   })
+
+  
   FS.ensureFileSync(entryFilePath)
   FS.writeFileSync(entryFilePath, pageHtml)
 
@@ -43,7 +45,8 @@ module.exports = function resolvePagePathInfo(pagePathInfo) {
     filename: outputFilename,
     libraryTarget: 'commonjs2',
   }
-
+  
+   
   webpackWatch(Object.assign(
     {
       entry,
@@ -51,6 +54,7 @@ module.exports = function resolvePagePathInfo(pagePathInfo) {
     },
     nodeWebpackWithoutEntryConfig
   ), () => {
+    return 
     const distWebWebpackEntry = `${webpackWatchCachePath}/${outputFilename}`
     const nodeController = require(distWebWebpackEntry).default
 

@@ -36,9 +36,11 @@ const cleanAllCache = require('./cleanAllCache')
 const readProjectsLines = require('./readProjectsLines')
 
 // test
-// resolveProjectInput(0, [ 'All', 'InfernoReduxProject', 'ReactReduxProject' ])
+resolvePagePathInfos([ { project: 'InfernoReduxProject',
+page: 'examplePage',
+pagePath: 'D:\\Project\\MVVC\\src\\InfernoReduxProject\\examplePage' } ])
 
-init()
+// init()
 
 function init() {
   readProjectsLines()
@@ -59,7 +61,7 @@ function resolvePagePathInfos(pagePathInfos) {
     .then(v => removeFilesFn())
     .then(v => {
       cleanAllCache()
-
+       
       pagePathInfos.map(pagePathInfo => {
         resolvePagePathInfo(pagePathInfo)
       })
