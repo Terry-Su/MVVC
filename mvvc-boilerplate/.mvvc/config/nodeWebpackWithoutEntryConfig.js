@@ -1,5 +1,9 @@
 const webpack = require('webpack')
+const mvvcConfig = require('./mvvcConfig')
 
+const {
+  externalCommonJsModules
+} = mvvcConfig
 
 const nodeWebpackWithoutEntryConfig = {
   module: {
@@ -47,7 +51,7 @@ const nodeWebpackWithoutEntryConfig = {
     // }
   ],
   plugins: [
-    new webpack.ExternalsPlugin('commonjs', ['webpack', 'uglifyjs-webpack-plugin'])
+    new webpack.ExternalsPlugin('commonjs', externalCommonJsModules)
   ]
 }
 
