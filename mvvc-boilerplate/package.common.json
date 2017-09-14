@@ -1,7 +1,7 @@
 {
     "scripts": {
-        "start": "babel-node .mvvc/index.js",
-        "build": "cross-env production=true babel-node .mvvc/index.js"
+        "start": "node .mvvc/index.js",
+        "build": "cross-env production=true node .mvvc/index.js"
     },
     "dependencies": {
         "babel-cli": "^6.26.0",

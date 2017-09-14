@@ -1,8 +1,9 @@
 const program = require('commander')
 const PATH = require('path')
 const shell = require("shelljs")
-const readCurrentLines = require('./readCurrentLines')
+const chalk = require('chalk')
 
+const readCurrentLines = require('./readCurrentLines')
 
 const {
   boilerplateRootPath,
@@ -60,19 +61,30 @@ module.exports = function init(folderName) {
     .then(results => {
       // generate share
       generateSrcShare(rootFolderPath, boilerplateMvvcSharePath)
+
       // generate projects
-      results.map(({
+      const generateProjectsPromises = results.map(({
         value,
         display,
       }) => {
-        const origin = value
-        const isAll = display === 'All'
+        return new Promise(resolve => {
+          const origin = value
+          const isAll = display === 'All'
 
-        !isAll && generateProject({
-          origin,
-          src: srcPath,
-          name: display,
+          if (isAll) {
+            resolve()
+          }
+          if (!isAll) {
+            generateProject({
+              origin,
+              src: srcPath,
+              name: display,
+            }).then(resolve)
+          }
         })
+      })
+      Promise.all(generateProjectsPromises).then(() => {
+        console.log(chalk.bold.green('All projects has been created!'))
       })
     })
 }

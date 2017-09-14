@@ -3,11 +3,17 @@ const FS = require('fs-extra')
 const dirtree = require('directory-tree')
 const chalk = require('chalk')
 
+const mvvcConfig = require('../../mvvc.config.js')
+
+const {
+  shareFolderName
+} = mvvcConfig
+
 
 module.exports = function generateSrcShare(rootFolderPath, boilerplateMvvcSharePath) {
   return Promise.resolve(
     new Promise((resolve, reject) => {
-      const path = PATH.resolve(rootFolderPath, './src/share')
+      const path = PATH.resolve(rootFolderPath, `./src/${shareFolderName}`)
 
       // generate file
       if (!dirtree(path)) {

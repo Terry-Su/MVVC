@@ -1,4 +1,9 @@
 const PATH = require('path')
+const mvvcConfig = require('../mvvc.config.js')
+
+const {
+  shareFolderName
+} = mvvcConfig
 
 
 module.exports = {
@@ -9,5 +14,5 @@ module.exports = {
   boilerplateMvvcConfigPath: PATH.resolve(__dirname, './../mvvc-boilerplate/mvvc.config.js'),
   boilerplateMvvcDotMvvcPath: PATH.resolve(__dirname, './../mvvc-boilerplate/.mvvc'),
   boilerplateMvvcBabelrcPath: PATH.resolve(__dirname, './../mvvc-boilerplate/.babelrc'),
-  boilerplateMvvcSharePath: PATH.resolve(__dirname, './../mvvc-boilerplate/src/share'),    
+  boilerplateMvvcSharePath: PATH.resolve(__dirname, `./../mvvc-boilerplate/src/${shareFolderName}`),    
 }

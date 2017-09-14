@@ -2,12 +2,18 @@ const dirtree = require('directory-tree')
 const readMultipeLines = require('./readline-multiple')
 const chalk = require('chalk')
 
+const mvvcConfig = require('../mvvc.config.js')
+
+const {
+  shareFolderName
+} = mvvcConfig
+
 
 module.exports = function readCurrentLines(boilerplatesPath) {
   return Promise.resolve(
     new Promise((resolve, reject) => {
       const projects = dirtree(boilerplatesPath).children
-        .filter(project => project.type === 'directory' && project.name !== 'share')
+        .filter(project => project.type === 'directory' && project.name !== shareFolderName)
         .map(project => ({
           name: project.name,
           path: project.path
