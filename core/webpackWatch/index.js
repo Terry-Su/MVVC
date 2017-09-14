@@ -5,32 +5,28 @@ const PATH = require('path')
  * watch entry file with webpack
  */
 module.exports = function webpackWatch(webpackConfig, watchCallback) {
-  const config = !Array.isArray(webpackConfig) ? Object.assign(
-    webpackConfig,
-    {
-    }
-  ) : webpackConfig.map(config => (
-    Object.assign(
-      config,
-      {
-        
-      }
-    )
-  ))
+  const compiler = webpack(webpackConfig)
+  let cacheHash = null
 
-  const compiler = webpack(config)
-  
   const watching = compiler.watch({}, (err, stats) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(stats.toString({
-      chunks: false,
-      colors: true
-    }));
 
-    watchCallback()
+    // to solve the problem in windows: 
+    // Filesystem inaccuracies may trigger multiple builds for a single change,
+    // use hash watching instead
+    if (cacheHash !== stats.hash) {
+      cacheHash = stats.hash
+
+      // console.log(stats.toString({
+      //   chunks: false,
+      //   colors: true
+      // }))
+
+      watchCallback()
+    }
   })
 
 }

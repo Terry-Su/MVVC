@@ -39,11 +39,11 @@ const readProjectsLines = require('./readProjectsLines')
 // resolvePagePathInfos([ { project: 'InfernoReduxProject',
 // page: 'examplePage',
 // pagePath: 'D:\\Project\\MVVC\\src\\InfernoReduxProject\\examplePage' } ])
-resolvePagePathInfos( [ { project: 'InfernoReduxProject',
-page: 'examplePage',
-pagePath: 'C:\\WorkingDocuments\\Project\\MVVC\\src\\InfernoReduxProject\\examplePage' } ])
+// resolvePagePathInfos( [ { project: 'InfernoReduxProject',
+// page: 'examplePage',
+// pagePath: 'C:\\WorkingDocuments\\Project\\MVVC\\src\\InfernoReduxProject\\examplePage' } ])
 
-// init()
+init()
 
 function init() {
   readProjectsLines()

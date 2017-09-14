@@ -30,7 +30,6 @@ function getOutputPath(project, page) {
 function writeHtml(path, text) {
   try {
     outputFile(path, text)
-    // console.log(`\x1b[32m`, `${path} was built successfully!`)
     console.log(`${path}`, chalk.green.bold(`[built]`))
   } catch (e) {
     console.log(`\x1b[31m`, `Building ${path} failed!`)

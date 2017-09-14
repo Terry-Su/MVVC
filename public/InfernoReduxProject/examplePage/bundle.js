@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -32,9 +32,6 @@
 /******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
 /******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
@@ -63,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -240,6 +237,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -256,7 +257,7 @@ process.umask = function() { return 0; };
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(27).default;
+module.exports = __webpack_require__(14).default;
 module.exports.default = module.exports;
 
 
@@ -292,244 +293,67 @@ module.exports = g;
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+module.exports = __webpack_require__(15).default;
+module.exports.default = module.exports;
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Controller = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _index = __webpack_require__(13);
-
-var _inferno = __webpack_require__(1);
-
-var _inferno2 = _interopRequireDefault(_inferno);
-
-var _redux = __webpack_require__(10);
-
-var _infernoRedux = __webpack_require__(5);
-
-var _index2 = __webpack_require__(16);
-
-var _index3 = _interopRequireDefault(_index2);
-
-var _middlewareLogger = __webpack_require__(18);
-
-var _middlewareLogger2 = _interopRequireDefault(_middlewareLogger);
-
-var _index4 = __webpack_require__(15);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// redux
-
-// inferno-redux
-
-
-var createVNode = _inferno2.default.createVNode;
-
-var Controller = exports.Controller = function (_SuperController) {
-  _inherits(Controller, _SuperController);
-
-  function Controller() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Controller);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Controller.__proto__ || Object.getPrototypeOf(Controller)).call.apply(_ref, [this].concat(args))), _this), _this.fetchJquery = function () {
-
-      (0, _index4.FETCH_JQUERY)().then(function (response) {
-        return response.text();
-      }).then(function (text) {
-        return alert('Fetch jQuery successfully! \n      \n      ' + text + '\n      ');
-      });
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(Controller, [{
-    key: 'init',
-    value: function init(App) {
-      window.reduxStore = (0, _redux.createStore)(_index3.default, (0, _redux.applyMiddleware)(_middlewareLogger2.default));
-
-      (0, _inferno.render)(createVNode(16, _infernoRedux.Provider, null, null, {
-        'store': reduxStore,
-        children: createVNode(16, App)
-      }), document.getElementById('app'));
-    }
-  }]);
-
-  return Controller;
-}(_index.Controller);
-
-exports.default = new Controller();
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(23).default;
+module.exports = __webpack_require__(16).default;
 module.exports.default = module.exports;
 
 
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = __webpack_require__(26).default;
-module.exports.default = module.exports;
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(9);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return __WEBPACK_IMPORTED_MODULE_4__compose__["a"]; });
 
 
+
+
+
+
+
+/*
+* This is a dummy function to check if the function name has been altered by minification.
+* If the function has been minified and NODE_ENV !== 'production', warn the user.
+*/
+function isCrushed() {}
+
+if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
+  Object(__WEBPACK_IMPORTED_MODULE_5__utils_warning__["a" /* default */])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
+}
+
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
 /* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(34);
-
-
-/** Built-in value references. */
-var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
-
-/* harmony default export */ __webpack_exports__["a"] = Symbol;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(35);
-
-
-
-
-/** `Object#toString` result references. */
-var objectTag = '[object Object]';
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype,
-    objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to infer the `Object` constructor. */
-var objectCtorString = funcToString.call(Object);
-
-/**
- * Checks if `value` is a plain object, that is, an object created by the
- * `Object` constructor or one with a `[[Prototype]]` of `null`.
- *
- * @static
- * @memberOf _
- * @since 0.8.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- * }
- *
- * _.isPlainObject(new Foo);
- * // => false
- *
- * _.isPlainObject([1, 2, 3]);
- * // => false
- *
- * _.isPlainObject({ 'x': 0, 'y': 0 });
- * // => true
- *
- * _.isPlainObject(Object.create(null));
- * // => true
- */
-function isPlainObject(value) {
-  if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__["a" /* default */])(value) || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__["a" /* default */])(value) != objectTag) {
-    return false;
-  }
-  var proto = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__getPrototype_js__["a" /* default */])(value);
-  if (proto === null) {
-    return true;
-  }
-  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
-    funcToString.call(Ctor) == objectCtorString;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = isPlainObject;
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = compose;
-/**
- * Composes single-argument functions from right to left. The rightmost
- * function can take multiple arguments as it provides the signature for
- * the resulting composite function.
- *
- * @param {...Function} funcs The functions to compose.
- * @returns {Function} A function obtained by composing the argument functions
- * from right to left. For example, compose(f, g, h) is identical to doing
- * (...args) => f(g(h(...args))).
- */
-
-function compose() {
-  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
-    funcs[_key] = arguments[_key];
-  }
-
-  if (funcs.length === 0) {
-    return function (arg) {
-      return arg;
-    };
-  }
-
-  if (funcs.length === 1) {
-    return funcs[0];
-  }
-
-  return funcs.reduce(function (a, b) {
-    return function () {
-      return a(b.apply(undefined, arguments));
-    };
-  });
-}
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
+/* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_symbol_observable__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ActionTypes; });
-/* harmony export (immutable) */ __webpack_exports__["a"] = createStore;
 
 
 
@@ -680,7 +504,7 @@ var ActionTypes = {
    * return something else (for example, a Promise you can await).
    */
   function dispatch(action) {
-    if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__["a" /* default */])(action)) {
+    if (!Object(__WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__["a" /* default */])(action)) {
       throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
     }
 
@@ -780,44 +604,93 @@ var ActionTypes = {
 }
 
 /***/ }),
-/* 10 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(11);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return __WEBPACK_IMPORTED_MODULE_4__compose__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(27);
 
 
 
 
+/** `Object#toString` result references. */
+var objectTag = '[object Object]';
 
+/** Used for built-in method references. */
+var funcProto = Function.prototype,
+    objectProto = Object.prototype;
 
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
 
-/*
-* This is a dummy function to check if the function name has been altered by minification.
-* If the function has been minified and NODE_ENV !== 'production', warn the user.
-*/
-function isCrushed() {}
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
 
-if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__utils_warning__["a" /* default */])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
+/** Used to infer the `Object` constructor. */
+var objectCtorString = funcToString.call(Object);
+
+/**
+ * Checks if `value` is a plain object, that is, an object created by the
+ * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.8.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ * }
+ *
+ * _.isPlainObject(new Foo);
+ * // => false
+ *
+ * _.isPlainObject([1, 2, 3]);
+ * // => false
+ *
+ * _.isPlainObject({ 'x': 0, 'y': 0 });
+ * // => true
+ *
+ * _.isPlainObject(Object.create(null));
+ * // => true
+ */
+function isPlainObject(value) {
+  if (!Object(__WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__["a" /* default */])(value) || Object(__WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__["a" /* default */])(value) != objectTag) {
+    return false;
+  }
+  var proto = Object(__WEBPACK_IMPORTED_MODULE_1__getPrototype_js__["a" /* default */])(value);
+  if (proto === null) {
+    return true;
+  }
+  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+    funcToString.call(Ctor) == objectCtorString;
 }
 
+/* harmony default export */ __webpack_exports__["a"] = (isPlainObject);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(21);
+
+
+/** Built-in value references. */
+var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
+
+/* harmony default export */ __webpack_exports__["a"] = (Symbol);
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -845,7 +718,155 @@ function warning(message) {
 }
 
 /***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = compose;
+/**
+ * Composes single-argument functions from right to left. The rightmost
+ * function can take multiple arguments as it provides the signature for
+ * the resulting composite function.
+ *
+ * @param {...Function} funcs The functions to compose.
+ * @returns {Function} A function obtained by composing the argument functions
+ * from right to left. For example, compose(f, g, h) is identical to doing
+ * (...args) => f(g(h(...args))).
+ */
+
+function compose() {
+  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  if (funcs.length === 0) {
+    return function (arg) {
+      return arg;
+    };
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0];
+  }
+
+  return funcs.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(undefined, arguments));
+    };
+  });
+}
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Controller = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _index = __webpack_require__(38);
+
+var _inferno = __webpack_require__(1);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _redux = __webpack_require__(5);
+
+var _infernoRedux = __webpack_require__(4);
+
+var _index2 = __webpack_require__(40);
+
+var _index3 = _interopRequireDefault(_index2);
+
+var _middlewareLogger = __webpack_require__(41);
+
+var _middlewareLogger2 = _interopRequireDefault(_middlewareLogger);
+
+var _index4 = __webpack_require__(42);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// redux
+
+// inferno-redux
+
+
+var createVNode = _inferno2.default.createVNode;
+
+var Controller = exports.Controller = function (_SuperController) {
+  _inherits(Controller, _SuperController);
+
+  function Controller() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Controller);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Controller.__proto__ || Object.getPrototypeOf(Controller)).call.apply(_ref, [this].concat(args))), _this), _this.fetchJquery = function () {
+
+      (0, _index4.FETCH_JQUERY)().then(function (response) {
+        return response.text();
+      }).then(function (text) {
+        return alert('Fetch jQuery successfully! \n      \n      ' + text + '\n      ');
+      });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Controller, [{
+    key: 'init',
+    value: function init(App) {
+      window.reduxStore = (0, _redux.createStore)(_index3.default, (0, _redux.applyMiddleware)(_middlewareLogger2.default));
+
+      (0, _inferno.render)(createVNode(16, _infernoRedux.Provider, null, null, {
+        'store': reduxStore,
+        children: createVNode(16, App)
+      }), document.getElementById('app'));
+    }
+  }]);
+
+  return Controller;
+}(_index.Controller);
+
+exports.default = new Controller();
+
+/***/ }),
 /* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _App = __webpack_require__(13);
+
+var _App2 = _interopRequireDefault(_App);
+
+var _index = __webpack_require__(11);
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// initialize
+_index2.default.init(_App2.default);
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -861,19 +882,19 @@ var _inferno = __webpack_require__(1);
 
 var _inferno2 = _interopRequireDefault(_inferno);
 
-var _infernoComponent = __webpack_require__(4);
+var _infernoComponent = __webpack_require__(3);
 
 var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
 
-var _infernoRedux = __webpack_require__(5);
+var _infernoRedux = __webpack_require__(4);
 
-var _index = __webpack_require__(17);
+var _index = __webpack_require__(35);
 
-var _index2 = __webpack_require__(14);
+var _index2 = __webpack_require__(36);
 
 var _index3 = _interopRequireDefault(_index2);
 
-var _index4 = __webpack_require__(3);
+var _index4 = __webpack_require__(11);
 
 var _index5 = _interopRequireDefault(_index4);
 
@@ -969,2237 +990,7 @@ exports.default = (0, _infernoRedux.connect)(function (state, ownProps) {
 })(App);
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Controller = undefined;
-
-var _index = __webpack_require__(20);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Controller = exports.Controller = function (_SuperController) {
-  _inherits(Controller, _SuperController);
-
-  function Controller(props) {
-    _classCallCheck(this, Controller);
-
-    return _possibleConstructorReturn(this, (Controller.__proto__ || Object.getPrototypeOf(Controller)).call(this, props));
-  }
-
-  return Controller;
-}(_index.Controller);
-
-exports.default = new Controller();
-
-/***/ }),
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _actionCreator = __webpack_require__(19);
-
-var actions = {
-  ADD_FONT_SIZE: function ADD_FONT_SIZE(value) {
-    return {
-      value: value
-    };
-  },
-  ADD_NUMBER: function ADD_NUMBER(number) {
-    return {
-      number: number
-    };
-  },
-  REDUCE_FONT_SIZE: function REDUCE_FONT_SIZE(value) {
-    return {
-      value: value
-    };
-  },
-  REDUCE_NUMBER: function REDUCE_NUMBER(number) {
-    return {
-      number: number
-    };
-  }
-};
-
-exports.default = (0, _actionCreator.createActions)(actions);
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.FETCH_JQUERY = FETCH_JQUERY;
-
-__webpack_require__(21);
-
-function FETCH_JQUERY() {
-  return fetch('https://code.jquery.com/jquery-3.2.1.min.js');
-}
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-exports.default = function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
-  var action = arguments[1];
-
-  return {
-    foo: foo(state.foo, action)
-  };
-};
-
-var defaultState = {
-  foo: {
-    number: 0,
-    fontSize: 20
-  }
-};
-
-function foo(state, action) {
-  switch (action.type) {
-    case 'ADD_FONT_SIZE':
-      return _extends({}, state, {
-        fontSize: state.fontSize + action.value
-      });
-    case 'ADD_NUMBER':
-      return _extends({}, state, {
-        number: state.number + action.number
-      });
-    case 'REDUCE_FONT_SIZE':
-      return _extends({}, state, {
-        fontSize: state.fontSize - action.value
-      });
-    case 'REDUCE_NUMBER':
-      return _extends({}, state, {
-        number: state.number - action.number
-      });
-    default:
-      return state;
-  }
-}
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getNumber = getNumber;
-exports.getFontSize = getFontSize;
-function getNumber() {
-  var store = getState();
-  return store.foo.number;
-}
-
-function getFontSize() {
-  var store = getState();
-  return store.foo.fontSize;
-}
-
-function getState() {
-  return window.reduxStore.getState();
-}
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = middlewareLogger;
-function middlewareLogger(store) {
-  return function (next) {
-    return function (action) {
-      console.group(action.type);
-      console.info('dispatching', action);
-      var result = next(action);
-      console.log('next state', store.getState());
-      console.groupEnd(action.type);
-      return result;
-    };
-  };
-}
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-exports.createActions = createActions;
-exports.createAction = createAction;
-function createActions(actions) {
-  Object.keys(actions).map(function (key) {
-    var defaultAction = actions[key];
-    actions[key] = createAction(key, defaultAction);
-  });
-  return actions;
-}
-
-function createAction(name, defaultAction) {
-  return function () {
-    window.reduxStore.dispatch(_extends({
-      type: name
-    }, defaultAction.apply(undefined, arguments)));
-  };
-}
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Controller = exports.Controller = function Controller() {
-  _classCallCheck(this, Controller);
-};
-
-exports.default = new Controller();
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-(function (self) {
-  'use strict';
-
-  if (self.fetch) {
-    return;
-  }
-
-  var support = {
-    searchParams: 'URLSearchParams' in self,
-    iterable: 'Symbol' in self && 'iterator' in Symbol,
-    blob: 'FileReader' in self && 'Blob' in self && function () {
-      try {
-        new Blob();
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }(),
-    formData: 'FormData' in self,
-    arrayBuffer: 'ArrayBuffer' in self
-  };
-
-  if (support.arrayBuffer) {
-    var viewClasses = ['[object Int8Array]', '[object Uint8Array]', '[object Uint8ClampedArray]', '[object Int16Array]', '[object Uint16Array]', '[object Int32Array]', '[object Uint32Array]', '[object Float32Array]', '[object Float64Array]'];
-
-    var isDataView = function isDataView(obj) {
-      return obj && DataView.prototype.isPrototypeOf(obj);
-    };
-
-    var isArrayBufferView = ArrayBuffer.isView || function (obj) {
-      return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1;
-    };
-  }
-
-  function normalizeName(name) {
-    if (typeof name !== 'string') {
-      name = String(name);
-    }
-    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
-      throw new TypeError('Invalid character in header field name');
-    }
-    return name.toLowerCase();
-  }
-
-  function normalizeValue(value) {
-    if (typeof value !== 'string') {
-      value = String(value);
-    }
-    return value;
-  }
-
-  // Build a destructive iterator for the value list
-  function iteratorFor(items) {
-    var iterator = {
-      next: function next() {
-        var value = items.shift();
-        return { done: value === undefined, value: value };
-      }
-    };
-
-    if (support.iterable) {
-      iterator[Symbol.iterator] = function () {
-        return iterator;
-      };
-    }
-
-    return iterator;
-  }
-
-  function Headers(headers) {
-    this.map = {};
-
-    if (headers instanceof Headers) {
-      headers.forEach(function (value, name) {
-        this.append(name, value);
-      }, this);
-    } else if (Array.isArray(headers)) {
-      headers.forEach(function (header) {
-        this.append(header[0], header[1]);
-      }, this);
-    } else if (headers) {
-      Object.getOwnPropertyNames(headers).forEach(function (name) {
-        this.append(name, headers[name]);
-      }, this);
-    }
-  }
-
-  Headers.prototype.append = function (name, value) {
-    name = normalizeName(name);
-    value = normalizeValue(value);
-    var oldValue = this.map[name];
-    this.map[name] = oldValue ? oldValue + ',' + value : value;
-  };
-
-  Headers.prototype['delete'] = function (name) {
-    delete this.map[normalizeName(name)];
-  };
-
-  Headers.prototype.get = function (name) {
-    name = normalizeName(name);
-    return this.has(name) ? this.map[name] : null;
-  };
-
-  Headers.prototype.has = function (name) {
-    return this.map.hasOwnProperty(normalizeName(name));
-  };
-
-  Headers.prototype.set = function (name, value) {
-    this.map[normalizeName(name)] = normalizeValue(value);
-  };
-
-  Headers.prototype.forEach = function (callback, thisArg) {
-    for (var name in this.map) {
-      if (this.map.hasOwnProperty(name)) {
-        callback.call(thisArg, this.map[name], name, this);
-      }
-    }
-  };
-
-  Headers.prototype.keys = function () {
-    var items = [];
-    this.forEach(function (value, name) {
-      items.push(name);
-    });
-    return iteratorFor(items);
-  };
-
-  Headers.prototype.values = function () {
-    var items = [];
-    this.forEach(function (value) {
-      items.push(value);
-    });
-    return iteratorFor(items);
-  };
-
-  Headers.prototype.entries = function () {
-    var items = [];
-    this.forEach(function (value, name) {
-      items.push([name, value]);
-    });
-    return iteratorFor(items);
-  };
-
-  if (support.iterable) {
-    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
-  }
-
-  function consumed(body) {
-    if (body.bodyUsed) {
-      return Promise.reject(new TypeError('Already read'));
-    }
-    body.bodyUsed = true;
-  }
-
-  function fileReaderReady(reader) {
-    return new Promise(function (resolve, reject) {
-      reader.onload = function () {
-        resolve(reader.result);
-      };
-      reader.onerror = function () {
-        reject(reader.error);
-      };
-    });
-  }
-
-  function readBlobAsArrayBuffer(blob) {
-    var reader = new FileReader();
-    var promise = fileReaderReady(reader);
-    reader.readAsArrayBuffer(blob);
-    return promise;
-  }
-
-  function readBlobAsText(blob) {
-    var reader = new FileReader();
-    var promise = fileReaderReady(reader);
-    reader.readAsText(blob);
-    return promise;
-  }
-
-  function readArrayBufferAsText(buf) {
-    var view = new Uint8Array(buf);
-    var chars = new Array(view.length);
-
-    for (var i = 0; i < view.length; i++) {
-      chars[i] = String.fromCharCode(view[i]);
-    }
-    return chars.join('');
-  }
-
-  function bufferClone(buf) {
-    if (buf.slice) {
-      return buf.slice(0);
-    } else {
-      var view = new Uint8Array(buf.byteLength);
-      view.set(new Uint8Array(buf));
-      return view.buffer;
-    }
-  }
-
-  function Body() {
-    this.bodyUsed = false;
-
-    this._initBody = function (body) {
-      this._bodyInit = body;
-      if (!body) {
-        this._bodyText = '';
-      } else if (typeof body === 'string') {
-        this._bodyText = body;
-      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
-        this._bodyBlob = body;
-      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
-        this._bodyFormData = body;
-      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
-        this._bodyText = body.toString();
-      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
-        this._bodyArrayBuffer = bufferClone(body.buffer);
-        // IE 10-11 can't handle a DataView body.
-        this._bodyInit = new Blob([this._bodyArrayBuffer]);
-      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
-        this._bodyArrayBuffer = bufferClone(body);
-      } else {
-        throw new Error('unsupported BodyInit type');
-      }
-
-      if (!this.headers.get('content-type')) {
-        if (typeof body === 'string') {
-          this.headers.set('content-type', 'text/plain;charset=UTF-8');
-        } else if (this._bodyBlob && this._bodyBlob.type) {
-          this.headers.set('content-type', this._bodyBlob.type);
-        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
-          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-        }
-      }
-    };
-
-    if (support.blob) {
-      this.blob = function () {
-        var rejected = consumed(this);
-        if (rejected) {
-          return rejected;
-        }
-
-        if (this._bodyBlob) {
-          return Promise.resolve(this._bodyBlob);
-        } else if (this._bodyArrayBuffer) {
-          return Promise.resolve(new Blob([this._bodyArrayBuffer]));
-        } else if (this._bodyFormData) {
-          throw new Error('could not read FormData body as blob');
-        } else {
-          return Promise.resolve(new Blob([this._bodyText]));
-        }
-      };
-
-      this.arrayBuffer = function () {
-        if (this._bodyArrayBuffer) {
-          return consumed(this) || Promise.resolve(this._bodyArrayBuffer);
-        } else {
-          return this.blob().then(readBlobAsArrayBuffer);
-        }
-      };
-    }
-
-    this.text = function () {
-      var rejected = consumed(this);
-      if (rejected) {
-        return rejected;
-      }
-
-      if (this._bodyBlob) {
-        return readBlobAsText(this._bodyBlob);
-      } else if (this._bodyArrayBuffer) {
-        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer));
-      } else if (this._bodyFormData) {
-        throw new Error('could not read FormData body as text');
-      } else {
-        return Promise.resolve(this._bodyText);
-      }
-    };
-
-    if (support.formData) {
-      this.formData = function () {
-        return this.text().then(decode);
-      };
-    }
-
-    this.json = function () {
-      return this.text().then(JSON.parse);
-    };
-
-    return this;
-  }
-
-  // HTTP methods whose capitalization should be normalized
-  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
-
-  function normalizeMethod(method) {
-    var upcased = method.toUpperCase();
-    return methods.indexOf(upcased) > -1 ? upcased : method;
-  }
-
-  function Request(input, options) {
-    options = options || {};
-    var body = options.body;
-
-    if (input instanceof Request) {
-      if (input.bodyUsed) {
-        throw new TypeError('Already read');
-      }
-      this.url = input.url;
-      this.credentials = input.credentials;
-      if (!options.headers) {
-        this.headers = new Headers(input.headers);
-      }
-      this.method = input.method;
-      this.mode = input.mode;
-      if (!body && input._bodyInit != null) {
-        body = input._bodyInit;
-        input.bodyUsed = true;
-      }
-    } else {
-      this.url = String(input);
-    }
-
-    this.credentials = options.credentials || this.credentials || 'omit';
-    if (options.headers || !this.headers) {
-      this.headers = new Headers(options.headers);
-    }
-    this.method = normalizeMethod(options.method || this.method || 'GET');
-    this.mode = options.mode || this.mode || null;
-    this.referrer = null;
-
-    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
-      throw new TypeError('Body not allowed for GET or HEAD requests');
-    }
-    this._initBody(body);
-  }
-
-  Request.prototype.clone = function () {
-    return new Request(this, { body: this._bodyInit });
-  };
-
-  function decode(body) {
-    var form = new FormData();
-    body.trim().split('&').forEach(function (bytes) {
-      if (bytes) {
-        var split = bytes.split('=');
-        var name = split.shift().replace(/\+/g, ' ');
-        var value = split.join('=').replace(/\+/g, ' ');
-        form.append(decodeURIComponent(name), decodeURIComponent(value));
-      }
-    });
-    return form;
-  }
-
-  function parseHeaders(rawHeaders) {
-    var headers = new Headers();
-    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
-    // https://tools.ietf.org/html/rfc7230#section-3.2
-    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
-    preProcessedHeaders.split(/\r?\n/).forEach(function (line) {
-      var parts = line.split(':');
-      var key = parts.shift().trim();
-      if (key) {
-        var value = parts.join(':').trim();
-        headers.append(key, value);
-      }
-    });
-    return headers;
-  }
-
-  Body.call(Request.prototype);
-
-  function Response(bodyInit, options) {
-    if (!options) {
-      options = {};
-    }
-
-    this.type = 'default';
-    this.status = options.status === undefined ? 200 : options.status;
-    this.ok = this.status >= 200 && this.status < 300;
-    this.statusText = 'statusText' in options ? options.statusText : 'OK';
-    this.headers = new Headers(options.headers);
-    this.url = options.url || '';
-    this._initBody(bodyInit);
-  }
-
-  Body.call(Response.prototype);
-
-  Response.prototype.clone = function () {
-    return new Response(this._bodyInit, {
-      status: this.status,
-      statusText: this.statusText,
-      headers: new Headers(this.headers),
-      url: this.url
-    });
-  };
-
-  Response.error = function () {
-    var response = new Response(null, { status: 0, statusText: '' });
-    response.type = 'error';
-    return response;
-  };
-
-  var redirectStatuses = [301, 302, 303, 307, 308];
-
-  Response.redirect = function (url, status) {
-    if (redirectStatuses.indexOf(status) === -1) {
-      throw new RangeError('Invalid status code');
-    }
-
-    return new Response(null, { status: status, headers: { location: url } });
-  };
-
-  self.Headers = Headers;
-  self.Request = Request;
-  self.Response = Response;
-
-  self.fetch = function (input, init) {
-    return new Promise(function (resolve, reject) {
-      var request = new Request(input, init);
-      var xhr = new XMLHttpRequest();
-
-      xhr.onload = function () {
-        var options = {
-          status: xhr.status,
-          statusText: xhr.statusText,
-          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
-        };
-        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
-        var body = 'response' in xhr ? xhr.response : xhr.responseText;
-        resolve(new Response(body, options));
-      };
-
-      xhr.onerror = function () {
-        reject(new TypeError('Network request failed'));
-      };
-
-      xhr.ontimeout = function () {
-        reject(new TypeError('Network request failed'));
-      };
-
-      xhr.open(request.method, request.url, true);
-
-      if (request.credentials === 'include') {
-        xhr.withCredentials = true;
-      } else if (request.credentials === 'omit') {
-        xhr.withCredentials = false;
-      }
-
-      if ('responseType' in xhr && support.blob) {
-        xhr.responseType = 'blob';
-      }
-
-      request.headers.forEach(function (value, name) {
-        xhr.setRequestHeader(name, value);
-      });
-
-      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
-    });
-  };
-  self.fetch.polyfill = true;
-})(typeof self !== 'undefined' ? self : undefined);
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var INFERNO_STATICS = {
-    childContextTypes: true,
-    contextTypes: true,
-    defaultProps: true,
-    displayName: true,
-    getDefaultProps: true,
-    propTypes: true,
-    type: true
-};
-
-var KNOWN_STATICS = {
-    name: true,
-    length: true,
-    prototype: true,
-    caller: true,
-    arguments: true,
-    arity: true
-};
-
-var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
-
-function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
-    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-        var keys = Object.getOwnPropertyNames(sourceComponent);
-
-        /* istanbul ignore else */
-        if (isGetOwnPropertySymbolsAvailable) {
-            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
-        }
-
-        for (var i = 0; i < keys.length; ++i) {
-            if (!INFERNO_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
-                try {
-                    targetComponent[keys[i]] = sourceComponent[keys[i]];
-                } catch (error) {
-
-                }
-            }
-        }
-    }
-
-    return targetComponent;
-};
-
-module.exports = hoistNonReactStatics;
-module.exports.default = module.exports;
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var inferno = __webpack_require__(1);
-
-/**
- * @module Inferno-Shared
- */ /** TypeDoc Comment */
-var NO_OP = "$NO_OP";
-var ERROR_MSG = "a runtime error occured! Use Inferno in development environment to find the error.";
-// This should be boolean and not reference to window.document
-var isBrowser = !!(typeof window !== "undefined" && window.document);
-// this is MUCH faster than .constructor === Array and instanceof Array
-// in Node 7 and the later versions of V8, slower in older versions though
-var isArray = Array.isArray;
-function isStringOrNumber(o) {
-    var type = typeof o;
-    return type === "string" || type === "number";
-}
-function isNullOrUndef(o) {
-    return isUndefined(o) || isNull(o);
-}
-function isInvalid(o) {
-    return isNull(o) || o === false || isTrue(o) || isUndefined(o);
-}
-function isFunction(o) {
-    return typeof o === "function";
-}
-function isNull(o) {
-    return o === null;
-}
-function isTrue(o) {
-    return o === true;
-}
-function isUndefined(o) {
-    return o === void 0;
-}
-function throwError(message) {
-    if (!message) {
-        message = ERROR_MSG;
-    }
-    throw new Error(("Inferno Error: " + message));
-}
-function combineFrom(first, second) {
-    var out = {};
-    if (first) {
-        for (var key in first) {
-            out[key] = first[key];
-        }
-    }
-    if (second) {
-        for (var key$1 in second) {
-            out[key$1] = second[key$1];
-        }
-    }
-    return out;
-}
-
-/**
- * @module Inferno-Component
- */ /** TypeDoc Comment */
-// Make sure u use EMPTY_OBJ from 'inferno', otherwise it'll be a different reference
-var noOp = ERROR_MSG;
-if (process.env.NODE_ENV !== "production") {
-    noOp =
-        "Inferno Error: Can only update a mounted or mounting component. This usually means you called setState() or forceUpdate() on an unmounted component. This is a no-op.";
-}
-var componentCallbackQueue = new Map();
-// when a components root VNode is also a component, we can run into issues
-// this will recursively look for vNode.parentNode if the VNode is a component
-function updateParentComponentVNodes(vNode, dom) {
-    if (vNode.flags & 28 /* Component */) {
-        var parentVNode = vNode.parentVNode;
-        if (parentVNode) {
-            parentVNode.dom = dom;
-            updateParentComponentVNodes(parentVNode, dom);
-        }
-    }
-}
-var resolvedPromise = Promise.resolve();
-function addToQueue(component, force, callback) {
-    var queue = componentCallbackQueue.get(component);
-    if (queue === void 0) {
-        queue = [];
-        componentCallbackQueue.set(component, queue);
-        resolvedPromise.then((function () {
-            componentCallbackQueue.delete(component);
-            component._updating = true;
-            applyState(component, force, (function () {
-                for (var i = 0, len = queue.length; i < len; i++) {
-                    queue[i].call(component);
-                }
-            }));
-            component._updating = false;
-        }));
-    }
-    if (!isNullOrUndef(callback)) {
-        queue.push(callback);
-    }
-}
-function queueStateChanges(component, newState, callback) {
-    if (isFunction(newState)) {
-        newState = newState(component.state, component.props, component.context);
-    }
-    var pending = component._pendingState;
-    if (isNullOrUndef(pending)) {
-        component._pendingState = pending = newState;
-    }
-    else {
-        for (var stateKey in newState) {
-            pending[stateKey] = newState[stateKey];
-        }
-    }
-    if (isBrowser && !component._pendingSetState && !component._blockRender) {
-        if (!component._updating) {
-            component._pendingSetState = true;
-            component._updating = true;
-            applyState(component, false, callback);
-            component._updating = false;
-        }
-        else {
-            addToQueue(component, false, callback);
-        }
-    }
-    else {
-        var state = component.state;
-        if (state === null) {
-            component.state = pending;
-        }
-        else {
-            for (var key in pending) {
-                state[key] = pending[key];
-            }
-        }
-        component._pendingState = null;
-        if (!isNullOrUndef(callback) && component._blockRender) {
-            component._lifecycle.addListener(callback.bind(component));
-        }
-    }
-}
-function applyState(component, force, callback) {
-    if (component._unmounted) {
-        return;
-    }
-    if (force || !component._blockRender) {
-        component._pendingSetState = false;
-        var pendingState = component._pendingState;
-        var prevState = component.state;
-        var nextState = combineFrom(prevState, pendingState);
-        var props = component.props;
-        var context = component.context;
-        component._pendingState = null;
-        var nextInput = component._updateComponent(prevState, nextState, props, props, context, force, true);
-        var didUpdate = true;
-        if (isInvalid(nextInput)) {
-            nextInput = inferno.createVNode(4096 /* Void */, null);
-        }
-        else if (nextInput === NO_OP) {
-            nextInput = component._lastInput;
-            didUpdate = false;
-        }
-        else if (isStringOrNumber(nextInput)) {
-            nextInput = inferno.createVNode(1 /* Text */, null, null, nextInput);
-        }
-        else if (isArray(nextInput)) {
-            if (process.env.NODE_ENV !== "production") {
-                throwError("a valid Inferno VNode (or null) must be returned from a component render. You may have returned an array or an invalid object.");
-            }
-            throwError();
-        }
-        var lastInput = component._lastInput;
-        var vNode = component._vNode;
-        var parentDom = (lastInput.dom && lastInput.dom.parentNode) ||
-            (lastInput.dom = vNode.dom);
-        component._lastInput = nextInput;
-        if (didUpdate) {
-            var childContext;
-            if (!isNullOrUndef(component.getChildContext)) {
-                childContext = component.getChildContext();
-            }
-            if (isNullOrUndef(childContext)) {
-                childContext = component._childContext;
-            }
-            else {
-                childContext = combineFrom(context, childContext);
-            }
-            var lifeCycle = component._lifecycle;
-            inferno.internal_patch(lastInput, nextInput, parentDom, lifeCycle, childContext, component._isSVG, false);
-            lifeCycle.trigger();
-            if (!isNullOrUndef(component.componentDidUpdate)) {
-                component.componentDidUpdate(props, prevState, context);
-            }
-            if (!isNull(inferno.options.afterUpdate)) {
-                inferno.options.afterUpdate(vNode);
-            }
-        }
-        var dom = (vNode.dom = nextInput.dom);
-        if (inferno.options.findDOMNodeEnabled) {
-            inferno.internal_DOMNodeMap.set(component, nextInput.dom);
-        }
-        updateParentComponentVNodes(vNode, dom);
-    }
-    else {
-        component.state = component._pendingState;
-        component._pendingState = null;
-    }
-    if (!isNullOrUndef(callback)) {
-        callback.call(component);
-    }
-}
-var Component = function Component(props, context) {
-    this.state = null;
-    this._blockRender = false;
-    this._blockSetState = true;
-    this._pendingSetState = false;
-    this._pendingState = null;
-    this._lastInput = null;
-    this._vNode = null;
-    this._unmounted = false;
-    this._lifecycle = null;
-    this._childContext = null;
-    this._isSVG = false;
-    this._updating = true;
-    /** @type {object} */
-    this.props = props || inferno.EMPTY_OBJ;
-    /** @type {object} */
-    this.context = context || inferno.EMPTY_OBJ; // context should not be mutable
-};
-Component.prototype.forceUpdate = function forceUpdate (callback) {
-    if (this._unmounted || !isBrowser) {
-        return;
-    }
-    applyState(this, true, callback);
-};
-Component.prototype.setState = function setState (newState, callback) {
-    if (this._unmounted) {
-        return;
-    }
-    if (!this._blockSetState) {
-        queueStateChanges(this, newState, callback);
-    }
-    else {
-        if (process.env.NODE_ENV !== "production") {
-            throwError("cannot update state via setState() in componentWillUpdate() or constructor.");
-        }
-        throwError();
-    }
-};
-Component.prototype._updateComponent = function _updateComponent (prevState, nextState, prevProps, nextProps, context, force, fromSetState) {
-    if (this._unmounted === true) {
-        if (process.env.NODE_ENV !== "production") {
-            throwError(noOp);
-        }
-        throwError();
-    }
-    if (prevProps !== nextProps ||
-        nextProps === inferno.EMPTY_OBJ ||
-        prevState !== nextState ||
-        force) {
-        if (prevProps !== nextProps || nextProps === inferno.EMPTY_OBJ) {
-            if (!isNullOrUndef(this.componentWillReceiveProps) && !fromSetState) {
-                // keep a copy of state before componentWillReceiveProps
-                var beforeState = combineFrom(this.state);
-                this._blockRender = true;
-                this.componentWillReceiveProps(nextProps, context);
-                this._blockRender = false;
-                var afterState = this.state;
-                if (beforeState !== afterState) {
-                    // if state changed in componentWillReceiveProps, reassign the beforeState
-                    this.state = beforeState;
-                    // set the afterState as pending state so the change gets picked up below
-                    this._pendingSetState = true;
-                    this._pendingState = afterState;
-                }
-            }
-            if (this._pendingSetState) {
-                nextState = combineFrom(nextState, this._pendingState);
-                this._pendingSetState = false;
-                this._pendingState = null;
-            }
-        }
-        /* Update if scu is not defined, or it returns truthy value or force */
-        if (force ||
-            isNullOrUndef(this.shouldComponentUpdate) ||
-            (this.shouldComponentUpdate &&
-                this.shouldComponentUpdate(nextProps, nextState, context))) {
-            if (!isNullOrUndef(this.componentWillUpdate)) {
-                this._blockSetState = true;
-                this.componentWillUpdate(nextProps, nextState, context);
-                this._blockSetState = false;
-            }
-            this.props = nextProps;
-            this.state = nextState;
-            this.context = context;
-            if (inferno.options.beforeRender) {
-                inferno.options.beforeRender(this);
-            }
-            var render = this.render(nextProps, nextState, context);
-            if (inferno.options.afterRender) {
-                inferno.options.afterRender(this);
-            }
-            return render;
-        }
-        else {
-            this.props = nextProps;
-            this.state = nextState;
-            this.context = context;
-        }
-    }
-    return NO_OP;
-};
-// tslint:disable-next-line:no-empty
-Component.prototype.render = function render (nextProps, nextState, nextContext) { };
-
-exports['default'] = Component;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var inferno = __webpack_require__(1);
-
-/**
- * @module Inferno-Shared
- */ /** TypeDoc Comment */
-function isNullOrUndef(o) {
-    return isUndefined(o) || isNull(o);
-}
-function isInvalid(o) {
-    return isNull(o) || o === false || isTrue(o) || isUndefined(o);
-}
-function isString(o) {
-    return typeof o === "string";
-}
-function isNull(o) {
-    return o === null;
-}
-function isTrue(o) {
-    return o === true;
-}
-function isUndefined(o) {
-    return o === void 0;
-}
-function isObject(o) {
-    return typeof o === "object";
-}
-
-/**
- * @module Inferno-Create-Element
- */ /** TypeDoc Comment */
-var componentHooks = new Set();
-componentHooks.add("onComponentWillMount");
-componentHooks.add("onComponentDidMount");
-componentHooks.add("onComponentWillUnmount");
-componentHooks.add("onComponentShouldUpdate");
-componentHooks.add("onComponentWillUpdate");
-componentHooks.add("onComponentDidUpdate");
-/**
- * Creates virtual node
- * @param {string|Function|Component<any, any>} type Type of node
- * @param {object=} props Optional props for virtual node
- * @param {...{object}=} _children Optional children for virtual node
- * @returns {VNode} new virtual ndoe
- */
-function createElement(type, props) {
-    var _children = [], len = arguments.length - 2;
-    while ( len-- > 0 ) _children[ len ] = arguments[ len + 2 ];
-
-    if (isInvalid(type) || isObject(type)) {
-        throw new Error("Inferno Error: createElement() name parameter cannot be undefined, null, false or true, It must be a string, class or function.");
-    }
-    var children = _children;
-    var ref = null;
-    var key = null;
-    var className = null;
-    var flags = 0;
-    var newProps;
-    if (_children) {
-        if (_children.length === 1) {
-            children = _children[0];
-        }
-        else if (_children.length === 0) {
-            children = void 0;
-        }
-    }
-    if (isString(type)) {
-        flags = inferno.getFlagsForElementVnode(type);
-        if (!isNullOrUndef(props)) {
-            newProps = {};
-            for (var prop in props) {
-                if (prop === "className" || prop === "class") {
-                    className = props[prop];
-                }
-                else if (prop === "key") {
-                    key = props.key;
-                }
-                else if (prop === "children" && isUndefined(children)) {
-                    children = props.children; // always favour children args, default to props
-                }
-                else if (prop === "ref") {
-                    ref = props.ref;
-                }
-                else {
-                    newProps[prop] = props[prop];
-                }
-            }
-        }
-    }
-    else {
-        flags = 16 /* ComponentUnknown */;
-        if (!isUndefined(children)) {
-            if (!props) {
-                props = {};
-            }
-            props.children = children;
-            children = null;
-        }
-        if (!isNullOrUndef(props)) {
-            newProps = {};
-            for (var prop$1 in props) {
-                if (componentHooks.has(prop$1)) {
-                    if (!ref) {
-                        ref = {};
-                    }
-                    ref[prop$1] = props[prop$1];
-                }
-                else if (prop$1 === "key") {
-                    key = props.key;
-                }
-                else {
-                    newProps[prop$1] = props[prop$1];
-                }
-            }
-        }
-    }
-    return inferno.createVNode(flags, type, className, children, newProps, key, ref);
-}
-
-exports['default'] = createElement;
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(24).default;
-module.exports.default = module.exports;
-
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, global) {
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var hoistStatics = _interopDefault(__webpack_require__(22));
-var Component = _interopDefault(__webpack_require__(4));
-var createElement = _interopDefault(__webpack_require__(25));
-var redux = __webpack_require__(10);
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-
-
-
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) { if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        { t[p] = s[p]; } }
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        { for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) { if (e.indexOf(p[i]) < 0)
-            { t[p[i]] = s[p[i]]; } } }
-    return t;
-}
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var CLEARED = null;
-// tslint:disable-next-line:no-empty
-var nullSubscriptionHandler = function () { };
-var nullListenerCollection = {
-    // tslint:disable-next-line:no-empty
-    clear: function () { },
-    // tslint:disable-next-line:no-empty
-    notify: function () { },
-    subscribe: function (_) { return nullSubscriptionHandler; }
-};
-var createListenerCollection = function () {
-    // the current/next pattern is copied from redux's createStore code.
-    var current = [];
-    var next = [];
-    return {
-        clear: function () {
-            next = CLEARED;
-            current = CLEARED;
-        },
-        notify: function () {
-            var listeners = (current = next);
-            for (var i = 0; i < listeners.length; i++) {
-                listeners[i]();
-            }
-        },
-        subscribe: function (listener) {
-            var isSubscribed = true;
-            if (next === current) {
-                next = current.slice();
-            }
-            next.push(listener);
-            var unsubscribe = function () {
-                if (!isSubscribed || current === null) {
-                    return;
-                }
-                isSubscribed = false;
-                if (next === current) {
-                    next = current.slice();
-                }
-                next.splice(next.indexOf(listener), 1);
-            };
-            return unsubscribe;
-        }
-    };
-};
-var Subscription = function Subscription(store, parentSub, onStateChange) {
-    this.store = store;
-    this.parentSub = parentSub;
-    this.onStateChange = onStateChange;
-    this.unsubscribe = null;
-    this.listeners = nullListenerCollection;
-};
-Subscription.prototype.addNestedSub = function addNestedSub (listener) {
-    this.trySubscribe();
-    return this.listeners.subscribe(listener);
-};
-Subscription.prototype.notifyNestedSubs = function notifyNestedSubs () {
-    this.listeners.notify();
-};
-Subscription.prototype.isSubscribed = function isSubscribed () {
-    return Boolean(this.unsubscribe);
-};
-Subscription.prototype.trySubscribe = function trySubscribe () {
-    if (!this.unsubscribe) {
-        this.unsubscribe = this.parentSub
-            ? this.parentSub.addNestedSub(this.onStateChange)
-            : this.store.subscribe(this.onStateChange);
-        this.listeners = createListenerCollection();
-    }
-};
-Subscription.prototype.tryUnsubscribe = function tryUnsubscribe () {
-    if (this.unsubscribe) {
-        this.unsubscribe();
-        this.unsubscribe = null;
-        this.listeners.clear();
-        this.listeners = nullListenerCollection;
-    }
-};
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var hotReloadingVersion = 0;
-var dummyState = {};
-// tslint:disable-next-line:no-empty
-var noop = function () { };
-var makeSelectorStateful = function (sourceSelector, store) {
-    // wrap the selector in an object that tracks its results between runs.
-    var selector = {
-        error: null,
-        props: {},
-        run: function runComponentSelector(props) {
-            try {
-                var nextProps = sourceSelector(store.getState(), props);
-                if (nextProps !== selector.props || selector.error) {
-                    selector.shouldComponentUpdate = true;
-                    selector.props = nextProps;
-                    selector.error = null;
-                }
-            }
-            catch (e) {
-                selector.shouldComponentUpdate = true;
-                selector.error = e;
-            }
-        },
-        shouldComponentUpdate: false
-    };
-    return selector;
-};
-// TODO: Move
-var invariant = function (test, error) {
-    if (!test) {
-        throw new Error(error);
-    }
-};
-function getDefaultName(name) {
-    return ("ConnectAdvanced(" + name + ")");
-}
-function connectAdvanced(selectorFactory, _a) {
-    var getDisplayName = _a.getDisplayName; if ( getDisplayName === void 0 ) getDisplayName = getDefaultName;
-    var methodName = _a.methodName; if ( methodName === void 0 ) methodName = "connectAdvanced";
-    var renderCountProp = _a.renderCountProp; if ( renderCountProp === void 0 ) renderCountProp = null;
-    var shouldHandleStateChanges = _a.shouldHandleStateChanges; if ( shouldHandleStateChanges === void 0 ) shouldHandleStateChanges = true;
-    var storeKey = _a.storeKey; if ( storeKey === void 0 ) storeKey = "store";
-    var withRef = _a.withRef; if ( withRef === void 0 ) withRef = false;
-    var connectOptions = __rest(_a, ["getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef"]);
-    var subscriptionKey = storeKey + "Subscription";
-    var version = hotReloadingVersion++;
-    var wrapWithConnect = function (WrappedComponent) {
-        invariant(typeof WrappedComponent === "function", "You must pass a component to the function returned by " +
-            "connect. Instead received " + WrappedComponent);
-        var wrappedComponentName = WrappedComponent.displayName ||
-            WrappedComponent.name ||
-            "Component";
-        var displayName = getDisplayName(wrappedComponentName);
-        var selectorFactoryOptions = Object.assign({}, connectOptions, { WrappedComponent: WrappedComponent,
-            displayName: displayName,
-            getDisplayName: getDisplayName,
-            methodName: methodName,
-            renderCountProp: renderCountProp,
-            shouldHandleStateChanges: shouldHandleStateChanges,
-            storeKey: storeKey,
-            withRef: withRef,
-            wrappedComponentName: wrappedComponentName });
-        var Connect = (function (Component$$1) {
-            function Connect(props, context) {
-                Component$$1.call(this, props, context);
-                this.version = version;
-                this.state = {};
-                this.renderCount = 0;
-                this.store = this.props[storeKey] || this.context[storeKey];
-                this.propsMode = Boolean(props[storeKey]);
-                this.setWrappedInstance = this.setWrappedInstance.bind(this);
-                invariant(!!this.store, "Could not find \"" + storeKey + "\" in either the context or " +
-                    "props of \"" + displayName + "\". " +
-                    "Either wrap the root component in a <Provider>, " +
-                    "or explicitly pass \"" + storeKey + "\" as a prop to \"" + displayName + "\".");
-                this.initSelector();
-                this.initSubscription();
-            }
-
-            if ( Component$$1 ) Connect.__proto__ = Component$$1;
-            Connect.prototype = Object.create( Component$$1 && Component$$1.prototype );
-            Connect.prototype.constructor = Connect;
-            Connect.prototype.getChildContext = function getChildContext () {
-                // If this component received store from props, its subscription should be transparent
-                // to any descendants receiving store+subscription from context; it passes along
-                // subscription passed to it. Otherwise, it shadows the parent subscription, which allows
-                // Connect to control ordering of notifications to flow top-down.
-                var subscription = this.propsMode ? null : this.subscription;
-                return ( obj = {}, obj[subscriptionKey] = subscription || this.context[subscriptionKey], obj );
-                var obj;
-            };
-            Connect.prototype.componentDidMount = function componentDidMount () {
-                if (!shouldHandleStateChanges) {
-                    return;
-                }
-                // componentWillMount fires during server side rendering, but componentDidMount and
-                // componentWillUnmount do not. Because of this, trySubscribe happens during ...didMount.
-                // Otherwise, unsubscription would never take place during SSR, causing a memory leak.
-                // To handle the case where a child component may have triggered a state change by
-                // dispatching an action in its componentWillMount, we have to re-run the select and maybe
-                // re-render.
-                this.subscription.trySubscribe();
-                this.selector.run(this.props);
-                if (this.selector.shouldComponentUpdate) {
-                    this.forceUpdate();
-                }
-            };
-            Connect.prototype.componentWillReceiveProps = function componentWillReceiveProps (nextProps) {
-                this.selector.run(nextProps);
-            };
-            Connect.prototype.shouldComponentUpdate = function shouldComponentUpdate () {
-                return this.selector.shouldComponentUpdate;
-            };
-            Connect.prototype.componentWillUnmount = function componentWillUnmount () {
-                if (this.subscription) {
-                    this.subscription.tryUnsubscribe();
-                }
-                // these are just to guard against extra memory leakage if a parent element doesn't
-                // dereference this instance properly, such as an async callback that never finishes
-                this.subscription = null;
-                this.notifyNestedSubs = noop;
-                this.store = null;
-                this.selector.run = noop;
-                this.selector.shouldComponentUpdate = false;
-            };
-            Connect.prototype.getWrappedInstance = function getWrappedInstance () {
-                invariant(withRef, "To access the wrapped instance, you need to specify " +
-                    "{ withRef: true } in the options argument of the " + methodName + "() call.");
-                return this.wrappedInstance;
-            };
-            Connect.prototype.setWrappedInstance = function setWrappedInstance (ref) {
-                this.wrappedInstance = ref;
-            };
-            Connect.prototype.initSelector = function initSelector () {
-                var sourceSelector = selectorFactory(this.store.dispatch, selectorFactoryOptions);
-                this.selector = makeSelectorStateful(sourceSelector, this.store);
-                this.selector.run(this.props);
-            };
-            Connect.prototype.initSubscription = function initSubscription () {
-                if (!shouldHandleStateChanges) {
-                    return;
-                }
-                // parentSub's source should match where store came from: props vs. context. A component
-                // connected to the store via props shouldn't use subscription from context, or vice versa.
-                var parentSub = (this.propsMode ? this.props : this.context)[subscriptionKey];
-                this.subscription = new Subscription(this.store, parentSub, this.onStateChange.bind(this));
-                // `notifyNestedSubs` is duplicated to handle the case where the component is  unmounted in
-                // the middle of the notification loop, where `this.subscription` will then be null. An
-                // extra null check every change can be avoided by copying the method onto `this` and then
-                // replacing it with a no-op on unmount. This can probably be avoided if Subscription's
-                // listeners logic is changed to not call listeners that have been unsubscribed in the
-                // middle of the notification loop.
-                this.notifyNestedSubs = this.subscription.notifyNestedSubs.bind(this.subscription);
-            };
-            Connect.prototype.onStateChange = function onStateChange () {
-                this.selector.run(this.props);
-                if (!this.selector.shouldComponentUpdate) {
-                    this.notifyNestedSubs();
-                }
-                else {
-                    this.componentDidUpdate = this.notifyNestedSubsOnComponentDidUpdate;
-                    this.setState(dummyState);
-                }
-            };
-            Connect.prototype.notifyNestedSubsOnComponentDidUpdate = function notifyNestedSubsOnComponentDidUpdate () {
-                // `componentDidUpdate` is conditionally implemented when `onStateChange` determines it
-                // needs to notify nested subs. Once called, it unimplements itself until further state
-                // changes occur. Doing it this way vs having a permanent `componentDidMount` that does
-                // a boolean check every time avoids an extra method call most of the time, resulting
-                // in some perf boost.
-                this.componentDidUpdate = undefined;
-                this.notifyNestedSubs();
-            };
-            Connect.prototype.isSubscribed = function isSubscribed () {
-                return Boolean(this.subscription && this.subscription.isSubscribed());
-            };
-            Connect.prototype.addExtraProps = function addExtraProps (props) {
-                if (!withRef && !renderCountProp) {
-                    return props;
-                }
-                // make a shallow copy so that fields added don't leak to the original selector.
-                // this is especially important for 'ref' since that's a reference back to the component
-                // instance. a singleton memoized selector would then be holding a reference to the
-                // instance, preventing the instance from being garbage collected, and that would be bad
-                var withExtras = Object.assign({}, props);
-                if (withRef) {
-                    withExtras.ref = this.setWrappedInstance;
-                }
-                if (renderCountProp) {
-                    withExtras[renderCountProp] = this.renderCount++;
-                }
-                if (this.propsMode && this.subscription) {
-                    withExtras[subscriptionKey] = this.subscription;
-                }
-                return withExtras;
-            };
-            Connect.prototype.render = function render () {
-                var selector = this.selector;
-                selector.shouldComponentUpdate = false;
-                if (selector.error) {
-                    throw selector.error;
-                }
-                else {
-                    return createElement(WrappedComponent, this.addExtraProps(selector.props));
-                }
-            };
-
-            return Connect;
-        }(Component));
-        Connect.displayName = displayName;
-        Connect.WrappedComponent = WrappedComponent;
-        if (process.env.NODE_ENV !== "production") {
-            Connect.prototype.componentWillUpdate = function componentWillUpdate() {
-                if (this.version !== version) {
-                    // We are hot reloading!
-                    this.version = version;
-                    this.initSelector();
-                    if (this.subscription) {
-                        this.subscription.tryUnsubscribe();
-                    }
-                    this.initSubscription();
-                    if (shouldHandleStateChanges) {
-                        this.subscription.trySubscribe();
-                    }
-                }
-            };
-        }
-        return hoistStatics(Connect, WrappedComponent);
-    };
-    return wrapWithConnect;
-}
-
-/**
- * @module Inferno-Shared
- */ /** TypeDoc Comment */
-function toArray(children) {
-    return isArray(children) ? children : children ? [children] : children;
-}
-// this is MUCH faster than .constructor === Array and instanceof Array
-// in Node 7 and the later versions of V8, slower in older versions though
-var isArray = Array.isArray;
-function isNullOrUndef(o) {
-    return isUndefined(o) || isNull(o);
-}
-function isNull(o) {
-    return o === null;
-}
-function isUndefined(o) {
-    return o === void 0;
-}
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var warning$1 = function (message) {
-    if (typeof console !== "undefined" && typeof console.error === "function") {
-        // tslint:disable-next-line:no-console
-        console.error(message);
-    }
-    try {
-        // This error was thrown as a convenience so that if you enable
-        // "break on all exceptions" in your console,
-        // it would pause the execution at this line.
-        throw new Error(message);
-        // tslint:disable-next-line:no-empty
-    }
-    catch (e) { }
-};
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var didWarnAboutReceivingStore = false;
-var warnAboutReceivingStore = function () {
-    if (didWarnAboutReceivingStore) {
-        return;
-    }
-    didWarnAboutReceivingStore = true;
-    warning$1("<Provider> does not support changing `store` on the fly.");
-};
-var Provider = (function (Component$$1) {
-    function Provider(props, context) {
-        Component$$1.call(this, props, context);
-        this.store = props.store;
-    }
-
-    if ( Component$$1 ) Provider.__proto__ = Component$$1;
-    Provider.prototype = Object.create( Component$$1 && Component$$1.prototype );
-    Provider.prototype.constructor = Provider;
-    Provider.prototype.getChildContext = function getChildContext () {
-        return { store: this.store, storeSubscription: null };
-    };
-    Provider.prototype.render = function render () {
-        // TODO: Maybe not allocate an array here for no reason?
-        if (isNullOrUndef(this.props.children) ||
-            toArray(this.props.children).length !== 1) {
-            throw Error("Inferno Error: Only one child is allowed within the `Provider` component");
-        }
-        return this.props.children;
-    };
-
-    return Provider;
-}(Component));
-Provider.displayName = "Provider";
-if (process.env.NODE_ENV !== "production") {
-    Provider.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-        var ref = this;
-        var store = ref.store;
-        var nextStore = nextProps.store;
-        if (store !== nextStore) {
-            warnAboutReceivingStore();
-        }
-    };
-}
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var hasOwn = Object.prototype.hasOwnProperty;
-var shallowEqual = function (a, b) {
-    if (a === b) {
-        return true;
-    }
-    var countA = 0;
-    var countB = 0;
-    for (var key in a) {
-        if (hasOwn.call(a, key) && a[key] !== b[key]) {
-            return false;
-        }
-        countA++;
-    }
-    for (var key$1 in b) {
-        if (hasOwn.call(b, key$1)) {
-            countB++;
-        }
-    }
-    return countA === countB;
-};
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-/** Built-in value references. */
-var Symbol$1 = root.Symbol;
-
-/** Used for built-in method references. */
-var objectProto$1 = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty$1 = objectProto$1.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto$1.toString;
-
-/** Built-in value references. */
-var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty$1.call(value, symToStringTag$1),
-      tag = value[symToStringTag$1];
-
-  try {
-    value[symToStringTag$1] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag$1] = tag;
-    } else {
-      delete value[symToStringTag$1];
-    }
-  }
-  return result;
-}
-
-/** Used for built-in method references. */
-var objectProto$2 = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString$1 = objectProto$2.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString$1.call(value);
-}
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]';
-var undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */
-function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
-}
-
-/** Built-in value references. */
-var getPrototype = overArg(Object.getPrototypeOf, Object);
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-/** `Object#toString` result references. */
-var objectTag = '[object Object]';
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype;
-var objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to infer the `Object` constructor. */
-var objectCtorString = funcToString.call(Object);
-
-/**
- * Checks if `value` is a plain object, that is, an object created by the
- * `Object` constructor or one with a `[[Prototype]]` of `null`.
- *
- * @static
- * @memberOf _
- * @since 0.8.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- * }
- *
- * _.isPlainObject(new Foo);
- * // => false
- *
- * _.isPlainObject([1, 2, 3]);
- * // => false
- *
- * _.isPlainObject({ 'x': 0, 'y': 0 });
- * // => true
- *
- * _.isPlainObject(Object.create(null));
- * // => true
- */
-function isPlainObject(value) {
-  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
-    return false;
-  }
-  var proto = getPrototype(value);
-  if (proto === null) {
-    return true;
-  }
-  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
-    funcToString.call(Ctor) == objectCtorString;
-}
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var verifyPlainObject = function (value, displayName, methodName) {
-    if (!isPlainObject(value)) {
-        warning$1((methodName + "() in " + displayName + " must return a plain object. Instead received " + value + "."));
-    }
-};
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-// TODO: Type
-var wrapMapToPropsConstant = function (getConstant) {
-    var initConstantSelector = function (dispatch, options) {
-        var constant = getConstant(dispatch, options);
-        var constantSelector = function () { return constant; };
-        constantSelector.dependsOnOwnProps = false;
-        return constantSelector;
-    };
-    return initConstantSelector;
-};
-// dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args
-// to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
-// whether mapToProps needs to be invoked when props have changed.
-//
-// A length of one signals that mapToProps does not depend on props from the parent component.
-// A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and
-// therefore not reporting its length accurately..
-var getDependsOnOwnProps = function (mapToProps) { return mapToProps.dependsOnOwnProps !== null &&
-    mapToProps.dependsOnOwnProps !== undefined
-    ? !!mapToProps.dependsOnOwnProps
-    : mapToProps.length !== 1; };
-// Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,
-// this function wraps mapToProps in a proxy function which does several things:
-//
-//  * Detects whether the mapToProps function being called depends on props, which
-//    is used by selectorFactory to decide if it should reinvoke on props changes.
-//
-//  * On first call, handles mapToProps if returns another function, and treats that
-//    new function as the true mapToProps for subsequent calls.
-//
-//  * On first call, verifies the first result is a plain object, in order to warn
-//    the developer that their mapToProps function is not returning a valid result.
-//
-var wrapMapToPropsFunc = function (mapToProps, methodName) {
-    var initProxySelector = function (dispatch, ref) {
-        var displayName = ref.displayName;
-
-        var proxy = function (stateOrDispatch, ownProps) { return proxy.dependsOnOwnProps
-            ? proxy.mapToProps(stateOrDispatch, ownProps)
-            : proxy.mapToProps(stateOrDispatch); };
-        proxy.dependsOnOwnProps = getDependsOnOwnProps(mapToProps);
-        proxy.mapToProps = function (stateOrDispatch, ownProps) {
-            proxy.mapToProps = mapToProps;
-            var props = proxy(stateOrDispatch, ownProps);
-            if (typeof props === "function") {
-                proxy.mapToProps = props;
-                proxy.dependsOnOwnProps = getDependsOnOwnProps(props);
-                props = proxy(stateOrDispatch, ownProps);
-            }
-            if (process.env.NODE_ENV !== "production") {
-                verifyPlainObject(props, displayName, methodName);
-            }
-            return props;
-        };
-        return proxy;
-    };
-    return initProxySelector;
-};
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var whenMapDispatchToPropsIsFunction = function (mapDispatchToProps) { return typeof mapDispatchToProps === "function"
-    ? wrapMapToPropsFunc(mapDispatchToProps, "mapDispatchToProps")
-    : undefined; };
-var whenMapDispatchToPropsIsMissing = function (mapDispatchToProps) { return !mapDispatchToProps
-    ? wrapMapToPropsConstant((function (dispatch) { return ({ dispatch: dispatch }); }))
-    : undefined; };
-var whenMapDispatchToPropsIsObject = function (mapDispatchToProps) { return mapDispatchToProps && typeof mapDispatchToProps === "object"
-    ? wrapMapToPropsConstant((function (dispatch) { return redux.bindActionCreators(mapDispatchToProps, dispatch); }))
-    : undefined; };
-var defaultMapDispatchToPropsFactories = [
-    whenMapDispatchToPropsIsFunction,
-    whenMapDispatchToPropsIsMissing,
-    whenMapDispatchToPropsIsObject
-];
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var whenMapStateToPropsIsFunction = function (mapStateToProps) { return typeof mapStateToProps === "function"
-    ? wrapMapToPropsFunc(mapStateToProps, "mapStateToProps")
-    : undefined; };
-var whenMapStateToPropsIsMissing = function (mapStateToProps) { return !mapStateToProps ? wrapMapToPropsConstant((function () { return ({}); })) : undefined; };
-var defaultMapStateToPropsFactories = [
-    whenMapStateToPropsIsFunction,
-    whenMapStateToPropsIsMissing
-];
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var defaultMergeProps = function (stateProps, dispatchProps, ownProps) { return (Object.assign({}, ownProps, stateProps, dispatchProps)); };
-var wrapMergePropsFunc = function (mergeProps) {
-    var initMergePropsProxy = function (dispatch, ref) {
-        var displayName = ref.displayName;
-        var pure = ref.pure;
-        var areMergedPropsEqual = ref.areMergedPropsEqual;
-
-        var hasRunOnce = false;
-        var mergedProps;
-        var mergePropsProxy = function (stateProps, dispatchProps, ownProps) {
-            var nextMergedProps = mergeProps(stateProps, dispatchProps, ownProps);
-            if (hasRunOnce) {
-                if (!pure || !areMergedPropsEqual(nextMergedProps, mergedProps)) {
-                    mergedProps = nextMergedProps;
-                }
-            }
-            else {
-                hasRunOnce = true;
-                mergedProps = nextMergedProps;
-                if (process.env.NODE_ENV !== "production") {
-                    verifyPlainObject(mergedProps, displayName, "mergeProps");
-                }
-            }
-            return mergedProps;
-        };
-        return mergePropsProxy;
-    };
-    return initMergePropsProxy;
-};
-var whenMergePropsIsFunction = function (mergeProps) { return typeof mergeProps === "function" ? wrapMergePropsFunc(mergeProps) : undefined; };
-var whenMergePropsIsOmitted = function (mergeProps) { return !mergeProps ? function () { return defaultMergeProps; } : undefined; };
-var defaultMergePropsFactories = [
-    whenMergePropsIsFunction,
-    whenMergePropsIsOmitted
-];
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var verify = function (selector, methodName, displayName) {
-    if (!selector) {
-        throw new Error(("Unexpected value for " + methodName + " in " + displayName + "."));
-    }
-    if (methodName === "mapStateToProps" || methodName === "mapDispatchToProps") {
-        if (!selector.hasOwnProperty("dependsOnOwnProps")) {
-            warning$1(("The selector for " + methodName + " of " + displayName + " did not specify a value for dependsOnOwnProps."));
-        }
-    }
-};
-var verifySubselectors = function (mapStateToProps, mapDispatchToProps, mergeProps, displayName) {
-    verify(mapStateToProps, "mapStateToProps", displayName);
-    verify(mapDispatchToProps, "mapDispatchToProps", displayName);
-    verify(mergeProps, "mergeProps", displayName);
-};
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var impureFinalPropsSelectorFactory = function (mapStateToProps, mapDispatchToProps, mergeProps, dispatch) {
-    var impureFinalPropsSelector = function (state, ownProps) {
-        return mergeProps(mapStateToProps(state, ownProps), mapDispatchToProps(dispatch, ownProps), ownProps);
-    };
-    return impureFinalPropsSelector;
-};
-var pureFinalPropsSelectorFactory = function (mapStateToProps, mapDispatchToProps, mergeProps, dispatch, ref) {
-    var areStatesEqual = ref.areStatesEqual;
-    var areOwnPropsEqual = ref.areOwnPropsEqual;
-    var areStatePropsEqual = ref.areStatePropsEqual;
-
-    var hasRunAtLeastOnce = false;
-    var state;
-    var ownProps;
-    var stateProps;
-    var dispatchProps;
-    var mergedProps;
-    var handleFirstCall = function (firstState, firstOwnProps) {
-        state = firstState;
-        ownProps = firstOwnProps;
-        stateProps = mapStateToProps(state, ownProps);
-        dispatchProps = mapDispatchToProps(dispatch, ownProps);
-        mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
-        hasRunAtLeastOnce = true;
-        return mergedProps;
-    };
-    var handleNewPropsAndNewState = function () {
-        stateProps = mapStateToProps(state, ownProps);
-        if (mapDispatchToProps.dependsOnOwnProps) {
-            dispatchProps = mapDispatchToProps(dispatch, ownProps);
-        }
-        mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
-        return mergedProps;
-    };
-    var handleNewProps = function () {
-        if (mapStateToProps.dependsOnOwnProps) {
-            stateProps = mapStateToProps(state, ownProps);
-        }
-        if (mapDispatchToProps.dependsOnOwnProps) {
-            dispatchProps = mapDispatchToProps(dispatch, ownProps);
-        }
-        mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
-        return mergedProps;
-    };
-    var handleNewState = function () {
-        var nextStateProps = mapStateToProps(state, ownProps);
-        var statePropsChanged = !areStatePropsEqual(nextStateProps, stateProps);
-        stateProps = nextStateProps;
-        if (statePropsChanged) {
-            mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
-        }
-        return mergedProps;
-    };
-    var handleSubsequentCalls = function (nextState, nextOwnProps) {
-        var propsChanged = !areOwnPropsEqual(nextOwnProps, ownProps);
-        var stateChanged = !areStatesEqual(nextState, state);
-        state = nextState;
-        ownProps = nextOwnProps;
-        if (propsChanged && stateChanged) {
-            return handleNewPropsAndNewState();
-        }
-        if (propsChanged) {
-            return handleNewProps();
-        }
-        if (stateChanged) {
-            return handleNewState();
-        }
-        return mergedProps;
-    };
-    var pureFinalPropsSelector = function (nextState, nextOwnProps) { return hasRunAtLeastOnce
-        ? handleSubsequentCalls(nextState, nextOwnProps)
-        : handleFirstCall(nextState, nextOwnProps); };
-    return pureFinalPropsSelector;
-};
-// If pure is true, the selector returned by selectorFactory will memoize its results,
-// allowing connectAdvanced's shouldComponentUpdate to return false if final
-// props have not changed. If false, the selector will always return a new
-// object and shouldComponentUpdate will always return true.
-var defaultSelectorFactory = function (dispatch, _a) {
-    var initMapStateToProps = _a.initMapStateToProps;
-    var initMapDispatchToProps = _a.initMapDispatchToProps;
-    var initMergeProps = _a.initMergeProps;
-    var opts = __rest(_a, ["initMapStateToProps", "initMapDispatchToProps", "initMergeProps"]);
-    var options = opts; // trick typescript
-    var mapStateToProps = initMapStateToProps(dispatch, options);
-    var mapDispatchToProps = initMapDispatchToProps(dispatch, options);
-    var mergeProps = initMergeProps(dispatch, options);
-    if (process.env.NODE_ENV !== "production") {
-        verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, options.displayName);
-    }
-    var selectorFactory = options.pure
-        ? pureFinalPropsSelectorFactory
-        : impureFinalPropsSelectorFactory;
-    return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
-};
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var match = function (arg, factories, name) {
-    for (var i = factories.length - 1; i >= 0; i--) {
-        var result = factories[i](arg);
-        if (result) {
-            return result;
-        }
-    }
-    return function (dispatch, options) {
-        throw new Error(("Invalid value of type " + (typeof arg) + " for " + name + " argument when connecting component " + (options
-            .wrappedComponentName) + "."));
-    };
-};
-var strictEqual = function (a, b) { return a === b; };
-// createConnect with default args builds the 'official' connect behavior. Calling it with
-// different options opens up some testing and extensibility scenarios
-var createConnect = function (ref) {
-    if ( ref === void 0 ) ref = {};
-    var connectHOC = ref.connectHOC; if ( connectHOC === void 0 ) connectHOC = connectAdvanced;
-    var mapStateToPropsFactories = ref.mapStateToPropsFactories; if ( mapStateToPropsFactories === void 0 ) mapStateToPropsFactories = defaultMapStateToPropsFactories;
-    var mapDispatchToPropsFactories = ref.mapDispatchToPropsFactories; if ( mapDispatchToPropsFactories === void 0 ) mapDispatchToPropsFactories = defaultMapDispatchToPropsFactories;
-    var mergePropsFactories = ref.mergePropsFactories; if ( mergePropsFactories === void 0 ) mergePropsFactories = defaultMergePropsFactories;
-    var selectorFactory = ref.selectorFactory; if ( selectorFactory === void 0 ) selectorFactory = defaultSelectorFactory;
-
-    return function (mapStateToProps, mapDispatchToProps, mergeProps, _a) {
-    if ( _a === void 0 ) _a = {};
-
-    var pure = _a.pure; if ( pure === void 0 ) pure = true;
-    var areStatesEqual = _a.areStatesEqual; if ( areStatesEqual === void 0 ) areStatesEqual = strictEqual;
-    var areOwnPropsEqual = _a.areOwnPropsEqual; if ( areOwnPropsEqual === void 0 ) areOwnPropsEqual = shallowEqual;
-    var areStatePropsEqual = _a.areStatePropsEqual; if ( areStatePropsEqual === void 0 ) areStatePropsEqual = shallowEqual;
-    var areMergedPropsEqual = _a.areMergedPropsEqual; if ( areMergedPropsEqual === void 0 ) areMergedPropsEqual = shallowEqual;
-    var extraOptions = __rest(_a, ["pure", "areStatesEqual", "areOwnPropsEqual", "areStatePropsEqual", "areMergedPropsEqual"]);
-    var initMapStateToProps = match(mapStateToProps, mapStateToPropsFactories, "mapStateToProps");
-    var initMapDispatchToProps = match(mapDispatchToProps, mapDispatchToPropsFactories, "mapDispatchToProps");
-    var initMergeProps = match(mergeProps, mergePropsFactories, "mergeProps");
-    return connectHOC(selectorFactory, Object.assign({ 
-        // used in error messages
-        methodName: "connect", 
-        // used to compute Connect's displayName from the wrapped component's displayName.
-        // tslint:disable-next-line:object-literal-sort-keys
-        getDisplayName: function (name) { return ("Connect(" + name + ")"); }, 
-        // if mapStateToProps is falsy, the Connect component doesn't subscribe to store state changes
-        shouldHandleStateChanges: !!mapStateToProps, 
-        // passed through to selectorFactory
-        initMapStateToProps: initMapStateToProps,
-        initMapDispatchToProps: initMapDispatchToProps,
-        initMergeProps: initMergeProps,
-        pure: pure,
-        areStatesEqual: areStatesEqual,
-        areOwnPropsEqual: areOwnPropsEqual,
-        areStatePropsEqual: areStatePropsEqual,
-        areMergedPropsEqual: areMergedPropsEqual }, extraOptions));
-};
-};
-var connect = createConnect();
-
-/**
- * @module Inferno-Redux
- */ /** TypeDoc Comment */
-var index = { Provider: Provider, connectAdvanced: connectAdvanced, connect: connect };
-
-exports.Provider = Provider;
-exports.connectAdvanced = connectAdvanced;
-exports.connect = connect;
-exports['default'] = index;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
-
-/***/ }),
-/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4138,118 +1929,82 @@ function poolComponent(vNode) {
  */ /** TypeDoc Comment */
 function unmount(vNode, parentDom, lifecycle, canRecycle, isRecycling) {
     var flags = vNode.flags;
+    var dom = vNode.dom;
     if (flags & 28 /* Component */) {
-        unmountComponent(vNode, parentDom, lifecycle, canRecycle, isRecycling);
+        var instance = vNode.children;
+        var isStatefulComponent$$1 = (flags & 4 /* ComponentClass */) > 0;
+        var props = vNode.props || EMPTY_OBJ;
+        var ref = vNode.ref;
+        if (!isRecycling) {
+            if (isStatefulComponent$$1) {
+                if (!instance._unmounted) {
+                    if (!isNull(options.beforeUnmount)) {
+                        options.beforeUnmount(vNode);
+                    }
+                    if (!isUndefined(instance.componentWillUnmount)) {
+                        instance.componentWillUnmount();
+                    }
+                    if (ref && !isRecycling) {
+                        ref(null);
+                    }
+                    instance._unmounted = true;
+                    if (options.findDOMNodeEnabled) {
+                        componentToDOMNodeMap.delete(instance);
+                    }
+                    unmount(instance._lastInput, null, instance._lifecycle, false, isRecycling);
+                }
+            }
+            else {
+                if (!isNullOrUndef(ref)) {
+                    if (!isNullOrUndef(ref.onComponentWillUnmount)) {
+                        ref.onComponentWillUnmount(dom, props);
+                    }
+                }
+                unmount(instance, null, lifecycle, false, isRecycling);
+            }
+        }
+        if (options.recyclingEnabled &&
+            !isStatefulComponent$$1 &&
+            (parentDom || canRecycle)) {
+            poolComponent(vNode);
+        }
     }
     else if (flags & 3970 /* Element */) {
-        unmountElement(vNode, parentDom, lifecycle, canRecycle, isRecycling);
-    }
-    else if (flags & (1 /* Text */ | 4096 /* Void */)) {
-        unmountVoidOrText(vNode, parentDom);
-    }
-}
-function unmountVoidOrText(vNode, parentDom) {
-    if (!isNull(parentDom)) {
-        removeChild(parentDom, vNode.dom);
-    }
-}
-function unmountComponent(vNode, parentDom, lifecycle, canRecycle, isRecycling) {
-    var instance = vNode.children;
-    var flags = vNode.flags;
-    var isStatefulComponent$$1 = flags & 4;
-    var props = vNode.props || EMPTY_OBJ;
-    var ref = vNode.ref;
-    var dom = vNode.dom;
-    if (!isRecycling) {
-        if (isStatefulComponent$$1) {
-            if (!instance._unmounted) {
-                if (!isNull(options.beforeUnmount)) {
-                    options.beforeUnmount(vNode);
+        var ref$1 = vNode.ref;
+        var props$1 = vNode.props;
+        if (!isRecycling && isFunction(ref$1)) {
+            ref$1(null);
+        }
+        var children = vNode.children;
+        if (!isNullOrUndef(children)) {
+            if (isArray(children)) {
+                for (var i = 0, len = children.length; i < len; i++) {
+                    var child = children[i];
+                    if (!isInvalid(child) && isObject(child)) {
+                        unmount(child, null, lifecycle, false, isRecycling);
+                    }
                 }
-                if (!isUndefined(instance.componentWillUnmount)) {
-                    instance.componentWillUnmount();
-                }
-                if (ref && !isRecycling) {
-                    ref(null);
-                }
-                instance._unmounted = true;
-                if (options.findDOMNodeEnabled) {
-                    componentToDOMNodeMap.delete(instance);
-                }
-                unmount(instance._lastInput, null, instance._lifecycle, false, isRecycling);
+            }
+            else if (isObject(children)) {
+                unmount(children, null, lifecycle, false, isRecycling);
             }
         }
-        else {
-            if (!isNullOrUndef(ref)) {
-                if (!isNullOrUndef(ref.onComponentWillUnmount)) {
-                    ref.onComponentWillUnmount(dom, props);
+        if (!isNull(props$1)) {
+            for (var name in props$1) {
+                // do not add a hasOwnProperty check here, it affects performance
+                if (props$1[name] !== null && isAttrAnEvent(name)) {
+                    patchEvent(name, props$1[name], null, dom);
+                    // We need to set this null, because same props otherwise come back if SCU returns false and we are recyling
+                    props$1[name] = null;
                 }
             }
-            unmount(instance, null, lifecycle, false, isRecycling);
         }
-    }
-    if (parentDom) {
-        removeChild(parentDom, dom);
-    }
-    if (options.recyclingEnabled &&
-        !isStatefulComponent$$1 &&
-        (parentDom || canRecycle)) {
-        poolComponent(vNode);
-    }
-}
-function unmountElement(vNode, parentDom, lifecycle, canRecycle, isRecycling) {
-    var dom = vNode.dom;
-    var ref = vNode.ref;
-    var props = vNode.props;
-    if (ref && !isRecycling) {
-        unmountRef(ref);
-    }
-    var children = vNode.children;
-    if (!isNullOrUndef(children)) {
-        unmountChildren$1(children, lifecycle, isRecycling);
-    }
-    if (!isNull(props)) {
-        for (var name in props) {
-            // do not add a hasOwnProperty check here, it affects performance
-            if (props[name] !== null && isAttrAnEvent(name)) {
-                patchEvent(name, props[name], null, dom);
-                // We need to set this null, because same props otherwise come back if SCU returns false and we are recyling
-                props[name] = null;
-            }
+        if (options.recyclingEnabled && (parentDom || canRecycle)) {
+            poolElement(vNode);
         }
     }
     if (!isNull(parentDom)) {
         removeChild(parentDom, dom);
-    }
-    if (options.recyclingEnabled && (parentDom || canRecycle)) {
-        poolElement(vNode);
-    }
-}
-function unmountChildren$1(children, lifecycle, isRecycling) {
-    if (isArray(children)) {
-        for (var i = 0, len = children.length; i < len; i++) {
-            var child = children[i];
-            if (!isInvalid(child) && isObject(child)) {
-                unmount(child, null, lifecycle, false, isRecycling);
-            }
-        }
-    }
-    else if (isObject(children)) {
-        unmount(children, null, lifecycle, false, isRecycling);
-    }
-}
-function unmountRef(ref) {
-    if (isFunction(ref)) {
-        ref(null);
-    }
-    else {
-        if (isInvalid(ref)) {
-            return;
-        }
-        if (process.env.NODE_ENV !== "production") {
-            throwError('string "refs" are not supported in Inferno 1.0. Use callback "refs" instead.');
-        }
-        throwError();
     }
 }
 
@@ -4564,11 +2319,22 @@ function patchChildren(lastFlags, nextFlags, lastChildren, nextChildren, dom, li
         }
     }
     if (patchArray) {
-        if (patchKeyed) {
-            patchKeyedChildren(lastChildren, nextChildren, dom, lifecycle, context, isSVG, isRecycling);
+        var lastLength = lastChildren.length;
+        var nextLength = nextChildren.length;
+        // Fast path's for both algorithms
+        if (lastLength === 0) {
+            if (nextLength > 0) {
+                mountArrayChildren(nextChildren, dom, lifecycle, context, isSVG);
+            }
+        }
+        else if (nextLength === 0) {
+            removeAllChildren(dom, lastChildren, lifecycle, isRecycling);
+        }
+        else if (patchKeyed) {
+            patchKeyedChildren(lastChildren, nextChildren, dom, lifecycle, context, isSVG, isRecycling, lastLength, nextLength);
         }
         else {
-            patchNonKeyedChildren(lastChildren, nextChildren, dom, lifecycle, context, isSVG, isRecycling);
+            patchNonKeyedChildren(lastChildren, nextChildren, dom, lifecycle, context, isSVG, isRecycling, lastLength, nextLength);
         }
     }
 }
@@ -4604,6 +2370,11 @@ function patchComponent(lastVNode, nextVNode, parentDom, lifecycle, context, isS
                 instance._isSVG = isSVG;
                 var lastInput = instance._lastInput;
                 var nextInput = instance._updateComponent(lastState, nextState, lastProps, nextProps, context, false, false);
+                // If this component was destroyed by its parent do nothing, this is no-op
+                // It can happen by using external callback etc during render / update
+                if (instance._unmounted) {
+                    return false;
+                }
                 var didUpdate = true;
                 // Update component before getting child context
                 var childContext;
@@ -4734,9 +2505,7 @@ function patchText(lastVNode, nextVNode) {
 function patchVoid(lastVNode, nextVNode) {
     nextVNode.dom = lastVNode.dom;
 }
-function patchNonKeyedChildren(lastChildren, nextChildren, dom, lifecycle, context, isSVG, isRecycling) {
-    var lastChildrenLength = lastChildren.length;
-    var nextChildrenLength = nextChildren.length;
+function patchNonKeyedChildren(lastChildren, nextChildren, dom, lifecycle, context, isSVG, isRecycling, lastChildrenLength, nextChildrenLength) {
     var commonLength = lastChildrenLength > nextChildrenLength
         ? nextChildrenLength
         : lastChildrenLength;
@@ -4757,18 +2526,13 @@ function patchNonKeyedChildren(lastChildren, nextChildren, dom, lifecycle, conte
             appendChild(dom, mount(nextChild$1, null, lifecycle, context, isSVG));
         }
     }
-    else if (nextChildrenLength === 0) {
-        removeAllChildren(dom, lastChildren, lifecycle, isRecycling);
-    }
     else if (lastChildrenLength > nextChildrenLength) {
         for (i = commonLength; i < lastChildrenLength; i++) {
             unmount(lastChildren[i], dom, lifecycle, false, isRecycling);
         }
     }
 }
-function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
-    var aLength = a.length;
-    var bLength = b.length;
+function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling, aLength, bLength) {
     var aEnd = aLength - 1;
     var bEnd = bLength - 1;
     var aStart = 0;
@@ -4780,16 +2544,6 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
     var nextNode;
     var nextPos;
     var node;
-    if (aLength === 0) {
-        if (bLength > 0) {
-            mountArrayChildren(b, dom, lifecycle, context, isSVG);
-        }
-        return;
-    }
-    else if (bLength === 0) {
-        removeAllChildren(dom, a, lifecycle, isRecycling);
-        return;
-    }
     var aStartNode = a[aStart];
     var bStartNode = b[bStart];
     var aEndNode = a[aEnd];
@@ -4801,8 +2555,8 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
         b[bEnd] = bEndNode = directClone(bEndNode);
     }
     // Step 1
-    /* eslint no-constant-condition: 0 */
-    outer: while (true) {
+    // tslint:disable-next-line
+    outer: {
         // Sync nodes with the same key at the beginning.
         while (aStartNode.key === bStartNode.key) {
             patch(aStartNode, bStartNode, dom, lifecycle, context, isSVG, isRecycling);
@@ -4831,40 +2585,11 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
                 b[bEnd] = bEndNode = directClone(bEndNode);
             }
         }
-        // Move and sync nodes from right to left.
-        if (aEndNode.key === bStartNode.key) {
-            patch(aEndNode, bStartNode, dom, lifecycle, context, isSVG, isRecycling);
-            insertOrAppend(dom, bStartNode.dom, aStartNode.dom);
-            aEnd--;
-            bStart++;
-            aEndNode = a[aEnd];
-            bStartNode = b[bStart];
-            if (bStartNode.dom) {
-                b[bStart] = bStartNode = directClone(bStartNode);
-            }
-            continue;
-        }
-        // Move and sync nodes from left to right.
-        if (aStartNode.key === bEndNode.key) {
-            patch(aStartNode, bEndNode, dom, lifecycle, context, isSVG, isRecycling);
-            nextPos = bEnd + 1;
-            nextNode = nextPos < b.length ? b[nextPos].dom : null;
-            insertOrAppend(dom, bEndNode.dom, nextNode);
-            aStart++;
-            bEnd--;
-            aStartNode = a[aStart];
-            bEndNode = b[bEnd];
-            if (bEndNode.dom) {
-                b[bEnd] = bEndNode = directClone(bEndNode);
-            }
-            continue;
-        }
-        break;
     }
     if (aStart > aEnd) {
         if (bStart <= bEnd) {
             nextPos = bEnd + 1;
-            nextNode = nextPos < b.length ? b[nextPos].dom : null;
+            nextNode = nextPos < bLength ? b[nextPos].dom : null;
             while (bStart <= bEnd) {
                 node = b[bStart];
                 if (node.dom) {
@@ -4881,21 +2606,21 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
         }
     }
     else {
-        aLength = aEnd - aStart + 1;
-        bLength = bEnd - bStart + 1;
-        var sources = new Array(bLength);
+        var aLeft = aEnd - aStart + 1;
+        var bLeft = bEnd - bStart + 1;
+        var sources = new Array(bLeft);
         // Mark all nodes as inserted.
-        for (i = 0; i < bLength; i++) {
+        for (i = 0; i < bLeft; i++) {
             sources[i] = -1;
         }
         var moved = false;
         var pos = 0;
         var patched = 0;
         // When sizes are small, just loop them through
-        if (bLength <= 4 || aLength * bLength <= 16) {
+        if (bLeft <= 4 || aLeft * bLeft <= 16) {
             for (i = aStart; i <= aEnd; i++) {
                 aNode = a[i];
-                if (patched < bLength) {
+                if (patched < bLeft) {
                     for (j = bStart; j <= bEnd; j++) {
                         bNode = b[j];
                         if (aNode.key === bNode.key) {
@@ -4927,7 +2652,7 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
             // Try to patch same keys
             for (i = aStart; i <= aEnd; i++) {
                 aNode = a[i];
-                if (patched < bLength) {
+                if (patched < bLeft) {
                     j = keyIndex.get(aNode.key);
                     if (!isUndefined(j)) {
                         bNode = b[j];
@@ -4949,9 +2674,9 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
             }
         }
         // fast-path: if nothing patched remove all old and add all new
-        if (aLength === a.length && patched === 0) {
+        if (aLeft === aLength && patched === 0) {
             removeAllChildren(dom, a, lifecycle, isRecycling);
-            while (bStart < bLength) {
+            while (bStart < bLeft) {
                 node = b[bStart];
                 if (node.dom) {
                     b[bStart] = node = directClone(node);
@@ -4961,7 +2686,7 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
             }
         }
         else {
-            i = aLength - patched;
+            i = aLeft - patched;
             while (i > 0) {
                 aNode = a[aStart++];
                 if (!isNull(aNode)) {
@@ -4972,7 +2697,7 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
             if (moved) {
                 var seq = lis_algorithm(sources);
                 j = seq.length - 1;
-                for (i = bLength - 1; i >= 0; i--) {
+                for (i = bLeft - 1; i >= 0; i--) {
                     if (sources[i] === -1) {
                         pos = i + bStart;
                         node = b[pos];
@@ -4980,16 +2705,14 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
                             b[pos] = node = directClone(node);
                         }
                         nextPos = pos + 1;
-                        nextNode = nextPos < b.length ? b[nextPos].dom : null;
-                        insertOrAppend(dom, mount(node, null, lifecycle, context, isSVG), nextNode);
+                        insertOrAppend(dom, mount(node, null, lifecycle, context, isSVG), nextPos < bLength ? b[nextPos].dom : null);
                     }
                     else {
                         if (j < 0 || i !== seq[j]) {
                             pos = i + bStart;
                             node = b[pos];
                             nextPos = pos + 1;
-                            nextNode = nextPos < b.length ? b[nextPos].dom : null;
-                            insertOrAppend(dom, node.dom, nextNode);
+                            insertOrAppend(dom, node.dom, nextPos < bLength ? b[nextPos].dom : null);
                         }
                         else {
                             j--;
@@ -4997,10 +2720,10 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
                     }
                 }
             }
-            else if (patched !== bLength) {
+            else if (patched !== bLeft) {
                 // when patched count doesn't match b length we need to insert those new ones
                 // loop backwards so we can use insertBefore
-                for (i = bLength - 1; i >= 0; i--) {
+                for (i = bLeft - 1; i >= 0; i--) {
                     if (sources[i] === -1) {
                         pos = i + bStart;
                         node = b[pos];
@@ -5008,8 +2731,7 @@ function patchKeyedChildren(a, b, dom, lifecycle, context, isSVG, isRecycling) {
                             b[pos] = node = directClone(node);
                         }
                         nextPos = pos + 1;
-                        nextNode = nextPos < b.length ? b[nextPos].dom : null;
-                        insertOrAppend(dom, mount(node, null, lifecycle, context, isSVG), nextNode);
+                        insertOrAppend(dom, mount(node, null, lifecycle, context, isSVG), nextPos < bLength ? b[nextPos].dom : null);
                     }
                 }
             }
@@ -5028,31 +2750,30 @@ function lis_algorithm(arr) {
     var len = arr.length;
     for (i = 0; i < len; i++) {
         var arrI = arr[i];
-        if (arrI === -1) {
-            continue;
-        }
-        j = result[result.length - 1];
-        if (arr[j] < arrI) {
-            p[i] = j;
-            result.push(i);
-            continue;
-        }
-        u = 0;
-        v = result.length - 1;
-        while (u < v) {
-            c = ((u + v) / 2) | 0;
-            if (arr[result[c]] < arrI) {
-                u = c + 1;
+        if (arrI !== -1) {
+            j = result[result.length - 1];
+            if (arr[j] < arrI) {
+                p[i] = j;
+                result.push(i);
+                continue;
             }
-            else {
-                v = c;
+            u = 0;
+            v = result.length - 1;
+            while (u < v) {
+                c = ((u + v) / 2) | 0;
+                if (arr[result[c]] < arrI) {
+                    u = c + 1;
+                }
+                else {
+                    v = c;
+                }
             }
-        }
-        if (arrI < arr[result[u]]) {
-            if (u > 0) {
-                p[i] = result[u - 1];
+            if (arrI < arr[result[u]]) {
+                if (u > 0) {
+                    p[i] = result[u - 1];
+                }
+                result[u] = i;
             }
-            result[u] = i;
         }
     }
     u = result.length;
@@ -5437,11 +3158,24 @@ function createClassComponentInstance(vNode, Component, props, context, isSVG, l
     // setState callbacks must fire after render is done when called from componentWillReceiveProps or componentWillMount
     instance._lifecycle = lifecycle;
     instance._unmounted = false;
-    instance._pendingSetState = true;
     instance._isSVG = isSVG;
     if (!isNullOrUndef(instance.componentWillMount)) {
         instance._blockRender = true;
         instance.componentWillMount();
+        if (instance._pendingSetState) {
+            var state = instance.state;
+            var pending = instance._pendingState;
+            if (state === null) {
+                instance.state = pending;
+            }
+            else {
+                for (var key in pending) {
+                    state[key] = pending[key];
+                }
+            }
+            instance._pendingSetState = false;
+            instance._pendingState = null;
+        }
         instance._blockRender = false;
     }
     var childContext;
@@ -5485,7 +3219,6 @@ function createClassComponentInstance(vNode, Component, props, context, isSVG, l
             input.parentVNode = vNode;
         }
     }
-    instance._pendingSetState = false;
     instance._lastInput = input;
     return instance;
 }
@@ -5560,11 +3293,11 @@ function replaceWithNewNode(lastNode, nextNode, parentDom, lifecycle, context, i
     nextNode.dom = dom;
     replaceChild(parentDom, dom, lastNode.dom);
 }
-function replaceChild(parentDom, nextDom, lastDom) {
+function replaceChild(parentDom, newDom, lastDom) {
     if (!parentDom) {
         parentDom = lastDom.parentNode;
     }
-    parentDom.replaceChild(nextDom, lastDom);
+    parentDom.replaceChild(newDom, lastDom);
 }
 function removeChild(parentDom, dom) {
     parentDom.removeChild(dom);
@@ -5606,16 +3339,6 @@ function isSamePropsInnerHTML(dom, props) {
 /**
  * @module Inferno
  */ /** TypeDoc Comment */
-function VNode(children, className, flags, key, props, ref, type) {
-    this.children = children;
-    this.className = className;
-    this.dom = null;
-    this.flags = flags;
-    this.key = key;
-    this.props = props;
-    this.ref = ref;
-    this.type = type;
-}
 /**
  * Creates virtual node
  * @param {number} flags
@@ -5634,7 +3357,16 @@ function createVNode(flags, type, className, children, props, key, ref, noNormal
             ? 4 /* ComponentClass */
             : 8 /* ComponentFunction */;
     }
-    var vNode = new VNode(children === void 0 ? null : children, className === void 0 ? null : className, flags, key === void 0 ? null : key, props === void 0 ? null : props, ref === void 0 ? null : ref, type);
+    var vNode = {
+        children: children === void 0 ? null : children,
+        className: className === void 0 ? null : className,
+        dom: null,
+        flags: flags,
+        key: key === void 0 ? null : key,
+        props: props === void 0 ? null : props,
+        ref: ref === void 0 ? null : ref,
+        type: type
+    };
     if (noNormalise !== true) {
         normalize(vNode);
     }
@@ -6041,7 +3773,7 @@ if (process.env.NODE_ENV !== "production") {
             "See http://infernojs.org for more details.");
     }
 }
-var version = "3.8.2";
+var version = "3.9.0";
 // we duplicate it so it plays nicely with different module loading systems
 var index = {
     EMPTY_OBJ: EMPTY_OBJ,
@@ -6081,13 +3813,1521 @@ exports.version = version;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var inferno = __webpack_require__(1);
+
+/**
+ * @module Inferno-Shared
+ */ /** TypeDoc Comment */
+var NO_OP = "$NO_OP";
+var ERROR_MSG = "a runtime error occured! Use Inferno in development environment to find the error.";
+// this is MUCH faster than .constructor === Array and instanceof Array
+// in Node 7 and the later versions of V8, slower in older versions though
+var isArray = Array.isArray;
+function isStringOrNumber(o) {
+    var type = typeof o;
+    return type === "string" || type === "number";
+}
+function isNullOrUndef(o) {
+    return isUndefined(o) || isNull(o);
+}
+function isInvalid(o) {
+    return isNull(o) || o === false || isTrue(o) || isUndefined(o);
+}
+function isFunction(o) {
+    return typeof o === "function";
+}
+function isNull(o) {
+    return o === null;
+}
+function isTrue(o) {
+    return o === true;
+}
+function isUndefined(o) {
+    return o === void 0;
+}
+function throwError(message) {
+    if (!message) {
+        message = ERROR_MSG;
+    }
+    throw new Error(("Inferno Error: " + message));
+}
+function combineFrom(first, second) {
+    var out = {};
+    if (first) {
+        for (var key in first) {
+            out[key] = first[key];
+        }
+    }
+    if (second) {
+        for (var key$1 in second) {
+            out[key$1] = second[key$1];
+        }
+    }
+    return out;
+}
+
+/**
+ * @module Inferno-Component
+ */ /** TypeDoc Comment */
+// Make sure u use EMPTY_OBJ from 'inferno', otherwise it'll be a different reference
+var noOp = ERROR_MSG;
+if (process.env.NODE_ENV !== "production") {
+    noOp =
+        "Inferno Error: Can only update a mounted or mounting component. This usually means you called setState() or forceUpdate() on an unmounted component. This is a no-op.";
+}
+var componentCallbackQueue = new Map();
+// when a components root VNode is also a component, we can run into issues
+// this will recursively look for vNode.parentNode if the VNode is a component
+function updateParentComponentVNodes(vNode, dom) {
+    if (vNode.flags & 28 /* Component */) {
+        var parentVNode = vNode.parentVNode;
+        if (parentVNode) {
+            parentVNode.dom = dom;
+            updateParentComponentVNodes(parentVNode, dom);
+        }
+    }
+}
+var resolvedPromise = Promise.resolve();
+function addToQueue(component, force, callback) {
+    var queue = componentCallbackQueue.get(component);
+    if (queue === void 0) {
+        queue = [];
+        componentCallbackQueue.set(component, queue);
+        resolvedPromise.then((function () {
+            componentCallbackQueue.delete(component);
+            component._updating = true;
+            applyState(component, force, (function () {
+                for (var i = 0, len = queue.length; i < len; i++) {
+                    queue[i].call(component);
+                }
+            }));
+            component._updating = false;
+        }));
+    }
+    if (!isNullOrUndef(callback)) {
+        queue.push(callback);
+    }
+}
+function queueStateChanges(component, newState, callback) {
+    if (isFunction(newState)) {
+        newState = newState(component.state, component.props, component.context);
+    }
+    var pending = component._pendingState;
+    if (isNullOrUndef(pending)) {
+        component._pendingState = newState;
+    }
+    else {
+        for (var stateKey in newState) {
+            pending[stateKey] = newState[stateKey];
+        }
+    }
+    if (!component._pendingSetState && !component._blockRender) {
+        if (!component._updating) {
+            component._pendingSetState = true;
+            component._updating = true;
+            applyState(component, false, callback);
+            component._updating = false;
+        }
+        else {
+            addToQueue(component, false, callback);
+        }
+    }
+    else {
+        component._pendingSetState = true;
+        if (!isNullOrUndef(callback) && component._blockRender) {
+            component._lifecycle.addListener(callback.bind(component));
+        }
+    }
+}
+function applyState(component, force, callback) {
+    if (component._unmounted) {
+        return;
+    }
+    if (force || !component._blockRender) {
+        component._pendingSetState = false;
+        var pendingState = component._pendingState;
+        var prevState = component.state;
+        var nextState = combineFrom(prevState, pendingState);
+        var props = component.props;
+        var context = component.context;
+        component._pendingState = null;
+        var nextInput;
+        var renderOutput = component._updateComponent(prevState, nextState, props, props, context, force, true);
+        var didUpdate = true;
+        if (isInvalid(renderOutput)) {
+            nextInput = inferno.createVNode(4096 /* Void */, null);
+        }
+        else if (renderOutput === NO_OP) {
+            nextInput = component._lastInput;
+            didUpdate = false;
+        }
+        else if (isStringOrNumber(renderOutput)) {
+            nextInput = inferno.createVNode(1 /* Text */, null, null, renderOutput);
+        }
+        else if (isArray(renderOutput)) {
+            if (process.env.NODE_ENV !== "production") {
+                throwError("a valid Inferno VNode (or null) must be returned from a component render. You may have returned an array or an invalid object.");
+            }
+            return throwError();
+        }
+        else {
+            nextInput = renderOutput;
+        }
+        var lastInput = component._lastInput;
+        var vNode = component._vNode;
+        var parentDom = (lastInput.dom && lastInput.dom.parentNode) ||
+            (lastInput.dom = vNode.dom);
+        if (nextInput.flags & 28 /* Component */) {
+            nextInput.parentVNode = vNode;
+        }
+        component._lastInput = nextInput;
+        if (didUpdate) {
+            var childContext;
+            if (!isNullOrUndef(component.getChildContext)) {
+                childContext = component.getChildContext();
+            }
+            if (isNullOrUndef(childContext)) {
+                childContext = component._childContext;
+            }
+            else {
+                childContext = combineFrom(context, childContext);
+            }
+            var lifeCycle = component._lifecycle;
+            inferno.internal_patch(lastInput, nextInput, parentDom, lifeCycle, childContext, component._isSVG, false);
+            // If this component was unmounted by its parent, do nothing. This is no-op
+            if (component._unmounted) {
+                return;
+            }
+            lifeCycle.trigger();
+            if (!isNullOrUndef(component.componentDidUpdate)) {
+                component.componentDidUpdate(props, prevState, context);
+            }
+            if (!isNull(inferno.options.afterUpdate)) {
+                inferno.options.afterUpdate(vNode);
+            }
+        }
+        var dom = (vNode.dom = nextInput.dom);
+        if (inferno.options.findDOMNodeEnabled) {
+            inferno.internal_DOMNodeMap.set(component, nextInput.dom);
+        }
+        updateParentComponentVNodes(vNode, dom);
+    }
+    else {
+        component.state = component._pendingState;
+        component._pendingState = null;
+    }
+    if (!isNullOrUndef(callback)) {
+        callback.call(component);
+    }
+}
+var Component = function Component(props, context) {
+    this.state = null;
+    this._blockRender = false;
+    this._blockSetState = true;
+    this._pendingSetState = false;
+    this._pendingState = null;
+    this._lastInput = null;
+    this._vNode = null;
+    this._unmounted = false;
+    this._lifecycle = null;
+    this._childContext = null;
+    this._isSVG = false;
+    this._updating = true;
+    /** @type {object} */
+    this.props = props || inferno.EMPTY_OBJ;
+    /** @type {object} */
+    this.context = context || inferno.EMPTY_OBJ; // context should not be mutable
+};
+Component.prototype.forceUpdate = function forceUpdate (callback) {
+    if (this._unmounted) {
+        return;
+    }
+    applyState(this, true, callback);
+};
+Component.prototype.setState = function setState (newState, callback) {
+    if (this._unmounted) {
+        return;
+    }
+    if (!this._blockSetState) {
+        queueStateChanges(this, newState, callback);
+    }
+    else {
+        if (process.env.NODE_ENV !== "production") {
+            throwError("cannot update state via setState() in componentWillUpdate() or constructor.");
+        }
+        throwError();
+    }
+};
+Component.prototype._updateComponent = function _updateComponent (prevState, nextState, prevProps, nextProps, context, force, fromSetState) {
+    if (this._unmounted === true) {
+        if (process.env.NODE_ENV !== "production") {
+            throwError(noOp);
+        }
+        throwError();
+    }
+    if (prevProps !== nextProps ||
+        nextProps === inferno.EMPTY_OBJ ||
+        prevState !== nextState ||
+        force) {
+        if (prevProps !== nextProps || nextProps === inferno.EMPTY_OBJ) {
+            if (!isNullOrUndef(this.componentWillReceiveProps) && !fromSetState) {
+                this._blockRender = true;
+                this.componentWillReceiveProps(nextProps, context);
+                // If this component was removed during its own update do nothing...
+                if (this._unmounted) {
+                    return NO_OP;
+                }
+                this._blockRender = false;
+            }
+            if (this._pendingSetState) {
+                nextState = combineFrom(nextState, this._pendingState);
+                this._pendingSetState = false;
+                this._pendingState = null;
+            }
+        }
+        /* Update if scu is not defined, or it returns truthy value or force */
+        if (force ||
+            isNullOrUndef(this.shouldComponentUpdate) ||
+            (this.shouldComponentUpdate &&
+                this.shouldComponentUpdate(nextProps, nextState, context))) {
+            if (!isNullOrUndef(this.componentWillUpdate)) {
+                this._blockSetState = true;
+                this.componentWillUpdate(nextProps, nextState, context);
+                this._blockSetState = false;
+            }
+            this.props = nextProps;
+            this.state = nextState;
+            this.context = context;
+            if (inferno.options.beforeRender) {
+                inferno.options.beforeRender(this);
+            }
+            var render = this.render(nextProps, nextState, context);
+            if (inferno.options.afterRender) {
+                inferno.options.afterRender(this);
+            }
+            return render;
+        }
+        else {
+            this.props = nextProps;
+            this.state = nextState;
+            this.context = context;
+        }
+    }
+    return NO_OP;
+};
+// tslint:disable-next-line:no-empty
+Component.prototype.render = function render (nextProps, nextState, nextContext) { };
+
+exports['default'] = Component;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, global) {
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var hoistStatics = _interopDefault(__webpack_require__(17));
+var Component = _interopDefault(__webpack_require__(3));
+var createElement = _interopDefault(__webpack_require__(18));
+var redux = __webpack_require__(5);
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+
+
+
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) { if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        { t[p] = s[p]; } }
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        { for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) { if (e.indexOf(p[i]) < 0)
+            { t[p[i]] = s[p[i]]; } } }
+    return t;
+}
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var CLEARED = null;
+// tslint:disable-next-line:no-empty
+var nullSubscriptionHandler = function () { };
+var nullListenerCollection = {
+    // tslint:disable-next-line:no-empty
+    clear: function () { },
+    // tslint:disable-next-line:no-empty
+    notify: function () { },
+    subscribe: function (_) { return nullSubscriptionHandler; }
+};
+var createListenerCollection = function () {
+    // the current/next pattern is copied from redux's createStore code.
+    var current = [];
+    var next = [];
+    return {
+        clear: function () {
+            next = CLEARED;
+            current = CLEARED;
+        },
+        notify: function () {
+            var listeners = (current = next);
+            for (var i = 0; i < listeners.length; i++) {
+                listeners[i]();
+            }
+        },
+        subscribe: function (listener) {
+            var isSubscribed = true;
+            if (next === current) {
+                next = current.slice();
+            }
+            next.push(listener);
+            var unsubscribe = function () {
+                if (!isSubscribed || current === null) {
+                    return;
+                }
+                isSubscribed = false;
+                if (next === current) {
+                    next = current.slice();
+                }
+                next.splice(next.indexOf(listener), 1);
+            };
+            return unsubscribe;
+        }
+    };
+};
+var Subscription = function Subscription(store, parentSub, onStateChange) {
+    this.store = store;
+    this.parentSub = parentSub;
+    this.onStateChange = onStateChange;
+    this.unsubscribe = null;
+    this.listeners = nullListenerCollection;
+};
+Subscription.prototype.addNestedSub = function addNestedSub (listener) {
+    this.trySubscribe();
+    return this.listeners.subscribe(listener);
+};
+Subscription.prototype.notifyNestedSubs = function notifyNestedSubs () {
+    this.listeners.notify();
+};
+Subscription.prototype.isSubscribed = function isSubscribed () {
+    return Boolean(this.unsubscribe);
+};
+Subscription.prototype.trySubscribe = function trySubscribe () {
+    if (!this.unsubscribe) {
+        this.unsubscribe = this.parentSub
+            ? this.parentSub.addNestedSub(this.onStateChange)
+            : this.store.subscribe(this.onStateChange);
+        this.listeners = createListenerCollection();
+    }
+};
+Subscription.prototype.tryUnsubscribe = function tryUnsubscribe () {
+    if (this.unsubscribe) {
+        this.unsubscribe();
+        this.unsubscribe = null;
+        this.listeners.clear();
+        this.listeners = nullListenerCollection;
+    }
+};
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var hotReloadingVersion = 0;
+var dummyState = {};
+// tslint:disable-next-line:no-empty
+var noop = function () { };
+var makeSelectorStateful = function (sourceSelector, store) {
+    // wrap the selector in an object that tracks its results between runs.
+    var selector = {
+        error: null,
+        props: {},
+        run: function runComponentSelector(props) {
+            try {
+                var nextProps = sourceSelector(store.getState(), props);
+                if (nextProps !== selector.props || selector.error) {
+                    selector.shouldComponentUpdate = true;
+                    selector.props = nextProps;
+                    selector.error = null;
+                }
+            }
+            catch (e) {
+                selector.shouldComponentUpdate = true;
+                selector.error = e;
+            }
+        },
+        shouldComponentUpdate: false
+    };
+    return selector;
+};
+// TODO: Move
+var invariant = function (test, error) {
+    if (!test) {
+        throw new Error(error);
+    }
+};
+function getDefaultName(name) {
+    return ("ConnectAdvanced(" + name + ")");
+}
+function connectAdvanced(selectorFactory, _a) {
+    var getDisplayName = _a.getDisplayName; if ( getDisplayName === void 0 ) getDisplayName = getDefaultName;
+    var methodName = _a.methodName; if ( methodName === void 0 ) methodName = "connectAdvanced";
+    var renderCountProp = _a.renderCountProp; if ( renderCountProp === void 0 ) renderCountProp = null;
+    var shouldHandleStateChanges = _a.shouldHandleStateChanges; if ( shouldHandleStateChanges === void 0 ) shouldHandleStateChanges = true;
+    var storeKey = _a.storeKey; if ( storeKey === void 0 ) storeKey = "store";
+    var withRef = _a.withRef; if ( withRef === void 0 ) withRef = false;
+    var connectOptions = __rest(_a, ["getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef"]);
+    var subscriptionKey = storeKey + "Subscription";
+    var version = hotReloadingVersion++;
+    var wrapWithConnect = function (WrappedComponent) {
+        invariant(typeof WrappedComponent === "function", "You must pass a component to the function returned by " +
+            "connect. Instead received " + WrappedComponent);
+        var wrappedComponentName = WrappedComponent.displayName ||
+            WrappedComponent.name ||
+            "Component";
+        var displayName = getDisplayName(wrappedComponentName);
+        var selectorFactoryOptions = Object.assign({}, connectOptions, { WrappedComponent: WrappedComponent,
+            displayName: displayName,
+            getDisplayName: getDisplayName,
+            methodName: methodName,
+            renderCountProp: renderCountProp,
+            shouldHandleStateChanges: shouldHandleStateChanges,
+            storeKey: storeKey,
+            withRef: withRef,
+            wrappedComponentName: wrappedComponentName });
+        var Connect = (function (Component$$1) {
+            function Connect(props, context) {
+                Component$$1.call(this, props, context);
+                this.version = version;
+                this.state = {};
+                this.renderCount = 0;
+                this.store = this.props[storeKey] || this.context[storeKey];
+                this.propsMode = Boolean(props[storeKey]);
+                this.setWrappedInstance = this.setWrappedInstance.bind(this);
+                invariant(!!this.store, "Could not find \"" + storeKey + "\" in either the context or " +
+                    "props of \"" + displayName + "\". " +
+                    "Either wrap the root component in a <Provider>, " +
+                    "or explicitly pass \"" + storeKey + "\" as a prop to \"" + displayName + "\".");
+                this.initSelector();
+                this.initSubscription();
+            }
+
+            if ( Component$$1 ) Connect.__proto__ = Component$$1;
+            Connect.prototype = Object.create( Component$$1 && Component$$1.prototype );
+            Connect.prototype.constructor = Connect;
+            Connect.prototype.getChildContext = function getChildContext () {
+                // If this component received store from props, its subscription should be transparent
+                // to any descendants receiving store+subscription from context; it passes along
+                // subscription passed to it. Otherwise, it shadows the parent subscription, which allows
+                // Connect to control ordering of notifications to flow top-down.
+                var subscription = this.propsMode ? null : this.subscription;
+                return ( obj = {}, obj[subscriptionKey] = subscription || this.context[subscriptionKey], obj );
+                var obj;
+            };
+            Connect.prototype.componentDidMount = function componentDidMount () {
+                if (!shouldHandleStateChanges) {
+                    return;
+                }
+                // componentWillMount fires during server side rendering, but componentDidMount and
+                // componentWillUnmount do not. Because of this, trySubscribe happens during ...didMount.
+                // Otherwise, unsubscription would never take place during SSR, causing a memory leak.
+                // To handle the case where a child component may have triggered a state change by
+                // dispatching an action in its componentWillMount, we have to re-run the select and maybe
+                // re-render.
+                this.subscription.trySubscribe();
+                this.selector.run(this.props);
+                if (this.selector.shouldComponentUpdate) {
+                    this.forceUpdate();
+                }
+            };
+            Connect.prototype.componentWillReceiveProps = function componentWillReceiveProps (nextProps) {
+                this.selector.run(nextProps);
+            };
+            Connect.prototype.shouldComponentUpdate = function shouldComponentUpdate () {
+                return this.selector.shouldComponentUpdate;
+            };
+            Connect.prototype.componentWillUnmount = function componentWillUnmount () {
+                if (this.subscription) {
+                    this.subscription.tryUnsubscribe();
+                }
+                // these are just to guard against extra memory leakage if a parent element doesn't
+                // dereference this instance properly, such as an async callback that never finishes
+                this.subscription = null;
+                this.notifyNestedSubs = noop;
+                this.store = null;
+                this.selector.run = noop;
+                this.selector.shouldComponentUpdate = false;
+            };
+            Connect.prototype.getWrappedInstance = function getWrappedInstance () {
+                invariant(withRef, "To access the wrapped instance, you need to specify " +
+                    "{ withRef: true } in the options argument of the " + methodName + "() call.");
+                return this.wrappedInstance;
+            };
+            Connect.prototype.setWrappedInstance = function setWrappedInstance (ref) {
+                this.wrappedInstance = ref;
+            };
+            Connect.prototype.initSelector = function initSelector () {
+                var sourceSelector = selectorFactory(this.store.dispatch, selectorFactoryOptions);
+                this.selector = makeSelectorStateful(sourceSelector, this.store);
+                this.selector.run(this.props);
+            };
+            Connect.prototype.initSubscription = function initSubscription () {
+                if (!shouldHandleStateChanges) {
+                    return;
+                }
+                // parentSub's source should match where store came from: props vs. context. A component
+                // connected to the store via props shouldn't use subscription from context, or vice versa.
+                var parentSub = (this.propsMode ? this.props : this.context)[subscriptionKey];
+                this.subscription = new Subscription(this.store, parentSub, this.onStateChange.bind(this));
+                // `notifyNestedSubs` is duplicated to handle the case where the component is  unmounted in
+                // the middle of the notification loop, where `this.subscription` will then be null. An
+                // extra null check every change can be avoided by copying the method onto `this` and then
+                // replacing it with a no-op on unmount. This can probably be avoided if Subscription's
+                // listeners logic is changed to not call listeners that have been unsubscribed in the
+                // middle of the notification loop.
+                this.notifyNestedSubs = this.subscription.notifyNestedSubs.bind(this.subscription);
+            };
+            Connect.prototype.onStateChange = function onStateChange () {
+                this.selector.run(this.props);
+                if (!this.selector.shouldComponentUpdate) {
+                    this.notifyNestedSubs();
+                }
+                else {
+                    this.componentDidUpdate = this.notifyNestedSubsOnComponentDidUpdate;
+                    this.setState(dummyState);
+                }
+            };
+            Connect.prototype.notifyNestedSubsOnComponentDidUpdate = function notifyNestedSubsOnComponentDidUpdate () {
+                // `componentDidUpdate` is conditionally implemented when `onStateChange` determines it
+                // needs to notify nested subs. Once called, it unimplements itself until further state
+                // changes occur. Doing it this way vs having a permanent `componentDidMount` that does
+                // a boolean check every time avoids an extra method call most of the time, resulting
+                // in some perf boost.
+                this.componentDidUpdate = undefined;
+                this.notifyNestedSubs();
+            };
+            Connect.prototype.isSubscribed = function isSubscribed () {
+                return Boolean(this.subscription && this.subscription.isSubscribed());
+            };
+            Connect.prototype.addExtraProps = function addExtraProps (props) {
+                if (!withRef && !renderCountProp) {
+                    return props;
+                }
+                // make a shallow copy so that fields added don't leak to the original selector.
+                // this is especially important for 'ref' since that's a reference back to the component
+                // instance. a singleton memoized selector would then be holding a reference to the
+                // instance, preventing the instance from being garbage collected, and that would be bad
+                var withExtras = Object.assign({}, props);
+                if (withRef) {
+                    withExtras.ref = this.setWrappedInstance;
+                }
+                if (renderCountProp) {
+                    withExtras[renderCountProp] = this.renderCount++;
+                }
+                if (this.propsMode && this.subscription) {
+                    withExtras[subscriptionKey] = this.subscription;
+                }
+                return withExtras;
+            };
+            Connect.prototype.render = function render () {
+                var selector = this.selector;
+                selector.shouldComponentUpdate = false;
+                if (selector.error) {
+                    throw selector.error;
+                }
+                else {
+                    return createElement(WrappedComponent, this.addExtraProps(selector.props));
+                }
+            };
+
+            return Connect;
+        }(Component));
+        Connect.displayName = displayName;
+        Connect.WrappedComponent = WrappedComponent;
+        if (process.env.NODE_ENV !== "production") {
+            Connect.prototype.componentWillUpdate = function componentWillUpdate() {
+                if (this.version !== version) {
+                    // We are hot reloading!
+                    this.version = version;
+                    this.initSelector();
+                    if (this.subscription) {
+                        this.subscription.tryUnsubscribe();
+                    }
+                    this.initSubscription();
+                    if (shouldHandleStateChanges) {
+                        this.subscription.trySubscribe();
+                    }
+                }
+            };
+        }
+        return hoistStatics(Connect, WrappedComponent);
+    };
+    return wrapWithConnect;
+}
+
+/**
+ * @module Inferno-Shared
+ */ /** TypeDoc Comment */
+function toArray(children) {
+    return isArray(children) ? children : children ? [children] : children;
+}
+// this is MUCH faster than .constructor === Array and instanceof Array
+// in Node 7 and the later versions of V8, slower in older versions though
+var isArray = Array.isArray;
+function isNullOrUndef(o) {
+    return isUndefined(o) || isNull(o);
+}
+function isNull(o) {
+    return o === null;
+}
+function isUndefined(o) {
+    return o === void 0;
+}
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var warning$1 = function (message) {
+    if (typeof console !== "undefined" && typeof console.error === "function") {
+        // tslint:disable-next-line:no-console
+        console.error(message);
+    }
+    try {
+        // This error was thrown as a convenience so that if you enable
+        // "break on all exceptions" in your console,
+        // it would pause the execution at this line.
+        throw new Error(message);
+        // tslint:disable-next-line:no-empty
+    }
+    catch (e) { }
+};
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var didWarnAboutReceivingStore = false;
+var warnAboutReceivingStore = function () {
+    if (didWarnAboutReceivingStore) {
+        return;
+    }
+    didWarnAboutReceivingStore = true;
+    warning$1("<Provider> does not support changing `store` on the fly.");
+};
+var Provider = (function (Component$$1) {
+    function Provider(props, context) {
+        Component$$1.call(this, props, context);
+        this.store = props.store;
+    }
+
+    if ( Component$$1 ) Provider.__proto__ = Component$$1;
+    Provider.prototype = Object.create( Component$$1 && Component$$1.prototype );
+    Provider.prototype.constructor = Provider;
+    Provider.prototype.getChildContext = function getChildContext () {
+        return { store: this.store, storeSubscription: null };
+    };
+    Provider.prototype.render = function render () {
+        // TODO: Maybe not allocate an array here for no reason?
+        if (isNullOrUndef(this.props.children) ||
+            toArray(this.props.children).length !== 1) {
+            throw Error("Inferno Error: Only one child is allowed within the `Provider` component");
+        }
+        return this.props.children;
+    };
+
+    return Provider;
+}(Component));
+Provider.displayName = "Provider";
+if (process.env.NODE_ENV !== "production") {
+    Provider.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        var ref = this;
+        var store = ref.store;
+        var nextStore = nextProps.store;
+        if (store !== nextStore) {
+            warnAboutReceivingStore();
+        }
+    };
+}
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var hasOwn = Object.prototype.hasOwnProperty;
+var shallowEqual = function (a, b) {
+    if (a === b) {
+        return true;
+    }
+    var countA = 0;
+    var countB = 0;
+    for (var key in a) {
+        if (hasOwn.call(a, key) && a[key] !== b[key]) {
+            return false;
+        }
+        countA++;
+    }
+    for (var key$1 in b) {
+        if (hasOwn.call(b, key$1)) {
+            countB++;
+        }
+    }
+    return countA === countB;
+};
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Built-in value references. */
+var Symbol$1 = root.Symbol;
+
+/** Used for built-in method references. */
+var objectProto$1 = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty$1 = objectProto$1.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto$1.toString;
+
+/** Built-in value references. */
+var symToStringTag$1 = Symbol$1 ? Symbol$1.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty$1.call(value, symToStringTag$1),
+      tag = value[symToStringTag$1];
+
+  try {
+    value[symToStringTag$1] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag$1] = tag;
+    } else {
+      delete value[symToStringTag$1];
+    }
+  }
+  return result;
+}
+
+/** Used for built-in method references. */
+var objectProto$2 = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString$1 = objectProto$2.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString$1.call(value);
+}
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]';
+var undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = Symbol$1 ? Symbol$1.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? getRawTag(value)
+    : objectToString(value);
+}
+
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+/** Built-in value references. */
+var getPrototype = overArg(Object.getPrototypeOf, Object);
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+/** `Object#toString` result references. */
+var objectTag = '[object Object]';
+
+/** Used for built-in method references. */
+var funcProto = Function.prototype;
+var objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to infer the `Object` constructor. */
+var objectCtorString = funcToString.call(Object);
+
+/**
+ * Checks if `value` is a plain object, that is, an object created by the
+ * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.8.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ * }
+ *
+ * _.isPlainObject(new Foo);
+ * // => false
+ *
+ * _.isPlainObject([1, 2, 3]);
+ * // => false
+ *
+ * _.isPlainObject({ 'x': 0, 'y': 0 });
+ * // => true
+ *
+ * _.isPlainObject(Object.create(null));
+ * // => true
+ */
+function isPlainObject(value) {
+  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
+    return false;
+  }
+  var proto = getPrototype(value);
+  if (proto === null) {
+    return true;
+  }
+  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+    funcToString.call(Ctor) == objectCtorString;
+}
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var verifyPlainObject = function (value, displayName, methodName) {
+    if (!isPlainObject(value)) {
+        warning$1((methodName + "() in " + displayName + " must return a plain object. Instead received " + value + "."));
+    }
+};
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+// TODO: Type
+var wrapMapToPropsConstant = function (getConstant) {
+    return function (dispatch, options) {
+        var constant = getConstant(dispatch, options);
+        var constantSelector = function () { return constant; };
+        constantSelector.dependsOnOwnProps = false;
+        return constantSelector;
+    };
+};
+// dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args
+// to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
+// whether mapToProps needs to be invoked when props have changed.
+//
+// A length of one signals that mapToProps does not depend on props from the parent component.
+// A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and
+// therefore not reporting its length accurately..
+var getDependsOnOwnProps = function (mapToProps) { return mapToProps.dependsOnOwnProps !== null &&
+    mapToProps.dependsOnOwnProps !== undefined
+    ? !!mapToProps.dependsOnOwnProps
+    : mapToProps.length !== 1; };
+// Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,
+// this function wraps mapToProps in a proxy function which does several things:
+//
+//  * Detects whether the mapToProps function being called depends on props, which
+//    is used by selectorFactory to decide if it should reinvoke on props changes.
+//
+//  * On first call, handles mapToProps if returns another function, and treats that
+//    new function as the true mapToProps for subsequent calls.
+//
+//  * On first call, verifies the first result is a plain object, in order to warn
+//    the developer that their mapToProps function is not returning a valid result.
+//
+var wrapMapToPropsFunc = function (mapToProps, methodName) {
+    return function (dispatch, ref) {
+        var displayName = ref.displayName;
+
+        var proxy = function (stateOrDispatch, ownProps) { return proxy.dependsOnOwnProps
+            ? proxy.mapToProps(stateOrDispatch, ownProps)
+            : proxy.mapToProps(stateOrDispatch); };
+        proxy.dependsOnOwnProps = getDependsOnOwnProps(mapToProps);
+        proxy.mapToProps = function (stateOrDispatch, ownProps) {
+            proxy.mapToProps = mapToProps;
+            var props = proxy(stateOrDispatch, ownProps);
+            if (typeof props === "function") {
+                proxy.mapToProps = props;
+                proxy.dependsOnOwnProps = getDependsOnOwnProps(props);
+                props = proxy(stateOrDispatch, ownProps);
+            }
+            if (process.env.NODE_ENV !== "production") {
+                verifyPlainObject(props, displayName, methodName);
+            }
+            return props;
+        };
+        return proxy;
+    };
+};
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var whenMapDispatchToPropsIsFunction = function (mapDispatchToProps) { return typeof mapDispatchToProps === "function"
+    ? wrapMapToPropsFunc(mapDispatchToProps, "mapDispatchToProps")
+    : undefined; };
+var whenMapDispatchToPropsIsMissing = function (mapDispatchToProps) { return !mapDispatchToProps
+    ? wrapMapToPropsConstant((function (dispatch) { return ({ dispatch: dispatch }); }))
+    : undefined; };
+var whenMapDispatchToPropsIsObject = function (mapDispatchToProps) { return mapDispatchToProps && typeof mapDispatchToProps === "object"
+    ? wrapMapToPropsConstant((function (dispatch) { return redux.bindActionCreators(mapDispatchToProps, dispatch); }))
+    : undefined; };
+var defaultMapDispatchToPropsFactories = [
+    whenMapDispatchToPropsIsFunction,
+    whenMapDispatchToPropsIsMissing,
+    whenMapDispatchToPropsIsObject
+];
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var whenMapStateToPropsIsFunction = function (mapStateToProps) { return typeof mapStateToProps === "function"
+    ? wrapMapToPropsFunc(mapStateToProps, "mapStateToProps")
+    : undefined; };
+var whenMapStateToPropsIsMissing = function (mapStateToProps) { return !mapStateToProps ? wrapMapToPropsConstant((function () { return ({}); })) : undefined; };
+var defaultMapStateToPropsFactories = [
+    whenMapStateToPropsIsFunction,
+    whenMapStateToPropsIsMissing
+];
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var defaultMergeProps = function (stateProps, dispatchProps, ownProps) { return (Object.assign({}, ownProps, stateProps, dispatchProps)); };
+var wrapMergePropsFunc = function (mergeProps) {
+    return function (dispatch, ref) {
+        var displayName = ref.displayName;
+        var pure = ref.pure;
+        var areMergedPropsEqual = ref.areMergedPropsEqual;
+
+        var hasRunOnce = false;
+        var mergedProps;
+        return function (stateProps, dispatchProps, ownProps) {
+            var nextMergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+            if (hasRunOnce) {
+                if (!pure || !areMergedPropsEqual(nextMergedProps, mergedProps)) {
+                    mergedProps = nextMergedProps;
+                }
+            }
+            else {
+                hasRunOnce = true;
+                mergedProps = nextMergedProps;
+                if (process.env.NODE_ENV !== "production") {
+                    verifyPlainObject(mergedProps, displayName, "mergeProps");
+                }
+            }
+            return mergedProps;
+        };
+    };
+};
+var whenMergePropsIsFunction = function (mergeProps) { return typeof mergeProps === "function" ? wrapMergePropsFunc(mergeProps) : undefined; };
+var whenMergePropsIsOmitted = function (mergeProps) { return !mergeProps ? function () { return defaultMergeProps; } : undefined; };
+var defaultMergePropsFactories = [
+    whenMergePropsIsFunction,
+    whenMergePropsIsOmitted
+];
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var verify = function (selector, methodName, displayName) {
+    if (!selector) {
+        throw new Error(("Unexpected value for " + methodName + " in " + displayName + "."));
+    }
+    if (methodName === "mapStateToProps" || methodName === "mapDispatchToProps") {
+        if (!selector.hasOwnProperty("dependsOnOwnProps")) {
+            warning$1(("The selector for " + methodName + " of " + displayName + " did not specify a value for dependsOnOwnProps."));
+        }
+    }
+};
+var verifySubselectors = function (mapStateToProps, mapDispatchToProps, mergeProps, displayName) {
+    verify(mapStateToProps, "mapStateToProps", displayName);
+    verify(mapDispatchToProps, "mapDispatchToProps", displayName);
+    verify(mergeProps, "mergeProps", displayName);
+};
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var impureFinalPropsSelectorFactory = function (mapStateToProps, mapDispatchToProps, mergeProps, dispatch) {
+    var impureFinalPropsSelector = function (state, ownProps) {
+        return mergeProps(mapStateToProps(state, ownProps), mapDispatchToProps(dispatch, ownProps), ownProps);
+    };
+    return impureFinalPropsSelector;
+};
+var pureFinalPropsSelectorFactory = function (mapStateToProps, mapDispatchToProps, mergeProps, dispatch, ref) {
+    var areStatesEqual = ref.areStatesEqual;
+    var areOwnPropsEqual = ref.areOwnPropsEqual;
+    var areStatePropsEqual = ref.areStatePropsEqual;
+
+    var hasRunAtLeastOnce = false;
+    var state;
+    var ownProps;
+    var stateProps;
+    var dispatchProps;
+    var mergedProps;
+    var handleFirstCall = function (firstState, firstOwnProps) {
+        state = firstState;
+        ownProps = firstOwnProps;
+        stateProps = mapStateToProps(state, ownProps);
+        dispatchProps = mapDispatchToProps(dispatch, ownProps);
+        mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+        hasRunAtLeastOnce = true;
+        return mergedProps;
+    };
+    var handleNewPropsAndNewState = function () {
+        stateProps = mapStateToProps(state, ownProps);
+        if (mapDispatchToProps.dependsOnOwnProps) {
+            dispatchProps = mapDispatchToProps(dispatch, ownProps);
+        }
+        mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+        return mergedProps;
+    };
+    var handleNewProps = function () {
+        if (mapStateToProps.dependsOnOwnProps) {
+            stateProps = mapStateToProps(state, ownProps);
+        }
+        if (mapDispatchToProps.dependsOnOwnProps) {
+            dispatchProps = mapDispatchToProps(dispatch, ownProps);
+        }
+        mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+        return mergedProps;
+    };
+    var handleNewState = function () {
+        var nextStateProps = mapStateToProps(state, ownProps);
+        var statePropsChanged = !areStatePropsEqual(nextStateProps, stateProps);
+        stateProps = nextStateProps;
+        if (statePropsChanged) {
+            mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+        }
+        return mergedProps;
+    };
+    var handleSubsequentCalls = function (nextState, nextOwnProps) {
+        var propsChanged = !areOwnPropsEqual(nextOwnProps, ownProps);
+        var stateChanged = !areStatesEqual(nextState, state);
+        state = nextState;
+        ownProps = nextOwnProps;
+        if (propsChanged && stateChanged) {
+            return handleNewPropsAndNewState();
+        }
+        if (propsChanged) {
+            return handleNewProps();
+        }
+        if (stateChanged) {
+            return handleNewState();
+        }
+        return mergedProps;
+    };
+    var pureFinalPropsSelector = function (nextState, nextOwnProps) { return hasRunAtLeastOnce
+        ? handleSubsequentCalls(nextState, nextOwnProps)
+        : handleFirstCall(nextState, nextOwnProps); };
+    return pureFinalPropsSelector;
+};
+// If pure is true, the selector returned by selectorFactory will memoize its results,
+// allowing connectAdvanced's shouldComponentUpdate to return false if final
+// props have not changed. If false, the selector will always return a new
+// object and shouldComponentUpdate will always return true.
+var defaultSelectorFactory = function (dispatch, _a) {
+    var initMapStateToProps = _a.initMapStateToProps;
+    var initMapDispatchToProps = _a.initMapDispatchToProps;
+    var initMergeProps = _a.initMergeProps;
+    var opts = __rest(_a, ["initMapStateToProps", "initMapDispatchToProps", "initMergeProps"]);
+    var options = opts; // trick typescript
+    var mapStateToProps = initMapStateToProps(dispatch, options);
+    var mapDispatchToProps = initMapDispatchToProps(dispatch, options);
+    var mergeProps = initMergeProps(dispatch, options);
+    if (process.env.NODE_ENV !== "production") {
+        verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, options.displayName);
+    }
+    var selectorFactory = options.pure
+        ? pureFinalPropsSelectorFactory
+        : impureFinalPropsSelectorFactory;
+    return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
+};
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var match = function (arg, factories, name) {
+    for (var i = factories.length - 1; i >= 0; i--) {
+        var result = factories[i](arg);
+        if (result) {
+            return result;
+        }
+    }
+    return function (dispatch, options) {
+        throw new Error(("Invalid value of type " + (typeof arg) + " for " + name + " argument when connecting component " + (options
+            .wrappedComponentName) + "."));
+    };
+};
+var strictEqual = function (a, b) { return a === b; };
+// createConnect with default args builds the 'official' connect behavior. Calling it with
+// different options opens up some testing and extensibility scenarios
+var createConnect = function (ref) {
+    if ( ref === void 0 ) ref = {};
+    var connectHOC = ref.connectHOC; if ( connectHOC === void 0 ) connectHOC = connectAdvanced;
+    var mapStateToPropsFactories = ref.mapStateToPropsFactories; if ( mapStateToPropsFactories === void 0 ) mapStateToPropsFactories = defaultMapStateToPropsFactories;
+    var mapDispatchToPropsFactories = ref.mapDispatchToPropsFactories; if ( mapDispatchToPropsFactories === void 0 ) mapDispatchToPropsFactories = defaultMapDispatchToPropsFactories;
+    var mergePropsFactories = ref.mergePropsFactories; if ( mergePropsFactories === void 0 ) mergePropsFactories = defaultMergePropsFactories;
+    var selectorFactory = ref.selectorFactory; if ( selectorFactory === void 0 ) selectorFactory = defaultSelectorFactory;
+
+    return function (mapStateToProps, mapDispatchToProps, mergeProps, _a) {
+    if ( _a === void 0 ) _a = {};
+
+    var pure = _a.pure; if ( pure === void 0 ) pure = true;
+    var areStatesEqual = _a.areStatesEqual; if ( areStatesEqual === void 0 ) areStatesEqual = strictEqual;
+    var areOwnPropsEqual = _a.areOwnPropsEqual; if ( areOwnPropsEqual === void 0 ) areOwnPropsEqual = shallowEqual;
+    var areStatePropsEqual = _a.areStatePropsEqual; if ( areStatePropsEqual === void 0 ) areStatePropsEqual = shallowEqual;
+    var areMergedPropsEqual = _a.areMergedPropsEqual; if ( areMergedPropsEqual === void 0 ) areMergedPropsEqual = shallowEqual;
+    var extraOptions = __rest(_a, ["pure", "areStatesEqual", "areOwnPropsEqual", "areStatePropsEqual", "areMergedPropsEqual"]);
+    var initMapStateToProps = match(mapStateToProps, mapStateToPropsFactories, "mapStateToProps");
+    var initMapDispatchToProps = match(mapDispatchToProps, mapDispatchToPropsFactories, "mapDispatchToProps");
+    var initMergeProps = match(mergeProps, mergePropsFactories, "mergeProps");
+    return connectHOC(selectorFactory, Object.assign({ 
+        // used in error messages
+        methodName: "connect", 
+        // used to compute Connect's displayName from the wrapped component's displayName.
+        // tslint:disable-next-line:object-literal-sort-keys
+        getDisplayName: function (name) { return ("Connect(" + name + ")"); }, 
+        // if mapStateToProps is falsy, the Connect component doesn't subscribe to store state changes
+        shouldHandleStateChanges: !!mapStateToProps, 
+        // passed through to selectorFactory
+        initMapStateToProps: initMapStateToProps,
+        initMapDispatchToProps: initMapDispatchToProps,
+        initMergeProps: initMergeProps,
+        pure: pure,
+        areStatesEqual: areStatesEqual,
+        areOwnPropsEqual: areOwnPropsEqual,
+        areStatePropsEqual: areStatePropsEqual,
+        areMergedPropsEqual: areMergedPropsEqual }, extraOptions));
+};
+};
+var connect = createConnect();
+
+/**
+ * @module Inferno-Redux
+ */ /** TypeDoc Comment */
+var index = { Provider: Provider, connectAdvanced: connectAdvanced, connect: connect };
+
+exports.Provider = Provider;
+exports.connectAdvanced = connectAdvanced;
+exports.connect = connect;
+exports['default'] = index;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var INFERNO_STATICS = {
+    childContextTypes: true,
+    contextTypes: true,
+    defaultProps: true,
+    displayName: true,
+    getDefaultProps: true,
+    propTypes: true,
+    type: true
+};
+
+var KNOWN_STATICS = {
+    name: true,
+    length: true,
+    prototype: true,
+    caller: true,
+    arguments: true,
+    arity: true
+};
+
+var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
+
+function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
+    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+        var keys = Object.getOwnPropertyNames(sourceComponent);
+
+        /* istanbul ignore else */
+        if (isGetOwnPropertySymbolsAvailable) {
+            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
+        }
+
+        for (var i = 0; i < keys.length; ++i) {
+            if (!INFERNO_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
+                try {
+                    targetComponent[keys[i]] = sourceComponent[keys[i]];
+                } catch (error) {
+
+                }
+            }
+        }
+    }
+
+    return targetComponent;
+};
+
+module.exports = hoistNonReactStatics;
+module.exports.default = module.exports;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(19).default;
+module.exports.default = module.exports;
+
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var inferno = __webpack_require__(1);
+
+/**
+ * @module Inferno-Shared
+ */ /** TypeDoc Comment */
+function isNullOrUndef(o) {
+    return isUndefined(o) || isNull(o);
+}
+function isInvalid(o) {
+    return isNull(o) || o === false || isTrue(o) || isUndefined(o);
+}
+function isString(o) {
+    return typeof o === "string";
+}
+function isNull(o) {
+    return o === null;
+}
+function isTrue(o) {
+    return o === true;
+}
+function isUndefined(o) {
+    return o === void 0;
+}
+function isObject(o) {
+    return typeof o === "object";
+}
+
+/**
+ * @module Inferno-Create-Element
+ */ /** TypeDoc Comment */
+var componentHooks = new Set();
+componentHooks.add("onComponentWillMount");
+componentHooks.add("onComponentDidMount");
+componentHooks.add("onComponentWillUnmount");
+componentHooks.add("onComponentShouldUpdate");
+componentHooks.add("onComponentWillUpdate");
+componentHooks.add("onComponentDidUpdate");
+/**
+ * Creates virtual node
+ * @param {string|Function|Component<any, any>} type Type of node
+ * @param {object=} props Optional props for virtual node
+ * @param {...{object}=} _children Optional children for virtual node
+ * @returns {VNode} new virtual ndoe
+ */
+function createElement(type, props) {
+    var _children = [], len = arguments.length - 2;
+    while ( len-- > 0 ) _children[ len ] = arguments[ len + 2 ];
+
+    if (isInvalid(type) || isObject(type)) {
+        throw new Error("Inferno Error: createElement() name parameter cannot be undefined, null, false or true, It must be a string, class or function.");
+    }
+    var children = _children;
+    var ref = null;
+    var key = null;
+    var className = null;
+    var flags = 0;
+    var newProps;
+    if (_children) {
+        if (_children.length === 1) {
+            children = _children[0];
+        }
+        else if (_children.length === 0) {
+            children = void 0;
+        }
+    }
+    if (isString(type)) {
+        flags = inferno.getFlagsForElementVnode(type);
+        if (!isNullOrUndef(props)) {
+            newProps = {};
+            for (var prop in props) {
+                if (prop === "className" || prop === "class") {
+                    className = props[prop];
+                }
+                else if (prop === "key") {
+                    key = props.key;
+                }
+                else if (prop === "children" && isUndefined(children)) {
+                    children = props.children; // always favour children args, default to props
+                }
+                else if (prop === "ref") {
+                    ref = props.ref;
+                }
+                else {
+                    newProps[prop] = props[prop];
+                }
+            }
+        }
+    }
+    else {
+        flags = 16 /* ComponentUnknown */;
+        if (!isUndefined(children)) {
+            if (!props) {
+                props = {};
+            }
+            props.children = children;
+            children = null;
+        }
+        if (!isNullOrUndef(props)) {
+            newProps = {};
+            for (var prop$1 in props) {
+                if (componentHooks.has(prop$1)) {
+                    if (!ref) {
+                        ref = {};
+                    }
+                    ref[prop$1] = props[prop$1];
+                }
+                else if (prop$1 === "key") {
+                    key = props.key;
+                }
+                else {
+                    newProps[prop$1] = props[prop$1];
+                }
+            }
+        }
+    }
+    return inferno.createVNode(flags, type, className, children, newProps, key, ref);
+}
+
+exports['default'] = createElement;
+
+
+/***/ }),
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(24);
 
 
 
@@ -6111,45 +5351,48 @@ function baseGetTag(value) {
     return value === undefined ? undefinedTag : nullTag;
   }
   return (symToStringTag && symToStringTag in Object(value))
-    ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__getRawTag_js__["a" /* default */])(value)
-    : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__objectToString_js__["a" /* default */])(value);
+    ? Object(__WEBPACK_IMPORTED_MODULE_1__getRawTag_js__["a" /* default */])(value)
+    : Object(__WEBPACK_IMPORTED_MODULE_2__objectToString_js__["a" /* default */])(value);
 }
 
-/* harmony default export */ __webpack_exports__["a"] = baseGetTag;
+/* harmony default export */ __webpack_exports__["a"] = (baseGetTag);
 
 
 /***/ }),
-/* 29 */
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(22);
+
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || freeSelf || Function('return this')();
+
+/* harmony default export */ __webpack_exports__["a"] = (root);
+
+
+/***/ }),
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 
-/* harmony default export */ __webpack_exports__["a"] = freeGlobal;
+/* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 30 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(33);
-
-
-/** Built-in value references. */
-var getPrototype = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__overArg_js__["a" /* default */])(Object.getPrototypeOf, Object);
-
-/* harmony default export */ __webpack_exports__["a"] = getPrototype;
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(8);
 
 
 /** Used for built-in method references. */
@@ -6195,11 +5438,11 @@ function getRawTag(value) {
   return result;
 }
 
-/* harmony default export */ __webpack_exports__["a"] = getRawTag;
+/* harmony default export */ __webpack_exports__["a"] = (getRawTag);
 
 
 /***/ }),
-/* 32 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6224,11 +5467,25 @@ function objectToString(value) {
   return nativeObjectToString.call(value);
 }
 
-/* harmony default export */ __webpack_exports__["a"] = objectToString;
+/* harmony default export */ __webpack_exports__["a"] = (objectToString);
 
 
 /***/ }),
-/* 33 */
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(26);
+
+
+/** Built-in value references. */
+var getPrototype = Object(__WEBPACK_IMPORTED_MODULE_0__overArg_js__["a" /* default */])(Object.getPrototypeOf, Object);
+
+/* harmony default export */ __webpack_exports__["a"] = (getPrototype);
+
+
+/***/ }),
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6246,28 +5503,11 @@ function overArg(func, transform) {
   };
 }
 
-/* harmony default export */ __webpack_exports__["a"] = overArg;
+/* harmony default export */ __webpack_exports__["a"] = (overArg);
 
 
 /***/ }),
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(29);
-
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || freeSelf || Function('return this')();
-
-/* harmony default export */ __webpack_exports__["a"] = root;
-
-
-/***/ }),
-/* 35 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6299,67 +5539,252 @@ function isObjectLike(value) {
   return value != null && typeof value == 'object';
 }
 
-/* harmony default export */ __webpack_exports__["a"] = isObjectLike;
+/* harmony default export */ __webpack_exports__["a"] = (isObjectLike);
 
 
 /***/ }),
-/* 36 */
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(29);
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, module) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _ponyfill = __webpack_require__(31);
+
+var _ponyfill2 = _interopRequireDefault(_ponyfill);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var root; /* global window */
+
+
+if (typeof self !== 'undefined') {
+  root = self;
+} else if (typeof window !== 'undefined') {
+  root = window;
+} else if (typeof global !== 'undefined') {
+  root = global;
+} else if (true) {
+  root = module;
+} else {
+  root = Function('return this')();
+}
+
+var result = (0, _ponyfill2['default'])(root);
+exports['default'] = result;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(30)(module)))
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports['default'] = symbolObservablePonyfill;
+function symbolObservablePonyfill(root) {
+	var result;
+	var _Symbol = root.Symbol;
+
+	if (typeof _Symbol === 'function') {
+		if (_Symbol.observable) {
+			result = _Symbol.observable;
+		} else {
+			result = _Symbol('observable');
+			_Symbol.observable = result;
+		}
+	} else {
+		result = '@@observable';
+	}
+
+	return result;
+};
+
+/***/ }),
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(8);
-/* harmony export (immutable) */ __webpack_exports__["a"] = applyMiddleware;
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(9);
 
 
 
-/**
- * Creates a store enhancer that applies middleware to the dispatch method
- * of the Redux store. This is handy for a variety of tasks, such as expressing
- * asynchronous actions in a concise manner, or logging every action payload.
- *
- * See `redux-thunk` package as an example of the Redux middleware.
- *
- * Because middleware is potentially asynchronous, this should be the first
- * store enhancer in the composition chain.
- *
- * Note that each middleware will be given the `dispatch` and `getState` functions
- * as named arguments.
- *
- * @param {...Function} middlewares The middleware chain to be applied.
- * @returns {Function} A store enhancer applying the middleware.
- */
-function applyMiddleware() {
-  for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
-    middlewares[_key] = arguments[_key];
-  }
 
-  return function (createStore) {
-    return function (reducer, preloadedState, enhancer) {
-      var store = createStore(reducer, preloadedState, enhancer);
-      var _dispatch = store.dispatch;
-      var chain = [];
+function getUndefinedStateErrorMessage(key, action) {
+  var actionType = action && action.type;
+  var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
 
-      var middlewareAPI = {
-        getState: store.getState,
-        dispatch: function dispatch(action) {
-          return _dispatch(action);
-        }
-      };
-      chain = middlewares.map(function (middleware) {
-        return middleware(middlewareAPI);
-      });
-      _dispatch = __WEBPACK_IMPORTED_MODULE_0__compose__["a" /* default */].apply(undefined, chain)(store.dispatch);
-
-      return _extends({}, store, {
-        dispatch: _dispatch
-      });
-    };
-  };
+  return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state. ' + 'If you want this reducer to hold no value, you can return null instead of undefined.';
 }
 
+function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
+  var reducerKeys = Object.keys(reducers);
+  var argumentName = action && action.type === __WEBPACK_IMPORTED_MODULE_0__createStore__["a" /* ActionTypes */].INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
+
+  if (reducerKeys.length === 0) {
+    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
+  }
+
+  if (!Object(__WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__["a" /* default */])(inputState)) {
+    return 'The ' + argumentName + ' has unexpected type of "' + {}.toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
+  }
+
+  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
+    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
+  });
+
+  unexpectedKeys.forEach(function (key) {
+    unexpectedKeyCache[key] = true;
+  });
+
+  if (unexpectedKeys.length > 0) {
+    return 'Unexpected ' + (unexpectedKeys.length > 1 ? 'keys' : 'key') + ' ' + ('"' + unexpectedKeys.join('", "') + '" found in ' + argumentName + '. ') + 'Expected to find one of the known reducer keys instead: ' + ('"' + reducerKeys.join('", "') + '". Unexpected keys will be ignored.');
+  }
+}
+
+function assertReducerShape(reducers) {
+  Object.keys(reducers).forEach(function (key) {
+    var reducer = reducers[key];
+    var initialState = reducer(undefined, { type: __WEBPACK_IMPORTED_MODULE_0__createStore__["a" /* ActionTypes */].INIT });
+
+    if (typeof initialState === 'undefined') {
+      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined. If you don\'t want to set a value for this reducer, ' + 'you can use null instead of undefined.');
+    }
+
+    var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
+    if (typeof reducer(undefined, { type: type }) === 'undefined') {
+      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + __WEBPACK_IMPORTED_MODULE_0__createStore__["a" /* ActionTypes */].INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined, but can be null.');
+    }
+  });
+}
+
+/**
+ * Turns an object whose values are different reducer functions, into a single
+ * reducer function. It will call every child reducer, and gather their results
+ * into a single state object, whose keys correspond to the keys of the passed
+ * reducer functions.
+ *
+ * @param {Object} reducers An object whose values correspond to different
+ * reducer functions that need to be combined into one. One handy way to obtain
+ * it is to use ES6 `import * as reducers` syntax. The reducers may never return
+ * undefined for any action. Instead, they should return their initial state
+ * if the state passed to them was undefined, and the current state for any
+ * unrecognized action.
+ *
+ * @returns {Function} A reducer function that invokes every reducer inside the
+ * passed object, and builds a state object with the same shape.
+ */
+function combineReducers(reducers) {
+  var reducerKeys = Object.keys(reducers);
+  var finalReducers = {};
+  for (var i = 0; i < reducerKeys.length; i++) {
+    var key = reducerKeys[i];
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof reducers[key] === 'undefined') {
+        Object(__WEBPACK_IMPORTED_MODULE_2__utils_warning__["a" /* default */])('No reducer provided for key "' + key + '"');
+      }
+    }
+
+    if (typeof reducers[key] === 'function') {
+      finalReducers[key] = reducers[key];
+    }
+  }
+  var finalReducerKeys = Object.keys(finalReducers);
+
+  var unexpectedKeyCache = void 0;
+  if (process.env.NODE_ENV !== 'production') {
+    unexpectedKeyCache = {};
+  }
+
+  var shapeAssertionError = void 0;
+  try {
+    assertReducerShape(finalReducers);
+  } catch (e) {
+    shapeAssertionError = e;
+  }
+
+  return function combination() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    if (shapeAssertionError) {
+      throw shapeAssertionError;
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action, unexpectedKeyCache);
+      if (warningMessage) {
+        Object(__WEBPACK_IMPORTED_MODULE_2__utils_warning__["a" /* default */])(warningMessage);
+      }
+    }
+
+    var hasChanged = false;
+    var nextState = {};
+    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+      var _key = finalReducerKeys[_i];
+      var reducer = finalReducers[_key];
+      var previousStateForKey = state[_key];
+      var nextStateForKey = reducer(previousStateForKey, action);
+      if (typeof nextStateForKey === 'undefined') {
+        var errorMessage = getUndefinedStateErrorMessage(_key, action);
+        throw new Error(errorMessage);
+      }
+      nextState[_key] = nextStateForKey;
+      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
+    }
+    return hasChanged ? nextState : state;
+  };
+}
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
 /***/ }),
-/* 37 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6413,188 +5838,260 @@ function bindActionCreators(actionCreators, dispatch) {
 }
 
 /***/ }),
-/* 38 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(11);
-/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
+/* harmony export (immutable) */ __webpack_exports__["a"] = applyMiddleware;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(10);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
-
-
-function getUndefinedStateErrorMessage(key, action) {
-  var actionType = action && action.type;
-  var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
-
-  return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state. ' + 'If you want this reducer to hold no value, you can return null instead of undefined.';
-}
-
-function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
-  var reducerKeys = Object.keys(reducers);
-  var argumentName = action && action.type === __WEBPACK_IMPORTED_MODULE_0__createStore__["b" /* ActionTypes */].INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
-
-  if (reducerKeys.length === 0) {
-    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
-  }
-
-  if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__["a" /* default */])(inputState)) {
-    return 'The ' + argumentName + ' has unexpected type of "' + {}.toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
-  }
-
-  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
-    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
-  });
-
-  unexpectedKeys.forEach(function (key) {
-    unexpectedKeyCache[key] = true;
-  });
-
-  if (unexpectedKeys.length > 0) {
-    return 'Unexpected ' + (unexpectedKeys.length > 1 ? 'keys' : 'key') + ' ' + ('"' + unexpectedKeys.join('", "') + '" found in ' + argumentName + '. ') + 'Expected to find one of the known reducer keys instead: ' + ('"' + reducerKeys.join('", "') + '". Unexpected keys will be ignored.');
-  }
-}
-
-function assertReducerShape(reducers) {
-  Object.keys(reducers).forEach(function (key) {
-    var reducer = reducers[key];
-    var initialState = reducer(undefined, { type: __WEBPACK_IMPORTED_MODULE_0__createStore__["b" /* ActionTypes */].INIT });
-
-    if (typeof initialState === 'undefined') {
-      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined. If you don\'t want to set a value for this reducer, ' + 'you can use null instead of undefined.');
-    }
-
-    var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
-    if (typeof reducer(undefined, { type: type }) === 'undefined') {
-      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + __WEBPACK_IMPORTED_MODULE_0__createStore__["b" /* ActionTypes */].INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined, but can be null.');
-    }
-  });
-}
 
 /**
- * Turns an object whose values are different reducer functions, into a single
- * reducer function. It will call every child reducer, and gather their results
- * into a single state object, whose keys correspond to the keys of the passed
- * reducer functions.
+ * Creates a store enhancer that applies middleware to the dispatch method
+ * of the Redux store. This is handy for a variety of tasks, such as expressing
+ * asynchronous actions in a concise manner, or logging every action payload.
  *
- * @param {Object} reducers An object whose values correspond to different
- * reducer functions that need to be combined into one. One handy way to obtain
- * it is to use ES6 `import * as reducers` syntax. The reducers may never return
- * undefined for any action. Instead, they should return their initial state
- * if the state passed to them was undefined, and the current state for any
- * unrecognized action.
+ * See `redux-thunk` package as an example of the Redux middleware.
  *
- * @returns {Function} A reducer function that invokes every reducer inside the
- * passed object, and builds a state object with the same shape.
+ * Because middleware is potentially asynchronous, this should be the first
+ * store enhancer in the composition chain.
+ *
+ * Note that each middleware will be given the `dispatch` and `getState` functions
+ * as named arguments.
+ *
+ * @param {...Function} middlewares The middleware chain to be applied.
+ * @returns {Function} A store enhancer applying the middleware.
  */
-function combineReducers(reducers) {
-  var reducerKeys = Object.keys(reducers);
-  var finalReducers = {};
-  for (var i = 0; i < reducerKeys.length; i++) {
-    var key = reducerKeys[i];
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (typeof reducers[key] === 'undefined') {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_warning__["a" /* default */])('No reducer provided for key "' + key + '"');
-      }
-    }
-
-    if (typeof reducers[key] === 'function') {
-      finalReducers[key] = reducers[key];
-    }
-  }
-  var finalReducerKeys = Object.keys(finalReducers);
-
-  var unexpectedKeyCache = void 0;
-  if (process.env.NODE_ENV !== 'production') {
-    unexpectedKeyCache = {};
+function applyMiddleware() {
+  for (var _len = arguments.length, middlewares = Array(_len), _key = 0; _key < _len; _key++) {
+    middlewares[_key] = arguments[_key];
   }
 
-  var shapeAssertionError = void 0;
-  try {
-    assertReducerShape(finalReducers);
-  } catch (e) {
-    shapeAssertionError = e;
-  }
+  return function (createStore) {
+    return function (reducer, preloadedState, enhancer) {
+      var store = createStore(reducer, preloadedState, enhancer);
+      var _dispatch = store.dispatch;
+      var chain = [];
 
-  return function combination() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var action = arguments[1];
+      var middlewareAPI = {
+        getState: store.getState,
+        dispatch: function dispatch(action) {
+          return _dispatch(action);
+        }
+      };
+      chain = middlewares.map(function (middleware) {
+        return middleware(middlewareAPI);
+      });
+      _dispatch = __WEBPACK_IMPORTED_MODULE_0__compose__["a" /* default */].apply(undefined, chain)(store.dispatch);
 
-    if (shapeAssertionError) {
-      throw shapeAssertionError;
-    }
-
-    if (process.env.NODE_ENV !== 'production') {
-      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action, unexpectedKeyCache);
-      if (warningMessage) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_warning__["a" /* default */])(warningMessage);
-      }
-    }
-
-    var hasChanged = false;
-    var nextState = {};
-    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
-      var _key = finalReducerKeys[_i];
-      var reducer = finalReducers[_key];
-      var previousStateForKey = state[_key];
-      var nextStateForKey = reducer(previousStateForKey, action);
-      if (typeof nextStateForKey === 'undefined') {
-        var errorMessage = getUndefinedStateErrorMessage(_key, action);
-        throw new Error(errorMessage);
-      }
-      nextState[_key] = nextStateForKey;
-      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
-    }
-    return hasChanged ? nextState : state;
+      return _extends({}, store, {
+        dispatch: _dispatch
+      });
+    };
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getNumber = getNumber;
+exports.getFontSize = getFontSize;
+function getNumber() {
+  var store = getState();
+  return store.foo.number;
+}
+
+function getFontSize() {
+  var store = getState();
+  return store.foo.fontSize;
+}
+
+function getState() {
+  return window.reduxStore.getState();
+}
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _actionCreator = __webpack_require__(37);
+
+var actions = {
+  ADD_FONT_SIZE: function ADD_FONT_SIZE(value) {
+    return {
+      value: value
+    };
+  },
+  ADD_NUMBER: function ADD_NUMBER(number) {
+    return {
+      number: number
+    };
+  },
+  REDUCE_FONT_SIZE: function REDUCE_FONT_SIZE(value) {
+    return {
+      value: value
+    };
+  },
+  REDUCE_NUMBER: function REDUCE_NUMBER(number) {
+    return {
+      number: number
+    };
+  }
+};
+
+exports.default = (0, _actionCreator.createActions)(actions);
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.createActions = createActions;
+exports.createAction = createAction;
+function createActions(actions) {
+  Object.keys(actions).map(function (key) {
+    var defaultAction = actions[key];
+    actions[key] = createAction(key, defaultAction);
+  });
+  return actions;
+}
+
+function createAction(name, defaultAction) {
+  return function () {
+    window.reduxStore.dispatch(_extends({
+      type: name
+    }, defaultAction.apply(undefined, arguments)));
+  };
+}
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Controller = undefined;
+
+var _index = __webpack_require__(39);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Controller = exports.Controller = function (_SuperController) {
+  _inherits(Controller, _SuperController);
+
+  function Controller(props) {
+    _classCallCheck(this, Controller);
+
+    return _possibleConstructorReturn(this, (Controller.__proto__ || Object.getPrototypeOf(Controller)).call(this, props));
+  }
+
+  return Controller;
+}(_index.Controller);
+
+exports.default = new Controller();
 
 /***/ }),
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(40);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Controller = exports.Controller = function Controller() {
+  _classCallCheck(this, Controller);
+};
+
+exports.default = new Controller();
 
 /***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ponyfill = __webpack_require__(41);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _ponyfill2 = _interopRequireDefault(_ponyfill);
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  return {
+    foo: foo(state.foo, action)
+  };
+};
 
-var root; /* global window */
+var defaultState = {
+  foo: {
+    number: 0,
+    fontSize: 20
+  }
+};
 
-
-if (typeof self !== 'undefined') {
-  root = self;
-} else if (typeof window !== 'undefined') {
-  root = window;
-} else if (typeof global !== 'undefined') {
-  root = global;
-} else if (true) {
-  root = module;
-} else {
-  root = Function('return this')();
+function foo(state, action) {
+  switch (action.type) {
+    case 'ADD_FONT_SIZE':
+      return _extends({}, state, {
+        fontSize: state.fontSize + action.value
+      });
+    case 'ADD_NUMBER':
+      return _extends({}, state, {
+        number: state.number + action.number
+      });
+    case 'REDUCE_FONT_SIZE':
+      return _extends({}, state, {
+        fontSize: state.fontSize - action.value
+      });
+    case 'REDUCE_NUMBER':
+      return _extends({}, state, {
+        number: state.number - action.number
+      });
+    default:
+      return state;
+  }
 }
-
-var result = (0, _ponyfill2['default'])(root);
-exports['default'] = result;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(42)(module)))
 
 /***/ }),
 /* 41 */
@@ -6604,54 +6101,39 @@ exports['default'] = result;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
-exports['default'] = symbolObservablePonyfill;
-function symbolObservablePonyfill(root) {
-	var result;
-	var _Symbol = root.Symbol;
-
-	if (typeof _Symbol === 'function') {
-		if (_Symbol.observable) {
-			result = _Symbol.observable;
-		} else {
-			result = _Symbol('observable');
-			_Symbol.observable = result;
-		}
-	} else {
-		result = '@@observable';
-	}
-
-	return result;
-};
+exports.default = middlewareLogger;
+function middlewareLogger(store) {
+  return function (next) {
+    return function (action) {
+      console.group(action.type);
+      console.info('dispatching', action);
+      var result = next(action);
+      console.log('next state', store.getState());
+      console.groupEnd(action.type);
+      return result;
+    };
+  };
+}
 
 /***/ }),
 /* 42 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FETCH_JQUERY = FETCH_JQUERY;
+
+__webpack_require__(43);
+
+function FETCH_JQUERY() {
+  return fetch('https://code.jquery.com/jquery-3.2.1.min.js');
+}
 
 /***/ }),
 /* 43 */
@@ -6660,18 +6142,468 @@ module.exports = function(module) {
 "use strict";
 
 
-var _App = __webpack_require__(12);
+(function (self) {
+  'use strict';
 
-var _App2 = _interopRequireDefault(_App);
+  if (self.fetch) {
+    return;
+  }
 
-var _index = __webpack_require__(3);
+  var support = {
+    searchParams: 'URLSearchParams' in self,
+    iterable: 'Symbol' in self && 'iterator' in Symbol,
+    blob: 'FileReader' in self && 'Blob' in self && function () {
+      try {
+        new Blob();
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }(),
+    formData: 'FormData' in self,
+    arrayBuffer: 'ArrayBuffer' in self
+  };
 
-var _index2 = _interopRequireDefault(_index);
+  if (support.arrayBuffer) {
+    var viewClasses = ['[object Int8Array]', '[object Uint8Array]', '[object Uint8ClampedArray]', '[object Int16Array]', '[object Uint16Array]', '[object Int32Array]', '[object Uint32Array]', '[object Float32Array]', '[object Float64Array]'];
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+    var isDataView = function isDataView(obj) {
+      return obj && DataView.prototype.isPrototypeOf(obj);
+    };
 
-// initialize
-_index2.default.init(_App2.default);
+    var isArrayBufferView = ArrayBuffer.isView || function (obj) {
+      return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1;
+    };
+  }
+
+  function normalizeName(name) {
+    if (typeof name !== 'string') {
+      name = String(name);
+    }
+    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
+      throw new TypeError('Invalid character in header field name');
+    }
+    return name.toLowerCase();
+  }
+
+  function normalizeValue(value) {
+    if (typeof value !== 'string') {
+      value = String(value);
+    }
+    return value;
+  }
+
+  // Build a destructive iterator for the value list
+  function iteratorFor(items) {
+    var iterator = {
+      next: function next() {
+        var value = items.shift();
+        return { done: value === undefined, value: value };
+      }
+    };
+
+    if (support.iterable) {
+      iterator[Symbol.iterator] = function () {
+        return iterator;
+      };
+    }
+
+    return iterator;
+  }
+
+  function Headers(headers) {
+    this.map = {};
+
+    if (headers instanceof Headers) {
+      headers.forEach(function (value, name) {
+        this.append(name, value);
+      }, this);
+    } else if (Array.isArray(headers)) {
+      headers.forEach(function (header) {
+        this.append(header[0], header[1]);
+      }, this);
+    } else if (headers) {
+      Object.getOwnPropertyNames(headers).forEach(function (name) {
+        this.append(name, headers[name]);
+      }, this);
+    }
+  }
+
+  Headers.prototype.append = function (name, value) {
+    name = normalizeName(name);
+    value = normalizeValue(value);
+    var oldValue = this.map[name];
+    this.map[name] = oldValue ? oldValue + ',' + value : value;
+  };
+
+  Headers.prototype['delete'] = function (name) {
+    delete this.map[normalizeName(name)];
+  };
+
+  Headers.prototype.get = function (name) {
+    name = normalizeName(name);
+    return this.has(name) ? this.map[name] : null;
+  };
+
+  Headers.prototype.has = function (name) {
+    return this.map.hasOwnProperty(normalizeName(name));
+  };
+
+  Headers.prototype.set = function (name, value) {
+    this.map[normalizeName(name)] = normalizeValue(value);
+  };
+
+  Headers.prototype.forEach = function (callback, thisArg) {
+    for (var name in this.map) {
+      if (this.map.hasOwnProperty(name)) {
+        callback.call(thisArg, this.map[name], name, this);
+      }
+    }
+  };
+
+  Headers.prototype.keys = function () {
+    var items = [];
+    this.forEach(function (value, name) {
+      items.push(name);
+    });
+    return iteratorFor(items);
+  };
+
+  Headers.prototype.values = function () {
+    var items = [];
+    this.forEach(function (value) {
+      items.push(value);
+    });
+    return iteratorFor(items);
+  };
+
+  Headers.prototype.entries = function () {
+    var items = [];
+    this.forEach(function (value, name) {
+      items.push([name, value]);
+    });
+    return iteratorFor(items);
+  };
+
+  if (support.iterable) {
+    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
+  }
+
+  function consumed(body) {
+    if (body.bodyUsed) {
+      return Promise.reject(new TypeError('Already read'));
+    }
+    body.bodyUsed = true;
+  }
+
+  function fileReaderReady(reader) {
+    return new Promise(function (resolve, reject) {
+      reader.onload = function () {
+        resolve(reader.result);
+      };
+      reader.onerror = function () {
+        reject(reader.error);
+      };
+    });
+  }
+
+  function readBlobAsArrayBuffer(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsArrayBuffer(blob);
+    return promise;
+  }
+
+  function readBlobAsText(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsText(blob);
+    return promise;
+  }
+
+  function readArrayBufferAsText(buf) {
+    var view = new Uint8Array(buf);
+    var chars = new Array(view.length);
+
+    for (var i = 0; i < view.length; i++) {
+      chars[i] = String.fromCharCode(view[i]);
+    }
+    return chars.join('');
+  }
+
+  function bufferClone(buf) {
+    if (buf.slice) {
+      return buf.slice(0);
+    } else {
+      var view = new Uint8Array(buf.byteLength);
+      view.set(new Uint8Array(buf));
+      return view.buffer;
+    }
+  }
+
+  function Body() {
+    this.bodyUsed = false;
+
+    this._initBody = function (body) {
+      this._bodyInit = body;
+      if (!body) {
+        this._bodyText = '';
+      } else if (typeof body === 'string') {
+        this._bodyText = body;
+      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+        this._bodyBlob = body;
+      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+        this._bodyFormData = body;
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        this._bodyText = body.toString();
+      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+        this._bodyArrayBuffer = bufferClone(body.buffer);
+        // IE 10-11 can't handle a DataView body.
+        this._bodyInit = new Blob([this._bodyArrayBuffer]);
+      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+        this._bodyArrayBuffer = bufferClone(body);
+      } else {
+        throw new Error('unsupported BodyInit type');
+      }
+
+      if (!this.headers.get('content-type')) {
+        if (typeof body === 'string') {
+          this.headers.set('content-type', 'text/plain;charset=UTF-8');
+        } else if (this._bodyBlob && this._bodyBlob.type) {
+          this.headers.set('content-type', this._bodyBlob.type);
+        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        }
+      }
+    };
+
+    if (support.blob) {
+      this.blob = function () {
+        var rejected = consumed(this);
+        if (rejected) {
+          return rejected;
+        }
+
+        if (this._bodyBlob) {
+          return Promise.resolve(this._bodyBlob);
+        } else if (this._bodyArrayBuffer) {
+          return Promise.resolve(new Blob([this._bodyArrayBuffer]));
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as blob');
+        } else {
+          return Promise.resolve(new Blob([this._bodyText]));
+        }
+      };
+
+      this.arrayBuffer = function () {
+        if (this._bodyArrayBuffer) {
+          return consumed(this) || Promise.resolve(this._bodyArrayBuffer);
+        } else {
+          return this.blob().then(readBlobAsArrayBuffer);
+        }
+      };
+    }
+
+    this.text = function () {
+      var rejected = consumed(this);
+      if (rejected) {
+        return rejected;
+      }
+
+      if (this._bodyBlob) {
+        return readBlobAsText(this._bodyBlob);
+      } else if (this._bodyArrayBuffer) {
+        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer));
+      } else if (this._bodyFormData) {
+        throw new Error('could not read FormData body as text');
+      } else {
+        return Promise.resolve(this._bodyText);
+      }
+    };
+
+    if (support.formData) {
+      this.formData = function () {
+        return this.text().then(decode);
+      };
+    }
+
+    this.json = function () {
+      return this.text().then(JSON.parse);
+    };
+
+    return this;
+  }
+
+  // HTTP methods whose capitalization should be normalized
+  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
+
+  function normalizeMethod(method) {
+    var upcased = method.toUpperCase();
+    return methods.indexOf(upcased) > -1 ? upcased : method;
+  }
+
+  function Request(input, options) {
+    options = options || {};
+    var body = options.body;
+
+    if (input instanceof Request) {
+      if (input.bodyUsed) {
+        throw new TypeError('Already read');
+      }
+      this.url = input.url;
+      this.credentials = input.credentials;
+      if (!options.headers) {
+        this.headers = new Headers(input.headers);
+      }
+      this.method = input.method;
+      this.mode = input.mode;
+      if (!body && input._bodyInit != null) {
+        body = input._bodyInit;
+        input.bodyUsed = true;
+      }
+    } else {
+      this.url = String(input);
+    }
+
+    this.credentials = options.credentials || this.credentials || 'omit';
+    if (options.headers || !this.headers) {
+      this.headers = new Headers(options.headers);
+    }
+    this.method = normalizeMethod(options.method || this.method || 'GET');
+    this.mode = options.mode || this.mode || null;
+    this.referrer = null;
+
+    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+      throw new TypeError('Body not allowed for GET or HEAD requests');
+    }
+    this._initBody(body);
+  }
+
+  Request.prototype.clone = function () {
+    return new Request(this, { body: this._bodyInit });
+  };
+
+  function decode(body) {
+    var form = new FormData();
+    body.trim().split('&').forEach(function (bytes) {
+      if (bytes) {
+        var split = bytes.split('=');
+        var name = split.shift().replace(/\+/g, ' ');
+        var value = split.join('=').replace(/\+/g, ' ');
+        form.append(decodeURIComponent(name), decodeURIComponent(value));
+      }
+    });
+    return form;
+  }
+
+  function parseHeaders(rawHeaders) {
+    var headers = new Headers();
+    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+    // https://tools.ietf.org/html/rfc7230#section-3.2
+    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+    preProcessedHeaders.split(/\r?\n/).forEach(function (line) {
+      var parts = line.split(':');
+      var key = parts.shift().trim();
+      if (key) {
+        var value = parts.join(':').trim();
+        headers.append(key, value);
+      }
+    });
+    return headers;
+  }
+
+  Body.call(Request.prototype);
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {};
+    }
+
+    this.type = 'default';
+    this.status = options.status === undefined ? 200 : options.status;
+    this.ok = this.status >= 200 && this.status < 300;
+    this.statusText = 'statusText' in options ? options.statusText : 'OK';
+    this.headers = new Headers(options.headers);
+    this.url = options.url || '';
+    this._initBody(bodyInit);
+  }
+
+  Body.call(Response.prototype);
+
+  Response.prototype.clone = function () {
+    return new Response(this._bodyInit, {
+      status: this.status,
+      statusText: this.statusText,
+      headers: new Headers(this.headers),
+      url: this.url
+    });
+  };
+
+  Response.error = function () {
+    var response = new Response(null, { status: 0, statusText: '' });
+    response.type = 'error';
+    return response;
+  };
+
+  var redirectStatuses = [301, 302, 303, 307, 308];
+
+  Response.redirect = function (url, status) {
+    if (redirectStatuses.indexOf(status) === -1) {
+      throw new RangeError('Invalid status code');
+    }
+
+    return new Response(null, { status: status, headers: { location: url } });
+  };
+
+  self.Headers = Headers;
+  self.Request = Request;
+  self.Response = Response;
+
+  self.fetch = function (input, init) {
+    return new Promise(function (resolve, reject) {
+      var request = new Request(input, init);
+      var xhr = new XMLHttpRequest();
+
+      xhr.onload = function () {
+        var options = {
+          status: xhr.status,
+          statusText: xhr.statusText,
+          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+        };
+        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+        resolve(new Response(body, options));
+      };
+
+      xhr.onerror = function () {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.ontimeout = function () {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.open(request.method, request.url, true);
+
+      if (request.credentials === 'include') {
+        xhr.withCredentials = true;
+      } else if (request.credentials === 'omit') {
+        xhr.withCredentials = false;
+      }
+
+      if ('responseType' in xhr && support.blob) {
+        xhr.responseType = 'blob';
+      }
+
+      request.headers.forEach(function (value, name) {
+        xhr.setRequestHeader(name, value);
+      });
+
+      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
+    });
+  };
+  self.fetch.polyfill = true;
+})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ })
 /******/ ]);

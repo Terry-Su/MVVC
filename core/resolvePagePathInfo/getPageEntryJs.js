@@ -23,11 +23,11 @@ module.exports = function getPageEntryJs({
   const relativeEntryPath = PATH.relative(
     process.cwd(),
     entryPath
-  )
+  ).replace(/\\/g, "/")
   let relativeOutputPath = PATH.relative(
     process.cwd(),
     outputPath
-  )
+  ).replace(/\\/g, "/")
 
   return !`
   import PATH from 'path'

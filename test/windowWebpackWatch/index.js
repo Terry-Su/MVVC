@@ -4,7 +4,8 @@ const PATH = require('path')
 const entry = PATH.resolve(__dirname, '../../core/resolvePagePathInfo/cache/src_InfernoReduxProject_examplePage_entry.js')
 const output = {
   path: PATH.resolve(__dirname, './output'),
-  filename: 'bundle.js'
+  filename: 'bundle.js',
+  libraryTarget: 'commonjs2',
 }
 
 const webpackConfig = {
@@ -38,14 +39,29 @@ const webpackConfig = {
   target: 'node',
   externals: [
     function (context, request, callback) {
+      const mainOriginRequireMododules = [
+        'webpack'
+      ]
+      
 
       if (/^\.?\//.test(request)) return callback()
       if (/^\.\.?\//.test(request)) return callback()
 
-      console.log(123, /\:\\/.test(request), request)
-      
-      if (/\:\\/.test(request)) return callback() // resolve the special situation in windows
-      callback(null, `commonjs ${request}`)
+      if (mainOriginRequireMododules.includes(request)) {
+        callback(null, `commonjs ${request}`)
+        return
+      }
+
+      return callback()
+
+
+
+      // if (/^\.?\//.test(request)) return callback()
+      // if (/^\.\.?\//.test(request)) return callback()
+
+      // if (/\\/.test(request)) return callback() // resolve the special situation in windows
+
+      // callback(null, `commonjs ${request}`)
     }],
   plugins: [
     // new webpack.ExternalsPlugin('commonjs', ['webpack'])
