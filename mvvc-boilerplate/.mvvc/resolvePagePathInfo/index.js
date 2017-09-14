@@ -1,11 +1,12 @@
 const PATH = require('path')
 const FS = require('fs-extra')
+const decache = require('decache')
 
 const webpackWatch = require('../webpackWatch/index')
 const nodeWebpackWithoutEntryConfig = require('../config/nodeWebpackWithoutEntryConfig')
 const getPageEntryJs = require('./getPageEntryJs')
 const {
-  webpackWatchCachePath,
+  webpackWatchCachePath, 
   resolvePagePathInfoCachePath,
 } = require('../config/mvvcConfig')
 const buildHtml = require('../buildHtml')
@@ -21,20 +22,22 @@ module.exports = function resolvePagePathInfo(pagePathInfo) {
     page,
   } = pagePathInfo
 
-  const entryFileName = PATH.relative(__dirname, pagePath).replace(/\.\.\//g, '').replace(/\//g, '_').concat('_entry.js')
-  const outputFilename = PATH.relative(__dirname, pagePath).replace(/\.\.\//g, '').replace(/\//g, '_').concat('_node_controller.js')
+  const entryFileName = PATH.relative(__dirname, pagePath).replace(/\.\.[\/\\]/g, '').replace(/[\/\\]/g, '_').concat('_entry.js')
+  const outputFilename = PATH.relative(__dirname, pagePath).replace(/\.\.[\/\\]/g, '').replace(/[\/\\]/g, '_').concat('_node_controller.js')
 
   const originNodeControllerPath = PATH.resolve(pagePath, './controller/index.node.js')
-
+  
   // create entry file
-  const entryFilePath = PATH.resolve(__dirname, `./cache/${entryFileName}`)
   const pageHtml = getPageEntryJs({
     originNodeControllerPath,
     pagePath,
     project,
     page,
   })
-  FS.ensureFileSync(entryFilePath)
+  const entryFilePath = PATH.resolve(__dirname, `./cache/${entryFileName}`)
+  
+  
+  FS.mkdirpSync(PATH.dirname(entryFilePath))
   FS.writeFileSync(entryFilePath, pageHtml)
 
   const entry = entryFilePath
@@ -43,6 +46,7 @@ module.exports = function resolvePagePathInfo(pagePathInfo) {
     filename: outputFilename,
     libraryTarget: 'commonjs2',
   }
+  
 
   webpackWatch(Object.assign(
     {
@@ -51,8 +55,11 @@ module.exports = function resolvePagePathInfo(pagePathInfo) {
     },
     nodeWebpackWithoutEntryConfig
   ), () => {
-    const distWebWebpackEntry = `${webpackWatchCachePath}/${outputFilename}`
+    // return 
+    const distWebWebpackEntry = `${webpackWatchCachePath.replace(/\\/g,'/')}/${outputFilename}`
     const nodeController = require(distWebWebpackEntry).default
+    // clear the cache required
+    decache(distWebWebpackEntry)
 
     // build web by webpack    
     if (!isWebWebpackBuilt) {

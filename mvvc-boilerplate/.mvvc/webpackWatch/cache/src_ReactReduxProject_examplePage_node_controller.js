@@ -1,3 +1,4 @@
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -60,17 +61,14 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 12:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports) {
 
 throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'D:\\Project\\MVVC\\mvvc-boilerplate\\.babelrc'\n    at Error (native)\n    at Object.fs.openSync (fs.js:641:18)\n    at Object.fs.readFileSync (fs.js:509:33)\n    at ConfigChainBuilder.addConfig (D:\\Project\\MVVC\\mvvc-boilerplate\\node_modules\\_babel-core@6.26.0@babel-core\\lib\\transformation\\file\\options\\build-config-chain.js:146:32)\n    at ConfigChainBuilder.findConfigs (D:\\Project\\MVVC\\mvvc-boilerplate\\node_modules\\_babel-core@6.26.0@babel-core\\lib\\transformation\\file\\options\\build-config-chain.js:96:16)\n    at buildConfigChain (D:\\Project\\MVVC\\mvvc-boilerplate\\node_modules\\_babel-core@6.26.0@babel-core\\lib\\transformation\\file\\options\\build-config-chain.js:61:13)\n    at OptionManager.init (D:\\Project\\MVVC\\mvvc-boilerplate\\node_modules\\_babel-core@6.26.0@babel-core\\lib\\transformation\\file\\options\\option-manager.js:354:58)\n    at File.initOptions (D:\\Project\\MVVC\\mvvc-boilerplate\\node_modules\\_babel-core@6.26.0@babel-core\\lib\\transformation\\file\\index.js:212:65)\n    at new File (D:\\Project\\MVVC\\mvvc-boilerplate\\node_modules\\_babel-core@6.26.0@babel-core\\lib\\transformation\\file\\index.js:135:24)\n    at Pipeline.transform (D:\\Project\\MVVC\\mvvc-boilerplate\\node_modules\\_babel-core@6.26.0@babel-core\\lib\\transformation\\pipeline.js:46:16)");
 
 /***/ })
-
-/******/ });
-//# sourceMappingURL=bundle.js.map
+/******/ ]);

@@ -1,14 +1,16 @@
 const opn = require('opn')
+const chalk = require('chalk')
 const express = require('express')
 const serveIndex = require('serve-index')
-const app = express()
+
 const {
   outputRootPath,
   localPort,
   openServerAutomatically
 } = require('./config/mvvcConfig')
-const PORT = process.env.PORT
 
+const app = express()
+const PORT = process.env.PORT
 
 module.exports = {
   init() {
@@ -18,7 +20,7 @@ module.exports = {
     app.listen(localPort)
 
     // exec(`cd ${outputRootPath} && http-server -p ${localPort}`).stdout.pipe(process.stdout)
-    console.log('\x1b[32m', `Server: http://localhost:${localPort}`)
+    console.log(`Server:`, chalk.bold.green(`http://localhost:${localPort}`))
 
     // open server
     setTimeout(() => {

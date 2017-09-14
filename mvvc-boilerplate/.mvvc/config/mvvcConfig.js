@@ -7,4 +7,6 @@ const basicMvvcConfig = {
   webpackWatchCachePath: PATH.resolve(__dirname, '../webpackWatch/cache'),
 }
 
+
+
 module.exports = Object.assign(basicMvvcConfig, require(mvvcConfigPath))

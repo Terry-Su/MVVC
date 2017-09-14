@@ -16,20 +16,32 @@ module.exports = function getPageEntryJs({
   const relativeControllerPath = PATH.relative(
     cacheFilePath,
     originNodeControllerPath
-  )
+  ).replace(/\\/g, "/")
 
   const entryPath = getWebEntryPath(pagePath)
   const outputPath = getOutputPath(project, page)
   const relativeEntryPath = PATH.relative(
     process.cwd(),
     entryPath
-  )
-  const relativeOutputPath = PATH.relative(
+  ).replace(/\\/g, "/")
+  let relativeOutputPath = PATH.relative(
     process.cwd(),
     outputPath
-  )
+  ).replace(/\\/g, "/")
 
-  return `
+  return !`
+  import PATH from 'path'
+  import execWebpack from '../../execWebpack'
+  
+  
+  export class Controller  {
+    watchWebByWebpack = () => {
+     console.log('execWebpack', execWebpack)
+    }
+  }
+  
+  export default 123
+    ` || `
 import PATH from 'path'
 import execWebpack from '../../execWebpack'
 import { Controller as SuperController } from '${relativeControllerPath}'

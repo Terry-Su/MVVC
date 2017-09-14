@@ -1,3 +1,6 @@
+const webpack = require('webpack')
+
+
 const nodeWebpackWithoutEntryConfig = {
   module: {
     rules: [
@@ -26,12 +29,26 @@ const nodeWebpackWithoutEntryConfig = {
   },
   target: 'node',
   externals: [
-    function (context, request, callback) {
-      if (/^\.?\//.test(request)) return callback()
-      if (/^\.\.?\//.test(request)) return callback() // fixed √
-      callback(null, `commonjs ${request}`)
-    }
+    // function (context, request, callback) {
+    //   const mainOriginRequireMododules = [
+    //     'webpack'
+    //   ]
+      
+
+    //   if (/^\.?\//.test(request)) return callback()
+    //   if (/^\.\.?\//.test(request)) return callback()
+
+    //   if (mainOriginRequireMododules.includes(request)) {
+    //     callback(null, `commonjs ${request}`)
+    //     return
+    //   }
+
+    //   return callback()
+    // }
   ],
+  plugins: [
+    new webpack.ExternalsPlugin('commonjs', ['webpack', 'uglifyjs-webpack-plugin'])
+  ]
 }
 
 module.exports = nodeWebpackWithoutEntryConfig
