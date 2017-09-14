@@ -6,7 +6,7 @@ const config = {
 
   openServerAutomatically: true,
 
-  // should or not remove the extra files or custom files in public folder
+  // should or not remove the extra files or custom files in public folder 
   shouldRemoveExtraFilesInPublic: false,
 
   shareFolderName: '__share',
