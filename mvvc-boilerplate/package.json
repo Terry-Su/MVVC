@@ -1,6 +1,6 @@
 {
   "name": "mvvc-boilerplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "mvvc-boilerplate",
   "main": "index.js",
   "scripts": {

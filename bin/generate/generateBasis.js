@@ -1,6 +1,5 @@
 const generateMvvcConfig = require('./generateMvvcConfig')
 const generatePackageJson = require('./generatePackageJson')
-const generateBabelrc = require('./generateBabelrc')
 const generateDotMvvc = require('./generateDotMvvc')
 
 module.exports = function generateBasis({
@@ -18,9 +17,6 @@ module.exports = function generateBasis({
         })
         .then(() => {
           return generateDotMvvc(path, boilerplateMvvcDotMvvcPath)
-        })
-        .then(() => {
-          return generateBabelrc(path, boilerplateMvvcBabelrcPath)
         })
         .then(() => {
           resolve()
