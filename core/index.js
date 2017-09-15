@@ -1,27 +1,11 @@
 /**
  * Resolve build command
  */
-const PATH = require('path')
 const BUILD = process.env.BUILD
-const { exec } = require('child_process')
 
 const {
-  rootPath,
-  projectsRootPath,
   shouldRemoveExtraFilesInPublic
 } = require('./config/mvvcConfig')
-
-const prompt = require('./prompt')
-const projectsPrompt = require('./projectsPrompt')
-const pagesPrompt = require('./pagesPrompt')
-const { getNames, getPageNameRootPath } = require('./names')
-const getWebWebpackConfig = require('./getWebWebpackConfig')
-
-const getAllProjectsPagePathInfos = require('./getAllProjectsPagePathInfos')
-const getPagePathInfosByProjectName = require('./getPagePathInfosByProjectName')
-const getPagePathInfosByPageAndProjectName = require('./getPagePathInfosByPageAndProjectName')
-
-const execWebpack = require('./execWebpack')
 
 const {
   init: initWebServer
