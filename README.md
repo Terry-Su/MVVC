@@ -29,38 +29,17 @@ Multiple pages can share or inherit props and methods by contollers
 
 
 # Getting started
-There're two simple ways to start(Step by step)
-## Local
 ```txt
-# Step1 Create root
-mkdir MvvcProject & cd MvvcProject
-
-# Step2 Install
-npm install mvvc
-
-# Step3 Initilize
-node_modules/.bin/mvvc init
-```
-
-## Global
-```txt
-# Step1 Install globally
 npm install mvvc -g
 
-# Step2 Initilize root project
 mvvc init -p MvvcProject
 ```
 > Tip: choose project(s) to generate when mvvc was initialized partly
 
-You've gotten a complete project which can be moved to anywhere to develop, then let's start to develop
+You've gotten a complete project which can be moved to anywhere to develop
 ```txt
-# Step1 (Ingore this step if MvvcProject was created locally) Switch to MvvcProject
-cd MvvcProject
+cd MvvcProject & npm install 
 
-# Step2 Install dependencies
-npm install 
-
-# Step3 Start
 npm start
 ```
 
