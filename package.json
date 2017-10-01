@@ -27,7 +27,9 @@
     "cross-env": "^5.0.5",
     "eslint": "^4.6.1",
     "html-loader": "^0.5.1",
-    "readline-multiple": "^0.0.6"
+    "mirrorx": "^0.2.7",
+    "readline-multiple": "^0.0.6",
+    "vuex": "^2.4.1"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
