@@ -27,6 +27,8 @@
     "cross-env": "^5.0.5",
     "eslint": "^4.6.1",
     "html-loader": "^0.5.1",
+    "jasmine": "^2.8.0",
+    "lodash": "^4.17.4",
     "mirrorx": "^0.2.7",
     "readline-multiple": "^0.0.6",
     "vuex": "^2.4.1"

@@ -14,8 +14,8 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceRoot}/core/index.js"
-    },
+      "program": "/Users/suxing/Documents/WorkingDocuments/Project/MVVC/core/__test/getProjectsPathsSpec/index.spec.js"
+    }
   ]
 }
 
