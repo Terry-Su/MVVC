@@ -11,8 +11,6 @@ const ignoredFolders = [
 
 const paths = getProjectsPathsToDevelop({ srcPath, ignoredFolders })
 
-console.log(123, paths)
-
 // describe("Test fn: getProjectsPathsToDevelop", function () {
 //   const srcPath = PATH.resolve(__dirname, './src')
 //   const ignoredFolders = [

@@ -30,6 +30,7 @@
     "jasmine": "^2.8.0",
     "lodash": "^4.17.4",
     "mirrorx": "^0.2.7",
+    "ramda": "^0.24.1",
     "readline-multiple": "^0.0.6",
     "vuex": "^2.4.1"
   },
