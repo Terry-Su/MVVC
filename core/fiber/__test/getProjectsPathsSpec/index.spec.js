@@ -1,5 +1,5 @@
 
-const getProjectsPathsToDevelop = require('../../fiber/getProjectsPathsToDevelop')
+const getProjectsPathsToDevelop = require('../getProjectsPathsToDevelop')
 
 const PATH = require('path')
 
