@@ -3,7 +3,7 @@ const { init } = require('../../controller/index.js')
 
 
 const srcPath = PATH.resolve(__dirname, './src')
-const ignoredFolders = []
+const ignoredFolders = ['static', '__share']
 
 init({
     srcPath,

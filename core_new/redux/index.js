@@ -1,9 +1,6 @@
 const { createStore } = require('redux')
+const reducer = require('./reducer/index')
 
-
-const reduxStore = createStore({
-
-})
-
+const reduxStore = createStore(reducer)
 
 module.exports = reduxStore
