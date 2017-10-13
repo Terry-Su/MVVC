@@ -1,10 +1,8 @@
-const PATH = require('path')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-
+const PATH = require('path')
 
 module.exports = {
   webpackConfig: {
-    entry: PATH.resolve(__dirname, './webEntry.js'),
     module: {
       rules: [
         {
@@ -35,5 +33,13 @@ module.exports = {
       new UglifyJSPlugin()
     ] : []
   },
-  html: `<html>...</html>`,
+
+  htmlConfig: {
+    name: 'index.html',
+    content: `
+<html>
+  <body>index.html</body>
+</html>
+`
+  },
 }

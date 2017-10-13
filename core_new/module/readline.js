@@ -37,10 +37,10 @@ const readline = {
      */
     readlinesOfProjects() {
         const getDataValue = data => data.value
-        const getParamsForReadMultipleLines = projectsInfo => {
+        const getParamsForReadMultipleLines = projects => {
             let params = []
 
-            const allProjectInfos = projectsInfo
+            const allProjectInfos = projects
 
             params.push({
                 pressKey: '0',
@@ -62,16 +62,16 @@ const readline = {
         }
         const getProjectInfosByDataOfReadMultipleLines = getItemsByDataOfReadMultipleLines
 
-        const { projectsInfo } = getReduxState()
+        const { projects } = getReduxState()
 
-        const paramsForReadMultipleLines = getParamsForReadMultipleLines(projectsInfo)
+        const paramsForReadMultipleLines = getParamsForReadMultipleLines(projects)
         const dataOfReadMultipleLines = readMultipleLines(paramsForReadMultipleLines).then(data => data)
         const projectInfos = getProjectInfosByDataOfReadMultipleLines(dataOfReadMultipleLines)
 
         return projectInfos
     },
     /**
-     * @returns {Array} [ { name: '', path: ''} ]
+     * @returns {Array} [ { name: '', path: '', parent: { name: '', path; '' } } ]
      */
     readlinesOfPages(projectInfo) {
         const getParamsForReadMultipleLines = projectInfo => {

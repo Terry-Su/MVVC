@@ -1,10 +1,10 @@
 const { combineReducers } = require('redux')
-const projectsInfo = require('./projectsInfo')
+const projects = require('./projects')
 const pagesToDevelop = require('./pagesToDevelop')
 
 
 
 module.exports = combineReducers({
-    projectsInfo,
+    projects,
     pagesToDevelop
 })

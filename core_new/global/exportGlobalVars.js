@@ -1,11 +1,16 @@
 // Manage global variables
 
 const R = require('ramda')
-const Chalk = require('chalk')
+const FS = require('fs-extra')
+const PATH = require('path')
 
+const Chalk = require('chalk')
 const reduxStore = require('../redux/index')
 const reduxSelector = require('../redux/selector/index')
 const { getReduxState } = reduxSelector
+const Config = require('../config/index')
+const Util = require('../util/index')
+const InitialState = require('../store/initialState')
 
 const exportObjectToGlobal = (object, key) => {
     global[key] = object
@@ -25,7 +30,12 @@ const toExportVariables = {
     reduxSelector,
     getReduxState,
     R,
+    FS,
+    PATH,
     Chalk,
+    Config,
+    Util,
+    InitialState,
 }
 
 

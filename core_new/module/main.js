@@ -1,8 +1,8 @@
 const main = {
-    UPDATE_PROJECTS_INFO(projectsInfo) {
+    UPDATE_PROJECTS(projects) {
         reduxStore.dispatch({
-            type: 'UPDATE_PROJECTS_INFO',
-            value: projectsInfo
+            type: 'UPDATE_PROJECTS',
+            value: projects
         })
     },
     UPDATE_PAGES_TO_DEVELOP(pagesToDevelop) {

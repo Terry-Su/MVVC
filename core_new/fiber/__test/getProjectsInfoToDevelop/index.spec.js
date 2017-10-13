@@ -16,8 +16,6 @@ describe("getProjectsInfoToDevelop", function () {
   const paths = getProjectsInfoToDevelop({ srcPath, ignoredFolders })
 
   it("getProjectsInfoToDevelop", function () {
-    console.log(paths)
-    // console.log(123, paths)
     expect(true).toBe(true);
   });
 });

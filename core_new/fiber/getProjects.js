@@ -10,7 +10,14 @@ const getNameAndPath = item => {
     path: item.path,
   })
 }
-const mapGetNameAndPath = items => R.map(getNameAndPath, items)
+const getPageInfo = project => item => {
+  return ({
+    name: item.name,
+    path: item.path,
+    parentProject: project,
+  })
+}
+const mapGetPageInfo = project => items => R.map(getPageInfo(project), items)
 const getProjectChilren = projectPath => dirTree(projectPath).children
 
 /**
@@ -25,6 +32,10 @@ const getProjectChilren = projectPath => dirTree(projectPath).children
  *       {
  *         name: '',
  *         path: '',
+ *           parentProject: {
+ *             name: '',
+ *             path: '',
+ *           }
  *       }
  *     ]
  *   }
@@ -32,7 +43,12 @@ const getProjectChilren = projectPath => dirTree(projectPath).children
  * @param { srcPath }  
  * @param { ignoredFolders }  ignored folders in src
  */
-module.exports = function ({ srcPath, ignoredFolders = [] }) {
+module.exports = function () {
+  const {
+    srcPath,
+    ignoredFolders,
+  } = Config
+
   let result = []
 
   // get projects 
@@ -45,10 +61,11 @@ module.exports = function ({ srcPath, ignoredFolders = [] }) {
   const pushProjectAndPagesToResult = paramProject => {
     const project = getNameAndPath(paramProject)
     const {
-      path: projectPath
+      name: projectName,
+      path: projectPath,
     } = project
     const projectChilren = getProjectChilren(projectPath)
-    const pages = R.pipe(filterDirectory, excludeIngoredFolders, mapGetNameAndPath)(projectChilren)
+    const pages = R.pipe(filterDirectory, excludeIngoredFolders, mapGetPageInfo(project))(projectChilren)
 
 
     result.push({

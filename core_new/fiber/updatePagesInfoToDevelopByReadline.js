@@ -7,6 +7,10 @@ const { ADD_PAGES_TO_PAGES_TO_DEVELOP } = require('../module/main')
  *     {
  *         name: '',
  *         path: ''
+ *         parentProject: {
+ *             name: '',
+ *             path: ''
+ *         }
  *     }
  * ]
  * 
