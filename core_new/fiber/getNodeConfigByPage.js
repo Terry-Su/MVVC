@@ -9,8 +9,9 @@ module.exports = function (page) {
     
     try {
         nodeConfig = require(nodeConfigPath)
+        Util.cleanRequreCache(nodeConfigPath)
     } catch (e) {
-        nodeConfig = InitialState.defaultNodeConfig
+        
     }
 
     return nodeConfig

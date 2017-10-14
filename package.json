@@ -26,6 +26,7 @@
   "devDependencies": {
     "cross-env": "^5.0.5",
     "eslint": "^4.6.1",
+    "gulp": "^3.9.1",
     "html-loader": "^0.5.1",
     "jasmine": "^2.8.0",
     "lodash": "^4.17.4",

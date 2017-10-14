@@ -1,13 +1,14 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const PATH = require('path')
 
+
 module.exports = {
   webpackConfig: {
     module: {
       rules: [
         {
-          "test": /\.js.*/,
-          "exclude": /node_modules/,
+          test: /\.js.*/,
+          exclude: /node_modules/,
           use: [
             {
               loader: 'babel-loader',
@@ -18,7 +19,7 @@ module.exports = {
           ]
         },
         {
-          test: /\.(html)$/,
+          test: /\.(html1)$/,
           use: {
             loader: 'html-loader',
             options: {
@@ -35,7 +36,7 @@ module.exports = {
   },
 
   htmlConfig: {
-    name: 'index.html',
+    name: 'index12345.html',
     content: `
 <html>
   <body>index.html</body>
