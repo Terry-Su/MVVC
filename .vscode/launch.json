@@ -16,8 +16,8 @@
       "name": "Launch Program",
       // "program": "D:\\Project\\MVVC\\core_new\\__test\\getProjectsPathsSpec\\index.spec.js"
       // "program": "D:/Project/MVVC/core_new/__test/laboratory/index.js"
-      "cwd": "${workspaceFolder}/core_new/__test/main",
-      "program": "${workspaceFolder}/core_new/__test/main/index.js",
+      "cwd": "${workspaceFolder}/src/__test/main",
+      "program": "${workspaceFolder}/src/__test/main/index.js",
       // "console": "externalTerminal"
     }
   ]
