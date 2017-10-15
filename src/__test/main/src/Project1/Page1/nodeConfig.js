@@ -19,7 +19,7 @@ module.exports = {
           ]
         },
         {
-          test: /\.(html123)$/,
+          test: /\.(html)$/,
           use: {
             loader: 'html-loader',
             options: {
